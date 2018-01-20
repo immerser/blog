@@ -1,0 +1,3381 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="spring boot 配置一、spring boot 介绍以最少的依赖和配置来启动spring配置的应用程序系统需求：java7 推荐 java8     name servlet version java version     tomcat 8 3.1 java7+   Jetty 9.3 3.1 java8+    二、Install&amp;gt; maven 配置 下面的配置适合使用默认配置1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://immerser.github.io/2018/01/20/spring_boot_doc/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="spring boot 配置一、spring boot 介绍以最少的依赖和配置来启动spring配置的应用程序系统需求：java7 推荐 java8     name servlet version java version     tomcat 8 3.1 java7+   Jetty 9.3 3.1 java8+    二、Install&amp;gt; maven 配置 下面的配置适合使用默认配置1">
+<meta property="og:updated_time" content="2018-01-20T15:47:38.022Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="spring boot 配置一、spring boot 介绍以最少的依赖和配置来启动spring配置的应用程序系统需求：java7 推荐 java8     name servlet version java version     tomcat 8 3.1 java7+   Jetty 9.3 3.1 java8+    二、Install&amp;gt; maven 配置 下面的配置适合使用默认配置1">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:immerser.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/spring_boot_doc/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.043Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#spring-boot-配置"><span class="toc-number">1.</span> <span class="toc-text">spring boot 配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、spring-boot-介绍"><span class="toc-number">1.1.</span> <span class="toc-text">一、spring boot 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#以最少的依赖和配置来启动spring配置的应用程序"><span class="toc-number">1.1.1.</span> <span class="toc-text">以最少的依赖和配置来启动spring配置的应用程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Install"><span class="toc-number">1.2.</span> <span class="toc-text">二、Install</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#gt-maven-配置-下面的配置适合使用默认配置"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">&gt; maven 配置 下面的配置适合使用默认配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、CLI配置"><span class="toc-number">1.3.</span> <span class="toc-text">三、CLI配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、Annotation配置"><span class="toc-number">1.4.</span> <span class="toc-text">四、Annotation配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、启动方式"><span class="toc-number">1.5.</span> <span class="toc-text">五、启动方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、开发工具"><span class="toc-number">1.6.</span> <span class="toc-text">六、开发工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用注解"><span class="toc-number">1.7.</span> <span class="toc-text">常用注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、事件和监听"><span class="toc-number">1.8.</span> <span class="toc-text">六、事件和监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七-属性文件配置"><span class="toc-number">1.9.</span> <span class="toc-text">七 属性文件配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、使用配置文件"><span class="toc-number">1.10.</span> <span class="toc-text">七、使用配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、日志输出"><span class="toc-number">1.11.</span> <span class="toc-text">八、日志输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、开发web应用"><span class="toc-number">1.12.</span> <span class="toc-text">九、开发web应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十、安全和动作"><span class="toc-number">1.13.</span> <span class="toc-text">十、安全和动作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十一、数据库配置"><span class="toc-number">1.14.</span> <span class="toc-text">十一、数据库配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十二、NoSQL"><span class="toc-number">1.15.</span> <span class="toc-text">十二、NoSQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十三、缓存"><span class="toc-number">1.16.</span> <span class="toc-text">十三、缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十四、消息"><span class="toc-number">1.17.</span> <span class="toc-text">十四、消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十五、REST服务"><span class="toc-number">1.18.</span> <span class="toc-text">十五、REST服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十六、email"><span class="toc-number">1.19.</span> <span class="toc-text">十六、email</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十七、JTA"><span class="toc-number">1.20.</span> <span class="toc-text">十七、JTA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十八、session"><span class="toc-number">1.21.</span> <span class="toc-text">十八、session</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#存储方式"><span class="toc-number">1.21.0.1.</span> <span class="toc-text">存储方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置"><span class="toc-number">1.21.0.2.</span> <span class="toc-text">配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十九、测试"><span class="toc-number">1.22.</span> <span class="toc-text">十九、测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#测试依赖"><span class="toc-number">1.22.0.1.</span> <span class="toc-text">测试依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用spring一站式测试机制"><span class="toc-number">1.22.0.2.</span> <span class="toc-text">使用spring一站式测试机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试spring-boot-项目"><span class="toc-number">1.22.0.3.</span> <span class="toc-text">测试spring boot 项目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十、自定义auto-configuration"><span class="toc-number">1.23.</span> <span class="toc-text">二十、自定义auto-configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十一、Spring-Integration"><span class="toc-number">1.24.</span> <span class="toc-text">二十一、Spring Integration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十二、jOOQ"><span class="toc-number">1.25.</span> <span class="toc-text">二十二、jOOQ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十三、Hazelcast"><span class="toc-number">1.26.</span> <span class="toc-text">二十三、Hazelcast</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Actuator"><span class="toc-number">2.</span> <span class="toc-text">Actuator</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、production-ready特性"><span class="toc-number">2.1.</span> <span class="toc-text">一、production-ready特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Endpoints"><span class="toc-number">2.2.</span> <span class="toc-text">二、Endpoints</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Monitoring-HTTP"><span class="toc-number">2.3.</span> <span class="toc-text">三、Monitoring  HTTP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、Monitoring-JMX"><span class="toc-number">2.4.</span> <span class="toc-text">四、Monitoring  JMX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、Monitoring-remote-shell"><span class="toc-number">2.5.</span> <span class="toc-text">五、Monitoring  remote shell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、Metrics"><span class="toc-number">2.6.</span> <span class="toc-text">六、Metrics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、Auditing"><span class="toc-number">2.7.</span> <span class="toc-text">七、Auditing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、Tracing"><span class="toc-number">2.8.</span> <span class="toc-text">八、Tracing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、Process-Monitoring"><span class="toc-number">2.9.</span> <span class="toc-text">九、Process Monitoring</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#应用部署"><span class="toc-number">3.</span> <span class="toc-text">应用部署</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CLI"><span class="toc-number">4.</span> <span class="toc-text">CLI</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#插件"><span class="toc-number">5.</span> <span class="toc-text">插件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#spring-boot-admin"><span class="toc-number">6.</span> <span class="toc-text">spring boot admin</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#提供的功能"><span class="toc-number">6.1.</span> <span class="toc-text">提供的功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用"><span class="toc-number">6.2.</span> <span class="toc-text">如何使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置说明"><span class="toc-number">6.3.</span> <span class="toc-text">配置说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集群"><span class="toc-number">6.4.</span> <span class="toc-text">集群</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通知"><span class="toc-number">6.5.</span> <span class="toc-text">通知</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UI模块"><span class="toc-number">6.6.</span> <span class="toc-text">UI模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安全"><span class="toc-number">6.7.</span> <span class="toc-text">安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">6.8.</span> <span class="toc-text">其他</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、最佳实践"><span class="toc-number">6.9.</span> <span class="toc-text">六、最佳实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他-1"><span class="toc-number">6.10.</span> <span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#starters"><span class="toc-number">6.10.0.1.</span> <span class="toc-text">starters</span></a></li></ol></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="spring-boot-配置"><a href="#spring-boot-配置" class="headerlink" title="spring boot 配置"></a>spring boot 配置</h1><h2 id="一、spring-boot-介绍"><a href="#一、spring-boot-介绍" class="headerlink" title="一、spring boot 介绍"></a>一、spring boot 介绍</h2><h3 id="以最少的依赖和配置来启动spring配置的应用程序"><a href="#以最少的依赖和配置来启动spring配置的应用程序" class="headerlink" title="以最少的依赖和配置来启动spring配置的应用程序"></a>以最少的依赖和配置来启动spring配置的应用程序</h3><p>系统需求：java7 推荐 java8</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>servlet version</th>
+<th>java version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tomcat 8</td>
+<td>3.1</td>
+<td>java7+</td>
+</tr>
+<tr>
+<td>Jetty 9.3</td>
+<td>3.1</td>
+<td>java8+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二、Install"><a href="#二、Install" class="headerlink" title="二、Install"></a>二、Install</h2><h4 id="gt-maven-配置-下面的配置适合使用默认配置"><a href="#gt-maven-配置-下面的配置适合使用默认配置" class="headerlink" title="&gt; maven 配置 下面的配置适合使用默认配置"></a>&gt; maven 配置 下面的配置适合使用默认配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;parent&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">&lt;version&gt;1.4.0.BUILD-SNAPSHOT&lt;/version&gt;</span><br><span class="line">&lt;/parent&gt;</span><br><span class="line">&lt;!-- Add typical dependencies for a web application --&gt;</span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br><span class="line">&lt;!-- Package as an executable jar --&gt;</span><br><span class="line">&lt;build&gt;</span><br><span class="line">    &lt;plugins&gt;</span><br><span class="line">        &lt;plugin&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">        &lt;/plugin&gt;</span><br><span class="line">    &lt;/plugins&gt;</span><br><span class="line">&lt;/build&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="三、CLI配置"><a href="#三、CLI配置" class="headerlink" title="三、CLI配置"></a>三、CLI配置</h2><h2 id="四、Annotation配置"><a href="#四、Annotation配置" class="headerlink" title="四、Annotation配置"></a>四、Annotation配置</h2><ol>
+<li>RestController相当于在每个Controller方法上加了@ResponseBody</li>
+<li>EnableAutoConfiguration</li>
+<li>SpringBootApplication = (@Configuration @EnableAutoConfiguration @ComponentScan)</li>
+</ol>
+<h2 id="五、启动方式"><a href="#五、启动方式" class="headerlink" title="五、启动方式"></a>五、启动方式</h2><ol>
+<li><blockquote>
+<p>通过java -jar 启动</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>通过mvn spring-boot:run启动</p>
+</blockquote>
+</li>
+<li>启动类SpringApplication<ul>
+<li>SpringApplication.run</li>
+<li>new SpringApplication(App.class).run(args)</li>
+</ul>
+</li>
+<li></li>
+</ol>
+<h2 id="六、开发工具"><a href="#六、开发工具" class="headerlink" title="六、开发工具"></a>六、开发工具</h2><p>当使用 <code>java -jar</code> 启动的时候会自动屏蔽此开发工具</p>
+<ol>
+<li><p>相关依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;</span><br><span class="line">        &lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>属性默认</p>
+<blockquote>
+<p>  通过使用 <code>spring.*.cache</code>来设置cache,支持的属性如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">properties.put(&quot;spring.thymeleaf.cache&quot;, &quot;false&quot;);</span><br><span class="line">properties.put(&quot;spring.freemarker.cache&quot;, &quot;false&quot;);</span><br><span class="line">properties.put(&quot;spring.groovy.template.cache&quot;, &quot;false&quot;);</span><br><span class="line">properties.put(&quot;spring.mustache.cache&quot;, &quot;false&quot;);</span><br><span class="line">properties.put(&quot;server.session.persistent&quot;, &quot;true&quot;);</span><br><span class="line">properties.put(&quot;spring.h2.console.enabled&quot;, &quot;true&quot;);</span><br><span class="line">properties.put(&quot;spring.resources.cache-period&quot;, &quot;0&quot;);</span><br><span class="line">properties.put(&quot;spring.template.provider.cache&quot;, &quot;false&quot;);</span><br><span class="line">properties.put(&quot;spring.mvc.log-resolved-exception&quot;, &quot;true&quot;);</span><br><span class="line">properties.put(&quot;server.jsp-servlet.init-parameters.development&quot;, &quot;true&quot;);</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>自动重启</p>
+</li>
+</ol>
+<ul>
+<li>通过改变classpath下的文件会使应用重启  静态文件资源不需要重启</li>
+<li>指定排除的资源 <code>spring.devtools.restart.exclude=static/**,public/**</code></li>
+<li>监控额外路径 <code>spring.devtools.restart.additional-paths</code></li>
+<li>禁止重新启动 <code>spring.devtools.restart.enabled</code></li>
+<li>配置触发文件 <code>spring.devtools.restart.trigger-file</code></li>
+<li>配置监听classloader <code>restart.exclude.companycommonlibs=/mycorp-common-[\\w-]+\.jar</code></li>
+<li>通过反序列化的 <code>ObjectInputStream</code> 会导致重新启动操作无法正常工作</li>
+<li>如果使用此开发依赖每次文件改变(<code>Build → Make Project</code>)会导致重新启动项目,没有此依赖则使用热部署</li>
+<li>自动重启使用两个类加载器进行处理,比冷启动要快很多,如果需要更快需要使用reLoad而不是reStart</li>
+</ul>
+<ol>
+<li>启动期加载</li>
+</ol>
+<ul>
+<li>默认已经启动此功能,禁用使用<code>spring.devtools.livereload.enabled=false</code></li>
+<li>此功能只适用于加载资源文件</li>
+</ul>
+<ol>
+<li>全局设置</li>
+</ol>
+<ul>
+<li>通过配置文件 <code>.spring-boot-devtools.properties</code>进行全局设置,文件放在$HOME文件夹下</li>
+</ul>
+<ol>
+<li>远程应用</li>
+</ol>
+<ul>
+<li>通过配置 <code>spring.devtools.remote.secret=mysecret</code>打开远程功能</li>
+</ul>
+<h2 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h2><ol>
+<li>@Conditional    此注释使得只有在特定条件满足时才启用一些配置<br>@ConditionalOnBean<br>@ConditionalOnClass<br>@ConditionalOnExpression<br>@ConditionalOnMissingBean<br>@ConditionalOnMissingClass<br>@ConditionalOnNotWebApplication<br>@ConditionalOnResource<br>@ConditionalOnWebApplication</li>
+</ol>
+<h2 id="六、事件和监听"><a href="#六、事件和监听" class="headerlink" title="六、事件和监听"></a>六、事件和监听</h2><p>通过实现<code>ApplicationListener&lt;ApplicationReadyEvent&gt;</code>接口</p>
+<p>标准事件启动顺序如下</p>
+<ul>
+<li>ApplicationStartedEvent</li>
+<li>ApplicationEnvironmentPreparedEvent</li>
+<li>ApplicationPreparedEvent</li>
+<li>ApplicationReadyEvent</li>
+<li>ApplicationFailedEvent</li>
+</ul>
+<hr>
+<p>添加方式：</p>
+<ol>
+<li><blockquote>
+<p>通过SpringApplication.addListeners(…​)或者SpringApplicationBuilder.listeners(…​)</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>添加文件META-INF/spring.factories  org.springframework.context.ApplicationListener=com.example.project.MyListener</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="七-属性文件配置"><a href="#七-属性文件配置" class="headerlink" title="七 属性文件配置"></a>七 属性文件配置</h2><ol>
+<li><p>属性文件可以直接通过@Value注入,优先级如下</p>
+<ol>
+<li>Devtools global settings properties on your home directory (<code>~/.spring-boot-devtools.properties</code> when devtools is active).</li>
+<li><code>@TestPropertySource</code> annotations on your tests.</li>
+<li><code>@SpringBootTest#properties</code> annotation attribute on your tests.</li>
+<li>Command line arguments.</li>
+<li>Properties from <code>SPRING_APPLICATION_JSON</code> (inline JSON embedded in an environment variable or system property)</li>
+<li>ServletConfig init parameters.</li>
+<li>ServletContext init parameters.</li>
+<li>JNDI attributes from java:comp/env.</li>
+<li>Java System properties (System.getProperties()).</li>
+<li>OS environment variables.</li>
+<li>A RandomValuePropertySource that only has properties in random.*.</li>
+<li>Profile-specific application properties outside of your packaged jar (<code>application-{profile}.properties</code> and YAML variants)</li>
+<li>Profile-specific application properties packaged inside your jar (<code>application-{profile}.properties</code> and YAML variants)</li>
+<li>Application properties outside of your packaged jar (<code>application.properties</code>and YAML variants).</li>
+<li>Application properties packaged inside your jar (<code>application.properties</code> and YAML variants).</li>
+<li><code>@PropertySource</code> annotations on your <code>@Configuration</code> classes.</li>
+<li>Default properties (specified using SpringApplication.setDefaultProperties).</li>
+</ol>
+</li>
+<li><p>配置随机值</p>
+<ol>
+<li>my.secret=${random.value}</li>
+<li>my.number=${random.int}</li>
+<li>my.bignumber=${random.long}</li>
+<li>my.uuid=${random.uuid}</li>
+<li>my.number.less.than.ten=${random.int(10)}</li>
+<li>my.number.in.range=${random.int[1024,65536]}</li>
+</ol>
+</li>
+<li><p>属性配置文件的放置路径</p>
+</li>
+<li><p>spring加载属性文件的地方：</p>
+<ol>
+<li>当前目录的/config子目录</li>
+<li>当前目录</li>
+<li>classpath下的/config目录</li>
+<li>classpath根目录</li>
+</ol>
+</li>
+<li><p>使用宽松配置进行属性文件配置(以下等量)</p>
+<ol>
+<li>person.firstName</li>
+<li>person.first-name</li>
+<li>person.first_name</li>
+<li>PERSON_FIRST_NAME</li>
+</ol>
+</li>
+<li><p>属性文件检测</p>
+<ol>
+<li>可以使用@NotNull等进行属性注入前的检测</li>
+<li>需要校验内嵌的属性值的地方必须加上@Valid</li>
+<li>内嵌的属性类必须是静态的</li>
+<li>使用JSR-303标注的校验方式</li>
+<li>区别: @Value支持Spel表达式@ConfigurationProperties支持宽松的属性定义<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Constraint    详细信息</span><br><span class="line">@Null    被注释的元素必须为 null</span><br><span class="line">@NotNull    被注释的元素必须不为 null</span><br><span class="line">@AssertTrue    被注释的元素必须为 true</span><br><span class="line">@AssertFalse    被注释的元素必须为 false</span><br><span class="line">@Min(value)    被注释的元素必须是一个数字，其值必须大于等于指定的最小值</span><br><span class="line">@Max(value)    被注释的元素必须是一个数字，其值必须小于等于指定的最大值</span><br><span class="line">@DecimalMin(value)    被注释的元素必须是一个数字，其值必须大于等于指定的最小值</span><br><span class="line">@DecimalMax(value)    被注释的元素必须是一个数字，其值必须小于等于指定的最大值</span><br><span class="line">@Size(max, min)    被注释的元素的大小必须在指定的范围内</span><br><span class="line">@Digits (integer, fraction)    被注释的元素必须是一个数字，其值必须在可接受的范围内</span><br><span class="line">@Past    被注释的元素必须是一个过去的日期</span><br><span class="line">@Future    被注释的元素必须是一个将来的日期</span><br><span class="line">@Pattern(value)    被注释的元素必须符合指定的正则表达式</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p><code>boostrap.yml</code>和<code>application.yml</code>区别</p>
+<blockquote>
+<p>  bootstrap一般用于系统级别的配置,并且不支持profile</p>
+<h2 id="七、使用配置文件"><a href="#七、使用配置文件" class="headerlink" title="七、使用配置文件"></a>七、使用配置文件</h2></blockquote>
+</li>
+<li>支持YAML properties XML的配置方式</li>
+<li>@ConfigurationProperties和@TestPropertySource@PropertySource @RandomValuePropertySource</li>
+<li>所有的<code>@Component</code> <code>@Configuration</code>都可以使用<code>@Profile</code>进行限定,这样一个接口的多个实现就可以通过不同环境进行切换</li>
+<li><code>@Profile</code>无法对<code>ConfigurationProperties</code>进行限定</li>
+<li>手动指定激活的配置文件的优先级和属性值的优先级相同</li>
+<li>指定Profile的方式<ul>
+<li>通过配置文件指定<code>spring.profiles.active=dev,hsqldb</code></li>
+<li>添加无条件激活配置文件<code>spring.profiles.include</code></li>
+<li>通过程序设置<code>SpringApplication.setAdditionalProfiles(…​)</code></li>
+<li>通过命令行 <code>--spring.profiles.active=prod</code></li>
+<li>使用<code>@Profiles（&quot;dev&quot;）</code>来指定配置文件</li>
+</ul>
+</li>
+</ol>
+<h2 id="八、日志输出"><a href="#八、日志输出" class="headerlink" title="八、日志输出"></a>八、日志输出</h2><p>spring boot内部使用 Commons Logging作为内部日志输出<br>通过使用starters,默认使用logback进行日志记录,同时支持<code>Java Util Logging</code> <code>Commons Logging</code> <code>Log4J</code> <code>SLF4J</code></p>
+<ol>
+<li><p>日志格式解释</p>
+<ol>
+<li>Date and Time—Millisecond precision and easily sortable.</li>
+<li>Log Level—ERROR, WARN, INFO, DEBUG or TRACE.<br>Process ID. </li>
+<li>A — separator to distinguish the start of actual log messages.</li>
+<li>Thread name—Enclosed in square brackets (may be truncated for console output).</li>
+<li>Logger name—This is usually the source class name (often abbreviated).</li>
+<li>The log message.</li>
+</ol>
+</li>
+<li><p>指定日志级别（默认输出级别为INFO)</p>
+<ol>
+<li>logging.level.root=WARN</li>
+<li>logging.level.org.springframework.web=DEBUG</li>
+<li>logging.level.org.hibernate=ERROR</li>
+<li>debug = true<br>java -jar myapp.jar –debug</li>
+</ol>
+</li>
+<li>根据日志级别指定颜色<br>%clr(%5p)</li>
+<li>日志文件输出 <ol>
+<li>logging.file    </li>
+<li>logging.path</li>
+<li>不指定 <code>logging.file</code> 和 <code>logging.path</code> 默认只输出到console</li>
+<li>只指定<code>logging.file</code> 输出到当前文件夹的相对路径</li>
+<li>只指定<code>logging.path</code> 输出到指定的文件夹下的<code>spring.log</code>文件</li>
+<li>同时指定<code>logging.file</code> 和 <code>logging.path</code>时 <code>logging.path</code>会被忽略</li>
+<li>文件夹不可写spring boot不会报错</li>
+</ol>
+</li>
+<li>指定日志系统<blockquote>
+<p>org.springframework.boot.logging.LoggingSystem=日志类全名 参考26.6章</p>
+</blockquote>
+</li>
+<li>默认使用commons logging进行内部日志输出</li>
+<li>如果使用starter会使用logback记录日志</li>
+<li>同时支持java logging  log4j2 和logback</li>
+<li><p>logback扩展</p>
+<ul>
+<li>无法在标准的<code>logback.xml</code>中使用spring对logback的扩展,应该使<code>用logback-spring.xml</code></li>
+<li><p>使用<code>springProfile</code>可以激活和排除某些profile环境下的变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;springProfile name=&quot;staging&quot;&gt;</span><br><span class="line">&lt;!-- configuration to be enabled when the &quot;staging&quot; profile is active --&gt;</span><br><span class="line">&lt;/springProfile&gt;</span><br><span class="line">    </span><br><span class="line">&lt;springProfile name=&quot;dev, staging&quot;&gt;</span><br><span class="line">&lt;!-- configuration to be enabled when the &quot;dev&quot; or &quot;staging&quot; profiles are active --&gt;</span><br><span class="line">&lt;/springProfile&gt;</span><br><span class="line">    </span><br><span class="line">&lt;springProfile name=&quot;!production&quot;&gt;</span><br><span class="line">&lt;!-- configuration to be enabled when the &quot;production&quot; profile is not active --&gt;</span><br><span class="line">&lt;/springProfile&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>springProperty</code>进行属性注入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;springProperty scope=&quot;context&quot; name=&quot;fluentHost&quot; source=&quot;myapp.fluentd.host&quot; defaultValue=&quot;localhost&quot;/&gt;</span><br><span class="line">&lt;appender name=&quot;FLUENT&quot; class=&quot;ch.qos.logback.more.appenders.DataFluentAppender&quot;&gt;</span><br><span class="line">&lt;remoteHost&gt;$&#123;fluentHost&#125;&lt;/remoteHost&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/appender&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常用配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">logback配置多Profile</span><br><span class="line">在resources目录下添加logback-spring.xml，并分别对dev和prod进行配置：</span><br><span class="line"></span><br><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;!--&lt;include resource=&quot;org/springframework/boot/logging/logback/base.xml&quot; /&gt;--&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;springProperty scope=&quot;context&quot; name=&quot;log_path&quot; source=&quot;log.path&quot; defaultValue=&quot;/data/appLogs/aaa&quot;/&gt;</span><br><span class="line">    &lt;springProperty scope=&quot;context&quot; name=&quot;log_level&quot; source=&quot;log.level&quot; defaultValue=&quot;info&quot;/&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;springProfile name=&quot;dev&quot;&gt;</span><br><span class="line">        &lt;logger name=&quot;com.javachen.example&quot; level=&quot;TRACE&quot; /&gt;</span><br><span class="line">        &lt;appender name=&quot;LOGFILE&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;</span><br><span class="line">            &lt;encoder&gt;</span><br><span class="line">                &lt;pattern&gt;%d&#123;HH:mm:ss.SSS&#125; [%thread] %-5level %logger&#123;36&#125; - %msg%n&lt;/pattern&gt;</span><br><span class="line">            &lt;/encoder&gt;</span><br><span class="line">        &lt;/appender&gt;</span><br><span class="line">    &lt;/springProfile&gt;</span><br><span class="line"></span><br><span class="line">    &lt;springProfile name=&quot;prod&quot;&gt;</span><br><span class="line">        &lt;appender name=&quot;LOGFILE&quot; class=&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;&gt;</span><br><span class="line">            &lt;File&gt;log/server.log&lt;/File&gt;</span><br><span class="line">            &lt;rollingPolicy</span><br><span class="line">                    class=&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;&gt;</span><br><span class="line">                &lt;FileNamePattern&gt;log/server_%d&#123;yyyy-MM-dd&#125;.log.zip&lt;/FileNamePattern&gt;</span><br><span class="line">            &lt;/rollingPolicy&gt;</span><br><span class="line">            &lt;layout class=&quot;ch.qos.logback.classic.PatternLayout&quot;&gt;</span><br><span class="line">                &lt;pattern&gt;%date [%thread] %-5level %logger&#123;80&#125; - %msg%n&lt;/pattern&gt;</span><br><span class="line">            &lt;/layout&gt;</span><br><span class="line">        &lt;/appender&gt;</span><br><span class="line">    &lt;/springProfile&gt;</span><br><span class="line"></span><br><span class="line">    &lt;root level=&quot;info&quot;&gt;</span><br><span class="line">        &lt;appender-ref ref=&quot;LOGFILE&quot; /&gt;</span><br><span class="line">    &lt;/root&gt;</span><br><span class="line"></span><br><span class="line">    &lt;logger name=&quot;com.javachen.example&quot; level=&quot;DEBUG&quot; /&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li></li>
+<li></li>
+</ul>
+</li>
+</ol>
+<h2 id="九、开发web应用"><a href="#九、开发web应用" class="headerlink" title="九、开发web应用"></a>九、开发web应用</h2><ol>
+<li>自动配置特性<ol>
+<li>包含ContentNegotiatingViewResolver 和 BeanNameViewResolver</li>
+<li>支持静态资源</li>
+<li>自动注册Converter, GenericConverter, Formatter</li>
+<li>支持HttpMessageConverters</li>
+<li>支持静态文件index.html</li>
+<li>支持客户化的Favicon</li>
+<li>自动使用ConfigurableWebBindingInitializer</li>
+</ol>
+</li>
+<li>自定义配置使用 @EnableWebMvc</li>
+<li>使用@JsonComponent进行json配置</li>
+<li>默认静态资源位置：/static (or /public or /resources or /META-INF/resources)所以写静态资源位置的时候，不要带上映射的目录名（如/static/，/public/ ，/resources/，/META-INF/resources/）！</li>
+<li>错误映射实现接口ErrorController可以放置404.html</li>
+<li>内嵌servelt @WebServlet @WebFilter  @WebListener</li>
+<li>如果没有根目录/映射会访问默认静态资源路径下的index.html资源</li>
+<li>项目内引用static目录下的资源 应该使用根应用下访问 而不应该带static目录</li>
+<li>支持数据绑定WebBindingInitializer </li>
+<li>错误处理<ol>
+<li>/error ????</li>
+</ol>
+</li>
+</ol>
+<h2 id="十、安全和动作"><a href="#十、安全和动作" class="headerlink" title="十、安全和动作"></a>十、安全和动作</h2><ol>
+<li>OAuth2</li>
+<li>Actuator</li>
+</ol>
+<h2 id="十一、数据库配置"><a href="#十一、数据库配置" class="headerlink" title="十一、数据库配置"></a>十一、数据库配置</h2><ol>
+<li><p>mybatis</p>
+<ol>
+<li><p>依赖如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.1.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>作用</p>
+<ol>
+<li>自动检测数据源</li>
+<li>通过数据源创建SqlSessionFactoryBean </li>
+<li>通过SqlSessionFactoryBean 创建 SqlSessionTemplate </li>
+<li>自动扫描mapper</li>
+</ol>
+</li>
+<li>配置选项<br>在application.properties中使用mybatis.作为前缀 配置选项均可选<ol>
+<li>config-location                  mybatis.xml的位置</li>
+<li>mapper-locations                 Mapper.xml的位置</li>
+<li>type-aliases-package             类型别名</li>
+<li>type-handlers-package            处理器别名</li>
+<li>executor-type                    执行类型   SIMPLE, REUSE, BATCH </li>
+<li>configuration                    配置选项和config-location不能同时存在</li>
+</ol>
+</li>
+<li>注意事项<ol>
+<li>如果mapper接收上不使用@Mapper注解 就需要配置一个配置Bean来指定 </li>
+</ol>
+</li>
+</ol>
+</li>
+<li>内嵌数据库</li>
+<li>JNDI数据源</li>
+<li>使用JdbcTemplate</li>
+<li>JPA和Spring Data</li>
+<li>H2</li>
+</ol>
+<h2 id="十二、NoSQL"><a href="#十二、NoSQL" class="headerlink" title="十二、NoSQL"></a>十二、NoSQL</h2><ol>
+<li><blockquote>
+<p>  Redis</p>
+<ol>
+<li>配置选项搜索redis选项</li>
+<li>配置spring管理的cache</li>
+</ol>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  MongoDB</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  Neo4J</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  Gemfire</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  Solr</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  Elasticsearch</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  Cassandra</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  Couchbase</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="十三、缓存"><a href="#十三、缓存" class="headerlink" title="十三、缓存"></a>十三、缓存</h2><ol>
+<li><blockquote>
+<p>  Generic</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  JCache (JSR-107)</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  EhCache 2.x</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  Hazelcast</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  Infinispan</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  Couchbase</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  Redis</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  Caffeine</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  Guava</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  Simple </p>
+</blockquote>
+</li>
+</ol>
+<h2 id="十四、消息"><a href="#十四、消息" class="headerlink" title="十四、消息"></a>十四、消息</h2><ol>
+<li><blockquote>
+<p>ActiveMQ</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>Artemis</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>HornetQ</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>RabbitMQ</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="十五、REST服务"><a href="#十五、REST服务" class="headerlink" title="十五、REST服务"></a>十五、REST服务</h2><ol>
+<li><blockquote>
+<p>使用RestTemplate</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="十六、email"><a href="#十六、email" class="headerlink" title="十六、email"></a>十六、email</h2><ol>
+<li><blockquote>
+<p>使用JavaMailSender</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="十七、JTA"><a href="#十七、JTA" class="headerlink" title="十七、JTA"></a>十七、JTA</h2><ol>
+<li><blockquote>
+<p>Atomikos</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>Bitronix</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>Narayana</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>Java EE</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>Mixing XA</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="十八、session"><a href="#十八、session" class="headerlink" title="十八、session"></a>十八、session</h2><h4 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a>存储方式</h4><ol>
+<li><blockquote>
+<p>JDBC</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>MongoDB</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>Redis</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>Hazelcast</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>HashMap</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4></blockquote>
+</li>
+<li><blockquote>
+<p>spring.session.store-type=redis</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>spring.session.jdbc.table-name=SESSIONS</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="十九、测试"><a href="#十九、测试" class="headerlink" title="十九、测试"></a>十九、测试</h2><h4 id="测试依赖"><a href="#测试依赖" class="headerlink" title="测试依赖"></a>测试依赖</h4><p>可以使用spring test进行集成测试</p>
+<ol>
+<li><blockquote>
+<p>JUnit</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>Spring Test &amp; Spring Boot Test</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>AssertJ</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>Hamcrest</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>Mockito</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>JSONassert</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>JsonPath</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="使用spring一站式测试机制"><a href="#使用spring一站式测试机制" class="headerlink" title="使用spring一站式测试机制"></a>使用spring一站式测试机制</h4><h4 id="测试spring-boot-项目"><a href="#测试spring-boot-项目" class="headerlink" title="测试spring boot 项目"></a>测试spring boot 项目</h4><p>spring test 会在多次测试间缓存环境</p>
+<ul>
+<li>使用@SpringBootTest可以替代@ContextConfiguration并会创建ApplicationContext</li>
+<li><p>使用@SpringBootTest的webEnvironment创建测试环境</p>
+<ul>
+<li><p>MOCK </p>
+<blockquote>
+<p>加载WebApplicationContext并提供mock servlet环境(如果selvlet-api不可用会创建非web环境)配合@AutoConfigureMockMvc使用</p>
+</blockquote>
+</li>
+<li><p>RANDOM_PORT</p>
+<blockquote>
+<p>记载随机端口并启动EmbeddedWebApplicationContext</p>
+</blockquote>
+</li>
+<li><p>DEFINED_PORT</p>
+<blockquote>
+<p>记载固定端口并启动EmbeddedWebApplicationContext</p>
+</blockquote>
+</li>
+<li><p>NONE<br>不加载任何sevlet环境</p>
+</li>
+</ul>
+</li>
+<li><p>使用@RunWith(SpringRunner.class)才能进行测试</p>
+</li>
+<li></li>
+<li><p>通过@ContextConfiguration指定配置环境</p>
+<blockquote>
+<p>spring boot 的 @*Test注解会自动搜索主要的配置,无论你是否指定,搜索的标签为@SpringBootApplication和@SpringBootConfiguration</p>
+</blockquote>
+</li>
+<li><p>使用@TestConfiguration<br>进行客户化的测试配置和@Configuration不同的是不会取代原来的配置,而是添加配置</p>
+</li>
+<li><p>使用@TestComponent 和 @TestConfiguration</p>
+</li>
+</ul>
+<ul>
+<li><p>添加配置属性EnvironmentTestUtils.addEnvironment(env, “org=Spring”, “name=Boot”);</p>
+</li>
+<li><p>TestRestTemplate</p>
+</li>
+</ul>
+<h2 id="二十、自定义auto-configuration"><a href="#二十、自定义auto-configuration" class="headerlink" title="二十、自定义auto-configuration"></a>二十、自定义auto-configuration</h2><h2 id="二十一、Spring-Integration"><a href="#二十一、Spring-Integration" class="headerlink" title="二十一、Spring Integration"></a>二十一、Spring Integration</h2><h2 id="二十二、jOOQ"><a href="#二十二、jOOQ" class="headerlink" title="二十二、jOOQ"></a>二十二、jOOQ</h2><h2 id="二十三、Hazelcast"><a href="#二十三、Hazelcast" class="headerlink" title="二十三、Hazelcast"></a>二十三、Hazelcast</h2><ol>
+<li><blockquote>
+<p>使用HazelcastInstance</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="Actuator"><a href="#Actuator" class="headerlink" title="Actuator"></a>Actuator</h1><h2 id="一、production-ready特性"><a href="#一、production-ready特性" class="headerlink" title="一、production-ready特性"></a>一、production-ready特性</h2><ol>
+<li>使用依赖<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="二、Endpoints"><a href="#二、Endpoints" class="headerlink" title="二、Endpoints"></a>二、Endpoints</h2><p>用于和对应用程序的监控和交互,sprint boot 內建了很多Endpoints</p>
+<ol>
+<li>內建监控</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>actuator</td>
+<td>提供给予超媒体的发现页,需要<code>Spring HATEOAS</code>支持</td>
+<td>true</td>
+</tr>
+<tr>
+<td>autoconfig</td>
+<td>显示所有 <code>auto-configuration</code></td>
+<td>true</td>
+</tr>
+<tr>
+<td>beans</td>
+<td>显示应用所有注册的bean</td>
+<td>true</td>
+</tr>
+<tr>
+<td>configprops</td>
+<td>显示注解<code>@ConfigurationProperties</code>收集到的属性</td>
+<td>true</td>
+</tr>
+<tr>
+<td>dump</td>
+<td>dump线程信息</td>
+<td>true</td>
+</tr>
+<tr>
+<td>env</td>
+<td>导出<code>ConfigurableEnvironment</code>环境信息</td>
+<td>true</td>
+</tr>
+<tr>
+<td>flyway</td>
+<td>显示被应用的<code>Flyway database migrations</code>信息</td>
+<td>true</td>
+</tr>
+<tr>
+<td>health</td>
+<td>健康检查</td>
+<td>false</td>
+</tr>
+<tr>
+<td>info</td>
+<td>应用信息</td>
+<td>false</td>
+</tr>
+<tr>
+<td>liquibase</td>
+<td>显示被应用的<code>liquibase migrations</code>信息</td>
+<td>true</td>
+</tr>
+<tr>
+<td>metrics</td>
+<td>显示当前应用的统计信息</td>
+<td>true</td>
+</tr>
+<tr>
+<td>mappings</td>
+<td>显示所有<code>@RequestMapping</code>映射的路径信息</td>
+<td>true</td>
+</tr>
+<tr>
+<td>shutdown</td>
+<td>优雅的停止应用</td>
+<td>true</td>
+</tr>
+<tr>
+<td>trace</td>
+<td>跟踪调用信息</td>
+<td>true</td>
+</tr>
+<tr>
+<td></td>
+<td>—-以下只支持spring mvc ——</td>
+</tr>
+<tr>
+<td>docs</td>
+<td>显示文档,需要<code>spring-boot-actuator-docs</code>支持</td>
+<td>true</td>
+</tr>
+<tr>
+<td>logfile</td>
+<td>返回日志内容</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><p>定制化的配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">endpoints.beans.id=springbeans</span><br><span class="line">endpoints.beans.sensitive=false</span><br><span class="line">endpoints.shutdown.enabled=true</span><br></pre></td></tr></table></figure>
+<p>除了info全部禁用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">endpoints.enabled=false</span><br><span class="line">endpoints.info.enabled=true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sensitive和enabled的区别</p>
+<ul>
+<li>sensitive为false显示完整信息  sensitive为true只显示简要闲心</li>
+<li>enabled 为false 不显示信息 为true显示信息</li>
+</ul>
+</li>
+<li>Hypermedia for actuator MVC endpoints<ul>
+<li>使用<code>spring-boot-starter-hateoas</code>或者 <code>Spring Data REST</code>会默认开启发现页</li>
+<li>发现页地址默认为<code>/actuator</code></li>
+<li>定制化路径可以配置<code>endpoints.actuator.enabled</code></li>
+</ul>
+</li>
+<li><p>CORS support(Cross-origin resource sharing) 跨域资源共享\<br>通过以下配置进行启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">endpoints.cors.allowed-origins=http://example.com</span><br><span class="line">endpoints.cors.allowed-methods=GET,POST</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定制化的endpoints</p>
+<ul>
+<li>通过添加类型<code>为Endpoint</code>的<code>@Bean</code>会自动通过出JMX和HTTP导出</li>
+<li>通过配置<code>MvcEndpoint</code>可以导出HTTP配置</li>
+<li>配置<code>@ManagementContextConfiguration</code></li>
+</ul>
+</li>
+<li>健康信息 Health information<ul>
+<li>用于检测应用程序的状态,并发出告警</li>
+<li>未授权的情况下只能看到health的简单信息</li>
+<li>健康信息收集自<code>HealthIndicator</code></li>
+<li>支持自定义<code>HealthIndicators</code></li>
+<li>配置<code>endpoints.health.sensitive=false</code> 进行敏感信息过滤</li>
+<li>自动配置的一些indicators<ul>
+<li>CassandraHealthIndicator  </li>
+<li>DiskSpaceHealthIndicator</li>
+<li>DataSourceHealthIndicator</li>
+<li>ElasticsearchHealthIndicator</li>
+<li>JmsHealthIndicator</li>
+<li>MailHealthIndicator</li>
+<li>MongoHealthIndicator</li>
+<li>RabbitHealthIndicator</li>
+<li>RedisHealthIndicator</li>
+<li>SolrHealthIndicator</li>
+</ul>
+</li>
+<li>通过配置management.health.defaults.enabled</li>
+</ul>
+</li>
+<li><p>配置构建信息</p>
+<ul>
+<li>添加maven配置<br>在spring-boot-maven-plugin中添加配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;executions&gt;</span><br><span class="line">     &lt;execution&gt;</span><br><span class="line">         &lt;goals&gt;</span><br><span class="line">             &lt;goal&gt;build-info&lt;/goal&gt;</span><br><span class="line">         &lt;/goals&gt;</span><br><span class="line">     &lt;/execution&gt;</span><br><span class="line"> &lt;/executions&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>添加配置文件<br>在resources下添加<br>META-INF/build-info.properties</li>
+</ul>
+</li>
+<li><p>配置git提交信息</p>
+<ul>
+<li><p>添加插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">    &lt;groupId&gt;pl.project13.maven&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;git-commit-id-plugin&lt;/artifactId&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加配置文件<br>在classpath下添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git.properties</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置git的详细信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">management.info.git.mode=full</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>添加JMX-bean管理</p>
+<ul>
+<li>添加依赖<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.jolokia&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jolokia-core&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>添加日志管理功能</p>
+<ul>
+<li>添加配置<br>在logback-spring中添加以下配置(需要JMX的支持)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">  &lt;include resource=&quot;org/springframework/boot/logging/logback/base.xml&quot;/&gt;</span><br><span class="line">  &lt;jmxConfigurator/&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、Monitoring-HTTP"><a href="#三、Monitoring-HTTP" class="headerlink" title="三、Monitoring  HTTP"></a>三、Monitoring  HTTP</h2><h2 id="四、Monitoring-JMX"><a href="#四、Monitoring-JMX" class="headerlink" title="四、Monitoring  JMX"></a>四、Monitoring  JMX</h2><h2 id="五、Monitoring-remote-shell"><a href="#五、Monitoring-remote-shell" class="headerlink" title="五、Monitoring  remote shell"></a>五、Monitoring  remote shell</h2><h2 id="六、Metrics"><a href="#六、Metrics" class="headerlink" title="六、Metrics"></a>六、Metrics</h2><h2 id="七、Auditing"><a href="#七、Auditing" class="headerlink" title="七、Auditing"></a>七、Auditing</h2><h2 id="八、Tracing"><a href="#八、Tracing" class="headerlink" title="八、Tracing"></a>八、Tracing</h2><h2 id="九、Process-Monitoring"><a href="#九、Process-Monitoring" class="headerlink" title="九、Process Monitoring"></a>九、Process Monitoring</h2><h1 id="应用部署"><a href="#应用部署" class="headerlink" title="应用部署"></a>应用部署</h1><h1 id="CLI"><a href="#CLI" class="headerlink" title="CLI"></a>CLI</h1><h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><p>maven插件的作用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> &lt;plugin&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>收集所有classpath下的jar然后构建成一个可执行的jar</li>
+<li>搜索main方法作为一个可运行的类</li>
+<li>提供内建的依赖解析,并设置依赖的版本</li>
+</ol>
+<h1 id="spring-boot-admin"><a href="#spring-boot-admin" class="headerlink" title="spring boot admin"></a>spring boot admin</h1><h2 id="提供的功能"><a href="#提供的功能" class="headerlink" title="提供的功能"></a>提供的功能</h2><ol>
+<li>显示健康状态</li>
+<li>显示 内存 数据库 缓存 JVM等统计</li>
+<li>显示构建信息</li>
+<li>跟踪和下载日志文件</li>
+<li>显示系统和应用的环境变量</li>
+<li>支持env-&amp;和refresh-endpoint</li>
+<li>日志级别管理(目前只支持logback)</li>
+<li>和JMX-beans交互</li>
+<li>显示线程堆栈信息</li>
+<li>显示调用跟踪</li>
+<li>整合Hystrix表盘</li>
+<li>下载堆信息</li>
+<li>状态更新通知</li>
+<li>状态更新事件</li>
+</ol>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><ol>
+<li><p>添加项目依赖(服务端)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;de.codecentric&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-admin-server&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.4.3&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;de.codecentric&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-admin-server-ui&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.4.3&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加程序配置(服务端)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@EnableAutoConfiguration</span><br><span class="line">@EnableAdminServer</span><br><span class="line">public class SpringBootAdminApplication &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(SpringBootAdminApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加项目依赖(客户端)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;de.codecentric&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-admin-starter-client&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.4.3&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置连接地址(客户端)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.boot.admin.url: http://localhost:8080</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置构建信息(客户端)<br>参考spring</p>
+</li>
+<li>JMX-bean管理</li>
+<li>日志级别管理</li>
+</ol>
+<h2 id="配置说明"><a href="#配置说明" class="headerlink" title="配置说明"></a>配置说明</h2><ol>
+<li>服务端</li>
+<li>客户端</li>
+</ol>
+<h2 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h2><h2 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h2><h2 id="UI模块"><a href="#UI模块" class="headerlink" title="UI模块"></a>UI模块</h2><h2 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h2><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h2 id="六、最佳实践"><a href="#六、最佳实践" class="headerlink" title="六、最佳实践"></a>六、最佳实践</h2><ol>
+<li>不要使用没有包名的类 </li>
+<li>主类（含有main方法）放在其他类的根下方便注解扫描</li>
+<li>推荐java based 项目配置 使用 @import进行配置分离导入</li>
+<li>只能添加一个@EnableAutoConfiguration推荐放在主要的@Configuration上</li>
+<li>可以添加开发工具方法开发</li>
+<li>这个依赖会添加默认的一些配置的值不需要手动在application.properties中添加<br>同时支持监控资源文件改动自动重启（classpath更新，在idea中表现为  building the project ）,可以通过指定<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.devtools.restart.exclude=static/**,public/**</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>来避免监控<br>依赖如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;</span><br><span class="line">    &lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a>其他</h2><ol>
+<li>替换banners （参考文档配置）</li>
+<li>注册监听和事件</li>
+<li>指定applicationContext和获取application参数</li>
+<li>使用ApplicationRunner和CommandLineRunner</li>
+<li>退出时的操作实现接口ExitCodeGenerator</li>
+<li>开启管理员特性spring.application.admin.enabled</li>
+<li>指定启动端口server.port=8888</li>
+</ol>
+<h4 id="starters"><a href="#starters" class="headerlink" title="starters"></a>starters</h4><ol>
+<li><blockquote>
+<p>  spring-boot-startertest</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-startermobile</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-startersocial-twitter</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-startercache</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starteractivemq</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterjta-atomikos</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starter-aop</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starter-web</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterdata-elasticsearch</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterjdbc</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterbatch</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-startersocial-facebook</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterweb-services</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterjta-narayana</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterthymeleaf</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-startermail</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterjta-bitronix</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterdata-mongodb</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-startervalidation</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterjooq</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterredis</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterdata-cassandra</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterhateoas</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterintegration</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterdata-solr</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterfreemarker</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterjersey</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starter</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterdata-couchbase</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterartemis</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-startercloud-connectors</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-startersocial-linkedin</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-startervelocity</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterdata-rest</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterdata-gemfire</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-startergroovy-templates</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starteramqp</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterhornetq</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starter-ws</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-startersecurity</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterdata-redis</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterwebsocket</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-startermustache</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterdata-neo4j</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterdata-jpa</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starteractuator</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterremote-shell</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterundertow</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterlogging</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-startertomcat</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterjetty</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>  spring-boot-starterlog4j2</p>
+</blockquote>
+</li>
+<li></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>encrypt.fail-on-error</td>
+<td>true</td>
+<td>Flag to say that a process should fail if there is an encryption or decryption error.</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>encrypt.key</p>
+<p> |  | </p>
+<p>A symmetric key. As a stronger alternative consider using a keystore.</p>
+<p> |<br>| </p>
+<p>encrypt.key-store.alias</p>
+<p> |  | </p>
+<p>Alias for a key in the store.</p>
+<p> |<br>| </p>
+<p>encrypt.key-store.location</p>
+<p> |  | </p>
+<p>Location of the key store file, e.g. classpath:/keystore.jks.</p>
+<p> |<br>| </p>
+<p>encrypt.key-store.password</p>
+<p> |  | </p>
+<p>Password that locks the keystore.</p>
+<p> |<br>| </p>
+<p>encrypt.key-store.secret</p>
+<p> |  | </p>
+<p>Secret protecting the key (defaults to the same as the password).</p>
+<p> |<br>| </p>
+<p>encrypt.rsa.algorithm</p>
+<p> |  | </p>
+<p>The RSA algorithm to use (DEFAULT or OEAP). Once it is set do not change it (or existing ciphers will not a decryptable).</p>
+<p> |<br>| </p>
+<p>encrypt.rsa.salt</p>
+<p> | </p>
+<p>deadbeef</p>
+<p> | </p>
+<p>Salt for the random secret used to encrypt cipher text. Once it is set do not change it (or existing ciphers will not a decryptable).</p>
+<p> |<br>| </p>
+<p>encrypt.rsa.strong</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Flag to indicate that “strong” AES encryption should be used internally. If true then the GCM algorithm is applied to the AES encrypted bytes. Default is false (in which case “standard” CBC is used instead). Once it is set do not change it (or existing ciphers will not a decryptable).</p>
+<p> |<br>| </p>
+<p>endpoints.bus.enabled</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.bus.id</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.bus.sensitive</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.consul.enabled</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.consul.id</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.consul.sensitive</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.env.post.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Enable changing the Environment through a POST to /env.</p>
+<p> |<br>| </p>
+<p>endpoints.features.enabled</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.features.id</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.features.sensitive</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.pause.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Enable the /pause endpoint (to send Lifecycle.stop()).</p>
+<p> |<br>| </p>
+<p>endpoints.pause.id</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.pause.sensitive</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.refresh.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Enable the /refresh endpoint to refresh configuration and re-initialize refresh scoped beans.</p>
+<p> |<br>| </p>
+<p>endpoints.refresh.id</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.refresh.sensitive</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.restart.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Enable the /restart endpoint to restart the application context.</p>
+<p> |<br>| </p>
+<p>endpoints.restart.id</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.restart.pause-endpoint.enabled</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.restart.pause-endpoint.id</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.restart.pause-endpoint.sensitive</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.restart.resume-endpoint.enabled</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.restart.resume-endpoint.id</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.restart.resume-endpoint.sensitive</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.restart.sensitive</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.restart.timeout</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>endpoints.resume.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Enable the /resume endpoint (to send Lifecycle.start()).</p>
+<p> |<br>| </p>
+<p>endpoints.resume.id</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.resume.sensitive</p>
+<p> |  |  |<br>| </p>
+<p>endpoints.zookeeper.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Enable the /zookeeper endpoint to inspect the state of zookeeper.</p>
+<p> |<br>| </p>
+<p>eureka.client.allow-redirects</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Indicates whether server can redirect a client request to a backup server/cluster. If set to false, the server will handle the request directly, If set to true, it may send HTTP redirect to the client, with a new server location.</p>
+<p> |<br>| </p>
+<p>eureka.client.availability-zones</p>
+<p> |  | </p>
+<p>Gets the list of availability zones (used in AWS data centers) for the region in which this instance resides.</p>
+<p>The changes are effective at runtime at the next registry fetch cycle as specified by registryFetchIntervalSeconds.</p>
+<p> |<br>| </p>
+<p>eureka.client.backup-registry-impl</p>
+<p> |  | </p>
+<p>Gets the name of the implementation which implements BackupRegistry to fetch the registry information as a fall back option for only the first time when the eureka client starts.</p>
+<p>This may be needed for applications which needs additional resiliency for registry information without which it cannot operate.</p>
+<p> |<br>| </p>
+<p>eureka.client.cache-refresh-executor-exponential-back-off-bound</p>
+<p> | </p>
+<p>10</p>
+<p> | </p>
+<p>Cache refresh executor exponential back off related property. It is a maximum multiplier value for retry delay, in case where a sequence of timeouts occurred.</p>
+<p> |<br>| </p>
+<p>eureka.client.cache-refresh-executor-thread-pool-size</p>
+<p> | </p>
+<p>2</p>
+<p> | </p>
+<p>The thread pool size for the cacheRefreshExecutor to initialise with</p>
+<p> |<br>| </p>
+<p>eureka.client.client-data-accept</p>
+<p> |  | </p>
+<p>EurekaAccept name for client data accept</p>
+<p> |<br>| </p>
+<p>eureka.client.decoder-name</p>
+<p> |  | </p>
+<p>This is a transient config and once the latest codecs are stable, can be removed (as there will only be one)</p>
+<p> |<br>| </p>
+<p>eureka.client.disable-delta</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Indicates whether the eureka client should disable fetching of delta and should rather resort to getting the full registry information.</p>
+<p>Note that the delta fetches can reduce the traffic tremendously, because the rate of change with the eureka server is normally much lower than the rate of fetches.</p>
+<p>The changes are effective at runtime at the next registry fetch cycle as specified by registryFetchIntervalSeconds</p>
+<p> |<br>| </p>
+<p>eureka.client.dollar-replacement</p>
+<p> | </p>
+<p>_-</p>
+<p> | </p>
+<p>Get a replacement string for Dollar sign <code>$</code> during serializing/deserializing information in eureka server.</p>
+<p> |<br>| </p>
+<p>eureka.client.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Flag to indicate that the Eureka client is enabled.</p>
+<p> |<br>| </p>
+<p>eureka.client.encoder-name</p>
+<p> |  | </p>
+<p>This is a transient config and once the latest codecs are stable, can be removed (as there will only be one)</p>
+<p> |<br>| </p>
+<p>eureka.client.escape-char-replacement</p>
+<p> | </p>
+<p>__</p>
+<p> | </p>
+<p>Get a replacement string for underscore sign <code>_</code> during serializing/deserializing information in eureka server.</p>
+<p> |<br>| </p>
+<p>eureka.client.eureka-connection-idle-timeout-seconds</p>
+<p> | </p>
+<p>30</p>
+<p> | </p>
+<p>Indicates how much time (in seconds) that the HTTP connections to eureka server can stay idle before it can be closed.</p>
+<p>In the AWS environment, it is recommended that the values is 30 seconds or less, since the firewall cleans up the connection information after a few mins leaving the connection hanging in limbo</p>
+<p> |<br>| </p>
+<p>eureka.client.eureka-server-connect-timeout-seconds</p>
+<p> | </p>
+<p>5</p>
+<p> | </p>
+<p>Indicates how long to wait (in seconds) before a connection to eureka server needs to timeout. Note that the connections in the client are pooled by org.apache.http.client.HttpClient and this setting affects the actual connection creation and also the wait time to get the connection from the pool.</p>
+<p> |<br>| </p>
+<p>eureka.client.eureka-server-d-n-s-name</p>
+<p> |  | </p>
+<p>Gets the DNS name to be queried to get the list of eureka servers.This information is not required if the contract returns the service urls by implementing serviceUrls.</p>
+<p>The DNS mechanism is used when useDnsForFetchingServiceUrls is set to true and the eureka client expects the DNS to configured a certain way so that it can fetch changing eureka servers dynamically.</p>
+<p>The changes are effective at runtime.</p>
+<p> |<br>| </p>
+<p>eureka.client.eureka-server-port</p>
+<p> |  | </p>
+<p>Gets the port to be used to construct the service url to contact eureka server when the list of eureka servers come from the DNS.This information is not required if the contract returns the service urls eurekaServerServiceUrls(String).</p>
+<p>The DNS mechanism is used when useDnsForFetchingServiceUrls is set to true and the eureka client expects the DNS to configured a certain way so that it can fetch changing eureka servers dynamically.</p>
+<p>The changes are effective at runtime.</p>
+<p> |<br>| </p>
+<p>eureka.client.eureka-server-read-timeout-seconds</p>
+<p> | </p>
+<p>8</p>
+<p> | </p>
+<p>Indicates how long to wait (in seconds) before a read from eureka server needs to timeout.</p>
+<p> |<br>| </p>
+<p>eureka.client.eureka-server-total-connections</p>
+<p> | </p>
+<p>200</p>
+<p> | </p>
+<p>Gets the total number of connections that is allowed from eureka client to all eureka servers.</p>
+<p> |<br>| </p>
+<p>eureka.client.eureka-server-total-connections-per-host</p>
+<p> | </p>
+<p>50</p>
+<p> | </p>
+<p>Gets the total number of connections that is allowed from eureka client to a eureka server host.</p>
+<p> |<br>| </p>
+<p>eureka.client.eureka-server-u-r-l-context</p>
+<p> |  | </p>
+<p>Gets the URL context to be used to construct the service url to contact eureka server when the list of eureka servers come from the DNS. This information is not required if the contract returns the service urls from eurekaServerServiceUrls.</p>
+<p>The DNS mechanism is used when useDnsForFetchingServiceUrls is set to true and the eureka client expects the DNS to configured a certain way so that it can fetch changing eureka servers dynamically. The changes are effective at runtime.</p>
+<p> |<br>| </p>
+<p>eureka.client.eureka-service-url-poll-interval-seconds</p>
+<p> | </p>
+<p>0</p>
+<p> | </p>
+<p>Indicates how often(in seconds) to poll for changes to eureka server information. Eureka servers could be added or removed and this setting controls how soon the eureka clients should know about it.</p>
+<p> |<br>| </p>
+<p>eureka.client.fetch-registry</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Indicates whether this client should fetch eureka registry information from eureka server.</p>
+<p> |<br>| </p>
+<p>eureka.client.fetch-remote-regions-registry</p>
+<p> |  | </p>
+<p>Comma separated list of regions for which the eureka registry information will be fetched. It is mandatory to define the availability zones for each of these regions as returned by availabilityZones. Failing to do so, will result in failure of discovery client startup.</p>
+<p> |<br>| </p>
+<p>eureka.client.filter-only-up-instances</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Indicates whether to get the applications after filtering the applications for instances with only InstanceStatus UP states.</p>
+<p> |<br>| </p>
+<p>eureka.client.g-zip-content</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Indicates whether the content fetched from eureka server has to be compressed whenever it is supported by the server. The registry information from the eureka server is compressed for optimum network traffic.</p>
+<p> |<br>| </p>
+<p>eureka.client.heartbeat-executor-exponential-back-off-bound</p>
+<p> | </p>
+<p>10</p>
+<p> | </p>
+<p>Heartbeat executor exponential back off related property. It is a maximum multiplier value for retry delay, in case where a sequence of timeouts occurred.</p>
+<p> |<br>| </p>
+<p>eureka.client.heartbeat-executor-thread-pool-size</p>
+<p> | </p>
+<p>2</p>
+<p> | </p>
+<p>The thread pool size for the heartbeatExecutor to initialise with</p>
+<p> |<br>| </p>
+<p>eureka.client.initial-instance-info-replication-interval-seconds</p>
+<p> | </p>
+<p>40</p>
+<p> | </p>
+<p>Indicates how long initially (in seconds) to replicate instance info to the eureka server</p>
+<p> |<br>| </p>
+<p>eureka.client.instance-info-replication-interval-seconds</p>
+<p> | </p>
+<p>30</p>
+<p> | </p>
+<p>Indicates how often(in seconds) to replicate instance changes to be replicated to the eureka server.</p>
+<p> |<br>| </p>
+<p>eureka.client.log-delta-diff</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Indicates whether to log differences between the eureka server and the eureka client in terms of registry information.</p>
+<p>Eureka client tries to retrieve only delta changes from eureka server to minimize network traffic. After receiving the deltas, eureka client reconciles the information from the server to verify it has not missed out some information. Reconciliation failures could happen when the client has had network issues communicating to server.If the reconciliation fails, eureka client gets the full registry information.</p>
+<p>While getting the full registry information, the eureka client can log the differences between the client and the server and this setting controls that.</p>
+<p>The changes are effective at runtime at the next registry fetch cycle as specified by registryFetchIntervalSecondsr</p>
+<p> |<br>| </p>
+<p>eureka.client.on-demand-update-status-change</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>If set to true, local status updates via ApplicationInfoManager will trigger on-demand (but rate limited) register/updates to remote eureka servers</p>
+<p> |<br>| </p>
+<p>eureka.client.prefer-same-zone-eureka</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Indicates whether or not this instance should try to use the eureka server in the same zone for latency and/or other reason.</p>
+<p>Ideally eureka clients are configured to talk to servers in the same zone</p>
+<p>The changes are effective at runtime at the next registry fetch cycle as specified by registryFetchIntervalSeconds</p>
+<p> |<br>| </p>
+<p>eureka.client.property-resolver</p>
+<p> |  |  |<br>| </p>
+<p>eureka.client.proxy-host</p>
+<p> |  | </p>
+<p>Gets the proxy host to eureka server if any.</p>
+<p> |<br>| </p>
+<p>eureka.client.proxy-password</p>
+<p> |  | </p>
+<p>Gets the proxy password if any.</p>
+<p> |<br>| </p>
+<p>eureka.client.proxy-port</p>
+<p> |  | </p>
+<p>Gets the proxy port to eureka server if any.</p>
+<p> |<br>| </p>
+<p>eureka.client.proxy-user-name</p>
+<p> |  | </p>
+<p>Gets the proxy user name if any.</p>
+<p> |<br>| </p>
+<p>eureka.client.region</p>
+<p> | </p>
+<p>us-east-1</p>
+<p> | </p>
+<p>Gets the region (used in AWS datacenters) where this instance resides.</p>
+<p> |<br>| </p>
+<p>eureka.client.register-with-eureka</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Indicates whether or not this instance should register its information with eureka server for discovery by others.</p>
+<p>In some cases, you do not want your instances to be discovered whereas you just want do discover other instances.</p>
+<p> |<br>| </p>
+<p>eureka.client.registry-fetch-interval-seconds</p>
+<p> | </p>
+<p>30</p>
+<p> | </p>
+<p>Indicates how often(in seconds) to fetch the registry information from the eureka server.</p>
+<p> |<br>| </p>
+<p>eureka.client.registry-refresh-single-vip-address</p>
+<p> |  | </p>
+<p>Indicates whether the client is only interested in the registry information for a single VIP.</p>
+<p> |<br>| </p>
+<p>eureka.client.service-url</p>
+<p> |  | </p>
+<p>Map of availability zone to list of fully qualified URLs to communicate with eureka server. Each value can be a single URL or a comma separated list of alternative locations.</p>
+<p>Typically the eureka server URLs carry protocol,host,port,context and version information if any. Example: <a href="http://ec2-256-156-243-129.compute-1.amazonaws.com:7001/eureka/" target="_blank" rel="noopener">http://ec2-256-156-243-129.compute-1.amazonaws.com:7001/eureka/</a></p>
+<p>The changes are effective at runtime at the next service url refresh cycle as specified by eurekaServiceUrlPollIntervalSeconds.</p>
+<p> |<br>| </p>
+<p>eureka.client.transport</p>
+<p> |  |  |<br>| </p>
+<p>eureka.client.use-dns-for-fetching-service-urls</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Indicates whether the eureka client should use the DNS mechanism to fetch a list of eureka servers to talk to. When the DNS name is updated to have additional servers, that information is used immediately after the eureka client polls for that information as specified in eurekaServiceUrlPollIntervalSeconds.</p>
+<p>Alternatively, the service urls can be returned serviceUrls, but the users should implement their own mechanism to return the updated list in case of changes.</p>
+<p>The changes are effective at runtime.</p>
+<p> |<br>| </p>
+<p>eureka.dashboard.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Flag to enable the Eureka dashboard. Default true.</p>
+<p> |<br>| </p>
+<p>eureka.dashboard.path</p>
+<p> | </p>
+<p>/</p>
+<p> | </p>
+<p>The path to the Eureka dashboard (relative to the servlet path). Defaults to “/“.</p>
+<p> |<br>| </p>
+<p>eureka.instance.a-s-g-name</p>
+<p> |  | </p>
+<p>Gets the AWS autoscaling group name associated with this instance. This information is specifically used in an AWS environment to automatically put an instance out of service after the instance is launched and it has been disabled for traffic..</p>
+<p> |<br>| </p>
+<p>eureka.instance.app-group-name</p>
+<p> |  | </p>
+<p>Get the name of the application group to be registered with eureka.</p>
+<p> |<br>| </p>
+<p>eureka.instance.appname</p>
+<p> | </p>
+<p>unknown</p>
+<p> | </p>
+<p>Get the name of the application to be registered with eureka.</p>
+<p> |<br>| </p>
+<p>eureka.instance.data-center-info</p>
+<p> |  | </p>
+<p>Returns the data center this instance is deployed. This information is used to get some AWS specific instance information if the instance is deployed in AWS.</p>
+<p> |<br>| </p>
+<p>eureka.instance.default-address-resolution-order</p>
+<p> | </p>
+<p>[]</p>
+<p> |  |<br>| </p>
+<p>eureka.instance.environment</p>
+<p> |  |  |<br>| </p>
+<p>eureka.instance.health-check-url</p>
+<p> |  | </p>
+<p>Gets the absolute health check page URL for this instance. The users can provide the healthCheckUrlPath if the health check page resides in the same instance talking to eureka, else in the cases where the instance is a proxy for some other server, users can provide the full URL. If the full URL is provided it takes precedence.</p>
+<p></p><p> It is normally used for making educated decisions based on the health of the instance - for example, it can be used to determine whether to proceed deployments to an entire farm or stop the deployments without causing further damage. The full URL should follow the format <a href="http://${eureka.hostname}:7001/" target="_blank" rel="noopener">http://${eureka.hostname}:7001/</a> where the value ${eureka.hostname} is replaced at runtime.</p>
+<p> |<br>| </p>
+<p>eureka.instance.health-check-url-path</p>
+<p> | </p>
+<p>/health</p>
+<p> | </p>
+<p>Gets the relative health check URL path for this instance. The health check page URL is then constructed out of the hostname and the type of communication - secure or unsecure as specified in securePort and nonSecurePort.</p>
+<p>It is normally used for making educated decisions based on the health of the instance - for example, it can be used to determine whether to proceed deployments to an entire farm or stop the deployments without causing further damage.</p>
+<p> |<br>| </p>
+<p>eureka.instance.home-page-url</p>
+<p> |  | </p>
+<p>Gets the absolute home page URL for this instance. The users can provide the homePageUrlPath if the home page resides in the same instance talking to eureka, else in the cases where the instance is a proxy for some other server, users can provide the full URL. If the full URL is provided it takes precedence.</p>
+<p>It is normally used for informational purposes for other services to use it as a landing page. The full URL should follow the format <a href="http://${eureka.hostname}:7001/" target="_blank" rel="noopener">http://${eureka.hostname}:7001/</a> where the value ${eureka.hostname} is replaced at runtime.</p>
+<p> |<br>| </p>
+<p>eureka.instance.home-page-url-path</p>
+<p> | </p>
+<p>/</p>
+<p> | </p>
+<p>Gets the relative home page URL Path for this instance. The home page URL is then constructed out of the hostName and the type of communication - secure or unsecure.</p>
+<p>It is normally used for informational purposes for other services to use it as a landing page.</p>
+<p> |<br>| </p>
+<p>eureka.instance.host-info</p>
+<p> |  |  |<br>| </p>
+<p>eureka.instance.hostname</p>
+<p> |  | </p>
+<p>The hostname if it can be determined at configuration time (otherwise it will be guessed from OS primitives).</p>
+<p> |<br>| </p>
+<p>eureka.instance.inet-utils</p>
+<p> |  |  |<br>| </p>
+<p>eureka.instance.initial-status</p>
+<p> |  | </p>
+<p>Initial status to register with rmeote Eureka server.</p>
+<p> |<br>| </p>
+<p>eureka.instance.instance-enabled-onit</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Indicates whether the instance should be enabled for taking traffic as soon as it is registered with eureka. Sometimes the application might need to do some pre-processing before it is ready to take traffic.</p>
+<p> |<br>| </p>
+<p>eureka.instance.instance-id</p>
+<p> |  | </p>
+<p>Get the unique Id (within the scope of the appName) of this instance to be registered with eureka.</p>
+<p> |<br>| </p>
+<p>eureka.instance.ip-address</p>
+<p> |  | </p>
+<p>Get the IPAdress of the instance. This information is for academic purposes only as the communication from other instances primarily happen using the information supplied in {@link #getHostName(boolean)}.</p>
+<p> |<br>| </p>
+<p>eureka.instance.lease-expiration-duration-in-seconds</p>
+<p> | </p>
+<p>90</p>
+<p> | </p>
+<p>Indicates the time in seconds that the eureka server waits since it received the last heartbeat before it can remove this instance from its view and there by disallowing traffic to this instance.</p>
+<p>Setting this value too long could mean that the traffic could be routed to the instance even though the instance is not alive. Setting this value too small could mean, the instance may be taken out of traffic because of temporary network glitches.This value to be set to atleast higher than the value specified in leaseRenewalIntervalInSeconds.</p>
+<p> |<br>| </p>
+<p>eureka.instance.lease-renewal-interval-in-seconds</p>
+<p> | </p>
+<p>30</p>
+<p> | </p>
+<p>Indicates how often (in seconds) the eureka client needs to send heartbeats to eureka server to indicate that it is still alive. If the heartbeats are not received for the period specified in leaseExpirationDurationInSeconds, eureka server will remove the instance from its view, there by disallowing traffic to this instance.</p>
+<p>Note that the instance could still not take traffic if it implements HealthCheckCallback and then decides to make itself unavailable.</p>
+<p> |<br>| </p>
+<p>eureka.instance.metadata-map</p>
+<p> |  | </p>
+<p>Gets the metadata name/value pairs associated with this instance. This information is sent to eureka server and can be used by other instances.</p>
+<p> |<br>| </p>
+<p>eureka.instance.namespace</p>
+<p> | </p>
+<p>eureka</p>
+<p> | </p>
+<p>Get the namespace used to find properties. Ignored in Spring Cloud.</p>
+<p> |<br>| </p>
+<p>eureka.instance.non-secure-port</p>
+<p> | </p>
+<p>80</p>
+<p> | </p>
+<p>Get the non-secure port on which the instance should receive traffic.</p>
+<p> |<br>| </p>
+<p>eureka.instance.non-secure-port-enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Indicates whether the non-secure port should be enabled for traffic or not.</p>
+<p> |<br>| </p>
+<p>eureka.instance.prefer-ip-address</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Flag to say that, when guessing a hostname, the IP address of the server should be used in prference to the hostname reported by the OS.</p>
+<p> |<br>| </p>
+<p>eureka.instance.registry.default-open-for-traffic-count</p>
+<p> | </p>
+<p>1</p>
+<p> | </p>
+<p>Value used in determining when leases are cancelled, default to 1 for standalone. Should be set to 0 for peer replicated eurekas</p>
+<p> |<br>| </p>
+<p>eureka.instance.registry.expected-number-of-renews-per-min</p>
+<p> | </p>
+<p>1</p>
+<p> |  |<br>| </p>
+<p>eureka.instance.secure-health-check-url</p>
+<p> |  | </p>
+<p>Gets the absolute secure health check page URL for this instance. The users can provide the secureHealthCheckUrl if the health check page resides in the same instance talking to eureka, else in the cases where the instance is a proxy for some other server, users can provide the full URL. If the full URL is provided it takes precedence.</p>
+<p></p><p> It is normally used for making educated decisions based on the health of the instance - for example, it can be used to determine whether to proceed deployments to an entire farm or stop the deployments without causing further damage. The full URL should follow the format <a href="http://${eureka.hostname}:7001/" target="_blank" rel="noopener">http://${eureka.hostname}:7001/</a> where the value ${eureka.hostname} is replaced at runtime.</p>
+<p> |<br>| </p>
+<p>eureka.instance.secure-port</p>
+<p> | </p>
+<p>443</p>
+<p> | </p>
+<p>Get the Secure port on which the instance should receive traffic.</p>
+<p> |<br>| </p>
+<p>eureka.instance.secure-port-enabled</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Indicates whether the secure port should be enabled for traffic or not.</p>
+<p> |<br>| </p>
+<p>eureka.instance.secure-virtual-host-name</p>
+<p> | </p>
+<p>unknown</p>
+<p> | </p>
+<p>Gets the secure virtual host name defined for this instance.</p>
+<p>This is typically the way other instance would find this instance by using the secure virtual host name.Think of this as similar to the fully qualified domain name, that the users of your services will need to find this instance.</p>
+<p> |<br>| </p>
+<p>eureka.instance.status-page-url</p>
+<p> |  | </p>
+<p>Gets the absolute status page URL path for this instance. The users can provide the statusPageUrlPath if the status page resides in the same instance talking to eureka, else in the cases where the instance is a proxy for some other server, users can provide the full URL. If the full URL is provided it takes precedence.</p>
+<p>It is normally used for informational purposes for other services to find about the status of this instance. Users can provide a simple HTML indicating what is the current status of the instance.</p>
+<p> |<br>| </p>
+<p>eureka.instance.status-page-url-path</p>
+<p> | </p>
+<p>/info</p>
+<p> | </p>
+<p>Gets the relative status page URL path for this instance. The status page URL is then constructed out of the hostName and the type of communication - secure or unsecure as specified in securePort and nonSecurePort.</p>
+<p>It is normally used for informational purposes for other services to find about the status of this instance. Users can provide a simple HTML indicating what is the current status of the instance.</p>
+<p> |<br>| </p>
+<p>eureka.instance.virtual-host-name</p>
+<p> | </p>
+<p>unknown</p>
+<p> | </p>
+<p>Gets the virtual host name defined for this instance.</p>
+<p>This is typically the way other instance would find this instance by using the virtual host name.Think of this as similar to the fully qualified domain name, that the users of your services will need to find this instance.</p>
+<p> |<br>| </p>
+<p>eureka.server.a-s-g-cache-expiry-timeout-ms</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>eureka.server.a-s-g-query-timeout-ms</p>
+<p> | </p>
+<p>300</p>
+<p> |  |<br>| </p>
+<p>eureka.server.a-s-g-update-interval-ms</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>eureka.server.a-w-s-access-id</p>
+<p> |  |  |<br>| </p>
+<p>eureka.server.a-w-s-secret-key</p>
+<p> |  |  |<br>| </p>
+<p>eureka.server.batch-replication</p>
+<p> | </p>
+<p>false</p>
+<p> |  |<br>| </p>
+<p>eureka.server.binding-strategy</p>
+<p> |  |  |<br>| </p>
+<p>eureka.server.delta-retention-timer-interval-in-ms</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>eureka.server.disable-delta</p>
+<p> | </p>
+<p>false</p>
+<p> |  |<br>| </p>
+<p>eureka.server.disable-delta-for-remote-regions</p>
+<p> | </p>
+<p>false</p>
+<p> |  |<br>| </p>
+<p>eureka.server.disable-transparent-fallback-to-other-region</p>
+<p> | </p>
+<p>false</p>
+<p> |  |<br>| </p>
+<p>eureka.server.e-i-p-bind-rebind-retries</p>
+<p> | </p>
+<p>3</p>
+<p> |  |<br>| </p>
+<p>eureka.server.e-i-p-binding-retry-interval-ms</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>eureka.server.e-i-p-binding-retry-interval-ms-when-unbound</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>eureka.server.enable-replicated-request-compression</p>
+<p> | </p>
+<p>false</p>
+<p> |  |<br>| </p>
+<p>eureka.server.enable-self-preservation</p>
+<p> | </p>
+<p>true</p>
+<p> |  |<br>| </p>
+<p>eureka.server.eviction-interval-timer-in-ms</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>eureka.server.g-zip-content-from-remote-region</p>
+<p> | </p>
+<p>true</p>
+<p> |  |<br>| </p>
+<p>eureka.server.json-codec-name</p>
+<p> |  |  |<br>| </p>
+<p>eureka.server.list-auto-scaling-groups-role-name</p>
+<p> | </p>
+<p>ListAutoScalingGroups</p>
+<p> |  |<br>| </p>
+<p>eureka.server.log-identity-headers</p>
+<p> | </p>
+<p>true</p>
+<p> |  |<br>| </p>
+<p>eureka.server.max-elements-in-peer-replication-pool</p>
+<p> | </p>
+<p>10000</p>
+<p> |  |<br>| </p>
+<p>eureka.server.max-elements-in-status-replication-pool</p>
+<p> | </p>
+<p>10000</p>
+<p> |  |<br>| </p>
+<p>eureka.server.max-idle-thread-age-in-minutes-for-peer-replication</p>
+<p> | </p>
+<p>15</p>
+<p> |  |<br>| </p>
+<p>eureka.server.max-idle-thread-in-minutes-age-for-status-replication</p>
+<p> | </p>
+<p>10</p>
+<p> |  |<br>| </p>
+<p>eureka.server.max-threads-for-peer-replication</p>
+<p> | </p>
+<p>20</p>
+<p> |  |<br>| </p>
+<p>eureka.server.max-threads-for-status-replication</p>
+<p> | </p>
+<p>1</p>
+<p> |  |<br>| </p>
+<p>eureka.server.max-time-for-replication</p>
+<p> | </p>
+<p>30000</p>
+<p> |  |<br>| </p>
+<p>eureka.server.min-threads-for-peer-replication</p>
+<p> | </p>
+<p>5</p>
+<p> |  |<br>| </p>
+<p>eureka.server.min-threads-for-status-replication</p>
+<p> | </p>
+<p>1</p>
+<p> |  |<br>| </p>
+<p>eureka.server.number-of-replication-retries</p>
+<p> | </p>
+<p>5</p>
+<p> |  |<br>| </p>
+<p>eureka.server.peer-eureka-nodes-update-interval-ms</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>eureka.server.peer-eureka-status-refresh-time-interval-ms</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>eureka.server.peer-node-connect-timeout-ms</p>
+<p> | </p>
+<p>200</p>
+<p> |  |<br>| </p>
+<p>eureka.server.peer-node-connection-idle-timeout-seconds</p>
+<p> | </p>
+<p>30</p>
+<p> |  |<br>| </p>
+<p>eureka.server.peer-node-read-timeout-ms</p>
+<p> | </p>
+<p>200</p>
+<p> |  |<br>| </p>
+<p>eureka.server.peer-node-total-connections</p>
+<p> | </p>
+<p>1000</p>
+<p> |  |<br>| </p>
+<p>eureka.server.peer-node-total-connections-per-host</p>
+<p> | </p>
+<p>500</p>
+<p> |  |<br>| </p>
+<p>eureka.server.prime-aws-replica-connections</p>
+<p> | </p>
+<p>true</p>
+<p> |  |<br>| </p>
+<p>eureka.server.property-resolver</p>
+<p> |  |  |<br>| </p>
+<p>eureka.server.rate-limiter-burst-size</p>
+<p> | </p>
+<p>10</p>
+<p> |  |<br>| </p>
+<p>eureka.server.rate-limiter-enabled</p>
+<p> | </p>
+<p>false</p>
+<p> |  |<br>| </p>
+<p>eureka.server.rate-limiter-full-fetch-average-rate</p>
+<p> | </p>
+<p>100</p>
+<p> |  |<br>| </p>
+<p>eureka.server.rate-limiter-privileged-clients</p>
+<p> |  |  |<br>| </p>
+<p>eureka.server.rate-limiter-registry-fetch-average-rate</p>
+<p> | </p>
+<p>500</p>
+<p> |  |<br>| </p>
+<p>eureka.server.rate-limiter-throttle-standard-clients</p>
+<p> | </p>
+<p>false</p>
+<p> |  |<br>| </p>
+<p>eureka.server.registry-sync-retries</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>eureka.server.registry-sync-retry-wait-ms</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>eureka.server.remote-region-app-whitelist</p>
+<p> |  |  |<br>| </p>
+<p>eureka.server.remote-region-connect-timeout-ms</p>
+<p> | </p>
+<p>1000</p>
+<p> |  |<br>| </p>
+<p>eureka.server.remote-region-connection-idle-timeout-seconds</p>
+<p> | </p>
+<p>30</p>
+<p> |  |<br>| </p>
+<p>eureka.server.remote-region-fetch-thread-pool-size</p>
+<p> | </p>
+<p>20</p>
+<p> |  |<br>| </p>
+<p>eureka.server.remote-region-read-timeout-ms</p>
+<p> | </p>
+<p>1000</p>
+<p> |  |<br>| </p>
+<p>eureka.server.remote-region-registry-fetch-interval</p>
+<p> | </p>
+<p>30</p>
+<p> |  |<br>| </p>
+<p>eureka.server.remote-region-total-connections</p>
+<p> | </p>
+<p>1000</p>
+<p> |  |<br>| </p>
+<p>eureka.server.remote-region-total-connections-per-host</p>
+<p> | </p>
+<p>500</p>
+<p> |  |<br>| </p>
+<p>eureka.server.remote-region-trust-store</p>
+<p> |  |  |<br>| </p>
+<p>eureka.server.remote-region-trust-store-password</p>
+<p> | </p>
+<p>changeit</p>
+<p> |  |<br>| </p>
+<p>eureka.server.remote-region-urls</p>
+<p> |  |  |<br>| </p>
+<p>eureka.server.remote-region-urls-with-name</p>
+<p> |  |  |<br>| </p>
+<p>eureka.server.renewal-percent-threshold</p>
+<p> | </p>
+<p>0.85</p>
+<p> |  |<br>| </p>
+<p>eureka.server.renewal-threshold-update-interval-ms</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>eureka.server.response-cache-auto-expiration-in-seconds</p>
+<p> | </p>
+<p>180</p>
+<p> |  |<br>| </p>
+<p>eureka.server.response-cache-update-interval-ms</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>eureka.server.retention-time-in-m-s-in-delta-queue</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>eureka.server.route53-bind-rebind-retries</p>
+<p> | </p>
+<p>3</p>
+<p> |  |<br>| </p>
+<p>eureka.server.route53-binding-retry-interval-ms</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>eureka.server.route53-domain-t-t-l</p>
+<p> | </p>
+<p>30</p>
+<p> |  |<br>| </p>
+<p>eureka.server.sync-when-timestamp-differs</p>
+<p> | </p>
+<p>true</p>
+<p> |  |<br>| </p>
+<p>eureka.server.use-read-only-response-cache</p>
+<p> | </p>
+<p>true</p>
+<p> |  |<br>| </p>
+<p>eureka.server.wait-time-in-ms-when-sync-empty</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>eureka.server.xml-codec-name</p>
+<p> |  |  |<br>| </p>
+<p>feign.compression.request.mime-types</p>
+<p> | </p>
+<p>[text/xml, application/xml, application/json]</p>
+<p> | </p>
+<p>The list of supported mime types.</p>
+<p> |<br>| </p>
+<p>feign.compression.request.min-request-size</p>
+<p> | </p>
+<p>2048</p>
+<p> | </p>
+<p>The minimum threshold content size.</p>
+<p> |<br>| </p>
+<p>health.config.enabled</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Flag to indicate that the config server health indicator should be installed.</p>
+<p> |<br>| </p>
+<p>health.config.time-to-live</p>
+<p> | </p>
+<p>0</p>
+<p> | </p>
+<p>Time to live for cached result, in milliseconds. Default 300000 (5 min).</p>
+<p> |<br>| </p>
+<p>hystrix.metrics.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Enable Hystrix metrics polling. Defaults to true.</p>
+<p> |<br>| </p>
+<p>hystrix.metrics.polling-interval-ms</p>
+<p> | </p>
+<p>2000</p>
+<p> | </p>
+<p>Interval between subsequent polling of metrics. Defaults to 2000 ms.</p>
+<p> |<br>| </p>
+<p>management.health.refresh.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Enable the health endpoint for the refresh scope.</p>
+<p> |<br>| </p>
+<p>management.health.zookeeper.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Enable the health endpoint for zookeeper.</p>
+<p> |<br>| </p>
+<p>netflix.atlas.batch-size</p>
+<p> | </p>
+<p>10000</p>
+<p> |  |<br>| </p>
+<p>netflix.atlas.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> |  |<br>| </p>
+<p>netflix.atlas.uri</p>
+<p> |  |  |<br>| </p>
+<p>netflix.metrics.servo.cache-warning-threshold</p>
+<p> | </p>
+<p>1000</p>
+<p> | </p>
+<p>When the <code>ServoMonitorCache</code> reaches this size, a warning is logged. This will be useful if you are using string concatenation in RestTemplate urls.</p>
+<p> |<br>| </p>
+<p>netflix.metrics.servo.registry-class</p>
+<p> | </p>
+<p>com.netflix.servo.BasicMonitorRegistry</p>
+<p> | </p>
+<p>Fully qualified class name for monitor registry used by Servo.</p>
+<p> |<br>| </p>
+<p>proxy.auth.load-balanced</p>
+<p> |  |  |<br>| </p>
+<p>proxy.auth.routes</p>
+<p> |  | </p>
+<p>Authentication strategy per route.</p>
+<p> |<br>| </p>
+<p>spring.cloud.bus.ack.destination-service</p>
+<p> |  | </p>
+<p>Service that wants to listen to acks. By default null (meaning all services).</p>
+<p> |<br>| </p>
+<p>spring.cloud.bus.ack.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Flag to switch off acks (default on).</p>
+<p> |<br>| </p>
+<p>spring.cloud.bus.destination</p>
+<p> | </p>
+<p>springCloudBus</p>
+<p> | </p>
+<p>Name of Spring Cloud Stream destination for messages.</p>
+<p> |<br>| </p>
+<p>spring.cloud.bus.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Flag to indicate that the bus is enabled.</p>
+<p> |<br>| </p>
+<p>spring.cloud.bus.env.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Flag to switch off environment change events (default on).</p>
+<p> |<br>| </p>
+<p>spring.cloud.bus.refresh.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Flag to switch off refresh events (default on).</p>
+<p> |<br>| </p>
+<p>spring.cloud.bus.trace.enabled</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Flag to switch on tracing of acks (default off).</p>
+<p> |<br>| </p>
+<p>spring.cloud.cloudfoundry.discovery.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Flag to indicate that discovery is enabled.</p>
+<p> |<br>| </p>
+<p>spring.cloud.cloudfoundry.discovery.heartbeat-frequency</p>
+<p> | </p>
+<p>5000</p>
+<p> | </p>
+<p>Frequency in milliseconds of poll for heart beat. The client will poll on this frequency and broadcast a list of service ids.</p>
+<p> |<br>| </p>
+<p>spring.cloud.cloudfoundry.discovery.org</p>
+<p> |  | </p>
+<p>Organization name to authenticate with (default to user’s default).</p>
+<p> |<br>| </p>
+<p>spring.cloud.cloudfoundry.discovery.password</p>
+<p> |  | </p>
+<p>Password for user to authenticate and obtain token.</p>
+<p> |<br>| </p>
+<p>spring.cloud.cloudfoundry.discovery.space</p>
+<p> |  | </p>
+<p>Space name to authenticate with (default to user’s default).</p>
+<p> |<br>| </p>
+<p>spring.cloud.cloudfoundry.discovery.url</p>
+<p> | </p>
+<p><a href="https://api.run.pivotal.io" target="_blank" rel="noopener">https://api.run.pivotal.io</a></p>
+<p> | </p>
+<p>URL of Cloud Foundry API (Cloud Controller).</p>
+<p> |<br>| </p>
+<p>spring.cloud.cloudfoundry.discovery.username</p>
+<p> |  | </p>
+<p>Username to authenticate (usually an email address).</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.allow-override</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Flag to indicate that {@link #isSystemPropertiesOverride() systemPropertiesOverride} can be used. Set to false to prevent users from changing the default accidentally. Default true.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.authorization</p>
+<p> |  | </p>
+<p>Authorization token used by the client to connect to the server.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.discovery.enabled</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Flag to indicate that config server discovery is enabled (config server URL will be looked up via discovery).</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.discovery.service-id</p>
+<p> | </p>
+<p>configserver</p>
+<p> | </p>
+<p>Service id to locate config server.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Flag to say that remote configuration is enabled. Default true;</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.fail-fast</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Flag to indicate that failure to connect to the server is fatal (default false).</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.label</p>
+<p> |  | </p>
+<p>The label name to use to pull remote configuration properties. The default is set on the server (generally “master” for a git based server).</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.name</p>
+<p> |  | </p>
+<p>Name of application used to fetch remote properties.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.override-none</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Flag to indicate that when {@link #setAllowOverride(boolean) allowOverride} is true, external properties should take lowest priority, and not override any existing property sources (including local config files). Default false.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.override-system-properties</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Flag to indicate that the external properties should override system properties. Default true.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.password</p>
+<p> |  | </p>
+<p>The password to use (HTTP Basic) when contacting the remote server.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.profile</p>
+<p> | </p>
+<p>default</p>
+<p> | </p>
+<p>The default profile to use when fetching remote configuration (comma-separated). Default is “default”.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.retry.initial-interval</p>
+<p> | </p>
+<p>1000</p>
+<p> | </p>
+<p>Initial retry interval in milliseconds.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.retry.max-attempts</p>
+<p> | </p>
+<p>6</p>
+<p> | </p>
+<p>Maximum number of attempts.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.retry.max-interval</p>
+<p> | </p>
+<p>2000</p>
+<p> | </p>
+<p>Maximum interval for backoff.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.retry.multiplier</p>
+<p> | </p>
+<p>1.1</p>
+<p> | </p>
+<p>Multiplier for next interval.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.bootstrap</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Flag indicating that the config server should initialize its own Environment with properties from the remote repository. Off by default because it delays startup but can be useful when embedding the server in another application.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.default-application-name</p>
+<p> | </p>
+<p>application</p>
+<p> | </p>
+<p>Default application name when incoming requests do not have a specific one.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.default-label</p>
+<p> |  | </p>
+<p>Default repository label when incoming requests do not have a specific label.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.default-profile</p>
+<p> | </p>
+<p>default</p>
+<p> | </p>
+<p>Default application profile when incoming requests do not have a specific one.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.encrypt.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Enable decryption of environment properties before sending to client.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.git.basedir</p>
+<p> |  | </p>
+<p>Base directory for local working copy of repository.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.git.clone-on-start</p>
+<p> |  | </p>
+<p>Flag to indicate that the repository should be cloned on startup (not on demand). Generally leads to slower startup but faster first query.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.git.default-label</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.config.server.git.environment</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.config.server.git.force-pull</p>
+<p> |  | </p>
+<p>Flag to indicate that the repository should force pull. If true discard any local changes and take from remote repository.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.git.git-factory</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.config.server.git.password</p>
+<p> |  | </p>
+<p>Password for authentication with remote repository.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.git.repos</p>
+<p> |  | </p>
+<p>Map of repository identifier to location and other properties.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.git.search-paths</p>
+<p> |  | </p>
+<p>Search paths to use within local working copy. By default searches only the root.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.git.timeout</p>
+<p> |  | </p>
+<p>Timeout (in seconds) for obtaining HTTP or SSH connection (if applicable). Default 5 seconds.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.git.uri</p>
+<p> |  | </p>
+<p>URI of remote repository.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.git.username</p>
+<p> |  | </p>
+<p>Username for authentication with remote repository.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.health.repositories</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.config.server.native.fail-on-error</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Flag to determine how to handle exceptions during decryption (default false).</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.native.search-locations</p>
+<p> | </p>
+<p>[]</p>
+<p> | </p>
+<p>Locations to search for configuration files. Defaults to the same as a Spring Boot app so [classpath:/,classpath:/config/,file:./,file:./config/].</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.native.version</p>
+<p> |  | </p>
+<p>Version string to be reported for native repository</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.overrides</p>
+<p> |  | </p>
+<p>Extra map for a property source to be sent to all clients unconditionally.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.prefix</p>
+<p> |  | </p>
+<p>Prefix for configuration resource paths (default is empty). Useful when embedding in another application when you don’t want to change the context path or servlet path.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.strip-document-from-yaml</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Flag to indicate that YAML documents that are text or collections (not a map) should be returned in “native” form.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.svn.basedir</p>
+<p> |  | </p>
+<p>Base directory for local working copy of repository.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.svn.default-label</p>
+<p> | </p>
+<p>trunk</p>
+<p> | </p>
+<p>The default label for environment properties requests.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.svn.environment</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.config.server.svn.password</p>
+<p> |  | </p>
+<p>Password for authentication with remote repository.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.svn.search-paths</p>
+<p> |  | </p>
+<p>Search paths to use within local working copy. By default searches only the root.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.svn.uri</p>
+<p> |  | </p>
+<p>URI of remote repository.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.server.svn.username</p>
+<p> |  | </p>
+<p>Username for authentication with remote repository.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.token</p>
+<p> |  | </p>
+<p>Security Token passed thru to underlying environment repository.</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.uri</p>
+<p> | </p>
+<p><a href="http://localhost:8888" target="_blank" rel="noopener">http://localhost:8888</a></p>
+<p> | </p>
+<p>The URI of the remote server (default <a href="http://localhost:8888" target="_blank" rel="noopener">http://localhost:8888</a>).</p>
+<p> |<br>| </p>
+<p>spring.cloud.config.username</p>
+<p> |  | </p>
+<p>The username to use (HTTP Basic) when contacting the remote server.</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.config.acl-token</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.consul.config.data-key</p>
+<p> | </p>
+<p>data</p>
+<p> | </p>
+<p>If format is Format.PROPERTIES or Format.YAML then the following field is used as key to look up consul for configuration.</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.config.default-context</p>
+<p> | </p>
+<p>application</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.consul.config.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.consul.config.fail-fast</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Throw exceptions during config lookup if true, otherwise, log warnings.</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.config.format</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.consul.config.prefix</p>
+<p> | </p>
+<p>config</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.consul.config.profile-separator</p>
+<p> | </p>
+<p>,</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.consul.config.watch.delay</p>
+<p> | </p>
+<p>1000</p>
+<p> | </p>
+<p>The value of the fixed delay for the watch in millis. Defaults to 1000.</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.config.watch.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>If the watch is enabled. Defaults to true.</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.config.watch.wait-time</p>
+<p> | </p>
+<p>55</p>
+<p> | </p>
+<p>The number of seconds to wait (or block) for watch query, defaults to 55. Needs to be less than default ConsulClient (defaults to 60). To increase ConsulClient timeout create a ConsulClient bean with a custom ConsulRawClient with a custom HttpClient.</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.acl-token</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.consul.discovery.catalog-services-watch-delay</p>
+<p> | </p>
+<p>10</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.consul.discovery.catalog-services-watch-timeout</p>
+<p> | </p>
+<p>2</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.consul.discovery.default-query-tag</p>
+<p> |  | </p>
+<p>Tag to query for in service list if one is not listed in serverListQueryTags.</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.default-zone-metadata-name</p>
+<p> | </p>
+<p>zone</p>
+<p> | </p>
+<p>Service instance zone comes from metadata. This allows changing the metadata tag name.</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Is service discovery enabled?</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.fail-fast</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Throw exceptions during service registration if true, otherwise, log warnings (defaults to true).</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.health-check-interval</p>
+<p> | </p>
+<p>10s</p>
+<p> | </p>
+<p>How often to perform the health check (e.g. 10s)</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.health-check-path</p>
+<p> | </p>
+<p>/health</p>
+<p> | </p>
+<p>Alternate server path to invoke for health checking</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.health-check-timeout</p>
+<p> |  | </p>
+<p>Timeout for health check (e.g. 10s)</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.health-check-url</p>
+<p> |  | </p>
+<p>Custom health check url to override default</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.heartbeat.enabled</p>
+<p> | </p>
+<p>false</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.consul.discovery.heartbeat.heartbeat-interval</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.consul.discovery.heartbeat.interval-ratio</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.consul.discovery.heartbeat.ttl-unit</p>
+<p> | </p>
+<p>s</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.consul.discovery.heartbeat.ttl-value</p>
+<p> | </p>
+<p>30</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.consul.discovery.host-info</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.consul.discovery.hostname</p>
+<p> |  | </p>
+<p>Hostname to use when accessing server</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.instance-id</p>
+<p> |  | </p>
+<p>Unique service instance id</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.instance-zone</p>
+<p> |  | </p>
+<p>Service instance zone</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.ip-address</p>
+<p> |  | </p>
+<p>IP address to use when accessing service (must also set preferIpAddress to use)</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.lifecycle.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.consul.discovery.management-port</p>
+<p> |  | </p>
+<p>Port to register the management service under (defaults to management port)</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.management-suffix</p>
+<p> | </p>
+<p>management</p>
+<p> | </p>
+<p>Suffix to use when registering management service</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.management-tags</p>
+<p> |  | </p>
+<p>Tags to use when registering management service</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.port</p>
+<p> |  | </p>
+<p>Port to register the service under (defaults to listening port)</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.prefer-agent-address</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Source of how we will determine the address to use</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.prefer-ip-address</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Use ip address rather than hostname during registration</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.query-passing</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Add the ‘passing` parameter to /v1/health/service/serviceName. This pushes health check passing to the server.</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.register</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Register as a service in consul.</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.register-health-check</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Register health check in consul. Useful during development of a service.</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.scheme</p>
+<p> | </p>
+<p>http</p>
+<p> | </p>
+<p>Whether to register an http or https service</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.server-list-query-tags</p>
+<p> |  | </p>
+<p>Map of serviceId’s → tag to query for in server list. This allows filtering services by a single tag.</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.service-name</p>
+<p> |  | </p>
+<p>Service name</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.discovery.tags</p>
+<p> |  | </p>
+<p>Tags to use when registering service</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Is spring cloud consul enabled</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.host</p>
+<p> | </p>
+<p>localhost</p>
+<p> | </p>
+<p>Consul agent hostname. Defaults to ‘localhost’.</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.port</p>
+<p> | </p>
+<p>8500</p>
+<p> | </p>
+<p>Consul agent port. Defaults to ‘8500’.</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.retry.initial-interval</p>
+<p> | </p>
+<p>1000</p>
+<p> | </p>
+<p>Initial retry interval in milliseconds.</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.retry.max-attempts</p>
+<p> | </p>
+<p>6</p>
+<p> | </p>
+<p>Maximum number of attempts.</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.retry.max-interval</p>
+<p> | </p>
+<p>2000</p>
+<p> | </p>
+<p>Maximum interval for backoff.</p>
+<p> |<br>| </p>
+<p>spring.cloud.consul.retry.multiplier</p>
+<p> | </p>
+<p>1.1</p>
+<p> | </p>
+<p>Multiplier for next interval.</p>
+<p> |<br>| </p>
+<p>spring.cloud.hypermedia.refresh.fixed-delay</p>
+<p> | </p>
+<p>5000</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.hypermedia.refresh.initial-delay</p>
+<p> | </p>
+<p>10000</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.inetutils.default-hostname</p>
+<p> | </p>
+<p>localhost</p>
+<p> | </p>
+<p>The default hostname. Used in case of errors.</p>
+<p> |<br>| </p>
+<p>spring.cloud.inetutils.default-ip-address</p>
+<p> | </p>
+<p>127.0.0.1</p>
+<p> | </p>
+<p>The default ipaddress. Used in case of errors.</p>
+<p> |<br>| </p>
+<p>spring.cloud.inetutils.ignored-interfaces</p>
+<p> |  | </p>
+<p>List of Java regex expressions for network interfaces that will be ignored.</p>
+<p> |<br>| </p>
+<p>spring.cloud.inetutils.preferred-networks</p>
+<p> |  | </p>
+<p>List of Java regex expressions for network addresses that will be ignored.</p>
+<p> |<br>| </p>
+<p>spring.cloud.inetutils.timeout-seconds</p>
+<p> | </p>
+<p>1</p>
+<p> | </p>
+<p>Timeout in seconds for calculating hostname.</p>
+<p> |<br>| </p>
+<p>spring.cloud.inetutils.use-only-site-local-interfaces</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Use only interfaces with site local addresses. See {@link InetAddress#isSiteLocalAddress()} for more details.</p>
+<p> |<br>| </p>
+<p>spring.cloud.loadbalancer.retry.enabled</p>
+<p> | </p>
+<p>false</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.stream.binders</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.stream.bindings</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.stream.consul.binder.event-timeout</p>
+<p> | </p>
+<p>5</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.stream.consumer-defaults</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.stream.default-binder</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.stream.dynamic-destinations</p>
+<p> | </p>
+<p>[]</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.stream.ignore-unknown-properties</p>
+<p> | </p>
+<p>true</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.stream.instance-count</p>
+<p> | </p>
+<p>1</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.stream.instance-index</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.stream.producer-defaults</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.stream.rabbit.binder.admin-adresses</p>
+<p> | </p>
+<p>[]</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.stream.rabbit.binder.compression-level</p>
+<p> | </p>
+<p>0</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.stream.rabbit.binder.nodes</p>
+<p> | </p>
+<p>[]</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.stream.rabbit.bindings</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.zookeeper.base-sleep-time-ms</p>
+<p> | </p>
+<p>50</p>
+<p> | </p>
+<p>Initial amount of time to wait between retries</p>
+<p> |<br>| </p>
+<p>spring.cloud.zookeeper.block-until-connected-unit</p>
+<p> |  | </p>
+<p>The unit of time related to blocking on connection to Zookeeper</p>
+<p> |<br>| </p>
+<p>spring.cloud.zookeeper.block-until-connected-wait</p>
+<p> | </p>
+<p>10</p>
+<p> | </p>
+<p>Wait time to block on connection to Zookeeper</p>
+<p> |<br>| </p>
+<p>spring.cloud.zookeeper.connect-string</p>
+<p> | </p>
+<p>localhost:2181</p>
+<p> | </p>
+<p>Connection string to the Zookeeper cluster</p>
+<p> |<br>| </p>
+<p>spring.cloud.zookeeper.default-health-endpoint</p>
+<p> |  | </p>
+<p>Default health endpoint that will be checked to verify that a dependency is alive</p>
+<p> |<br>| </p>
+<p>spring.cloud.zookeeper.dependencies</p>
+<p> |  | </p>
+<p>Mapping of alias to ZookeeperDependency. From Ribbon perspective the alias is actually serviceID since Ribbon can’t accept nested structures in serviceID</p>
+<p> |<br>| </p>
+<p>spring.cloud.zookeeper.dependency-configurations</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.zookeeper.dependency-names</p>
+<p> |  |  |<br>| </p>
+<p>spring.cloud.zookeeper.discovery.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> |  |<br>| </p>
+<p>spring.cloud.zookeeper.discovery.instance-host</p>
+<p> |  | </p>
+<p>Predefined host with which a service can register itself in Zookeeper. Corresponds to the {code address} from the URI spec.</p>
+<p> |<br>| </p>
+<p>spring.cloud.zookeeper.discovery.instance-port</p>
+<p> |  | </p>
+<p>Port to register the service under (defaults to listening port)</p>
+<p> |<br>| </p>
+<p>spring.cloud.zookeeper.discovery.metadata</p>
+<p> |  | </p>
+<p>Gets the metadata name/value pairs associated with this instance. This information is sent to zookeeper and can be used by other instances.</p>
+<p> |<br>| </p>
+<p>spring.cloud.zookeeper.discovery.register</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Register as a service in zookeeper.</p>
+<p> |<br>| </p>
+<p>spring.cloud.zookeeper.discovery.root</p>
+<p> | </p>
+<p>/services</p>
+<p> | </p>
+<p>Root Zookeeper folder in which all instances are registered</p>
+<p> |<br>| </p>
+<p>spring.cloud.zookeeper.discovery.uri-spec</p>
+<p> | </p>
+<p>{scheme}://{address}:{port}</p>
+<p> | </p>
+<p>The URI specification to resolve during service registration in Zookeeper</p>
+<p> |<br>| </p>
+<p>spring.cloud.zookeeper.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Is Zookeeper enabled</p>
+<p> |<br>| </p>
+<p>spring.cloud.zookeeper.max-retries</p>
+<p> | </p>
+<p>10</p>
+<p> | </p>
+<p>Max number of times to retry</p>
+<p> |<br>| </p>
+<p>spring.cloud.zookeeper.max-sleep-ms</p>
+<p> | </p>
+<p>500</p>
+<p> | </p>
+<p>Max time in ms to sleep on each retry</p>
+<p> |<br>| </p>
+<p>spring.cloud.zookeeper.prefix</p>
+<p> |  | </p>
+<p>Common prefix that will be applied to all Zookeeper dependencies’ paths</p>
+<p> |<br>| </p>
+<p>spring.integration.poller.fixed-delay</p>
+<p> | </p>
+<p>1000</p>
+<p> | </p>
+<p>Fixed delay for default poller.</p>
+<p> |<br>| </p>
+<p>spring.integration.poller.max-messages-per-poll</p>
+<p> | </p>
+<p>1</p>
+<p> | </p>
+<p>Maximum messages per poll for the default poller.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.integration.enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Enable Spring Integration sleuth instrumentation.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.integration.patterns</p>
+<p> | </p>
+<p>*</p>
+<p> | </p>
+<p>An array of simple patterns against which channel names will be matched. Default is * (all channels). See org.springframework.util.PatternMatchUtils.simpleMatch(String, String).</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.async.class-name-key</p>
+<p> | </p>
+<p>class</p>
+<p> | </p>
+<p>Simple name of the class with a method annotated with {@code @Async} from which the asynchronous process started</p>
+<p>@see org.springframework.scheduling.annotation.Async</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.async.method-name-key</p>
+<p> | </p>
+<p>method</p>
+<p> | </p>
+<p>Name of the method annotated with {@code @Async}</p>
+<p>@see org.springframework.scheduling.annotation.Async</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.async.prefix</p>
+<p> |  | </p>
+<p>Prefix for header names if they are added as tags.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.async.thread-name-key</p>
+<p> | </p>
+<p>thread</p>
+<p> | </p>
+<p>Name of the thread that executed the async method</p>
+<p>@see org.springframework.scheduling.annotation.Async</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.http.headers</p>
+<p> |  | </p>
+<p>Additional headers that should be added as tags if they exist. If the header value is multi-valued, the tag value will be a comma-separated, single-quoted list.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.http.host</p>
+<p> | </p>
+<p>http.host</p>
+<p> | </p>
+<p>The domain portion of the URL or host header. Example: “mybucket.s3.amazonaws.com”. Used to filter by host as opposed to ip address.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.http.method</p>
+<p> | </p>
+<p>http.method</p>
+<p> | </p>
+<p>The HTTP method, or verb, such as “GET” or “POST”. Used to filter against an http route.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.http.path</p>
+<p> | </p>
+<p>http.path</p>
+<p> | </p>
+<p>The absolute http path, without any query parameters. Example: “/objects/abcd-ff”. Used to filter against an http route, portably with zipkin v1. In zipkin v1, only equals filters are supported. Dropping query parameters makes the number of distinct URIs less. For example, one can query for the same resource, regardless of signing parameters encoded in the query line. This does not reduce cardinality to a HTTP single route. For example, it is common to express a route as an http URI template like “/resource/{resource_id}”. In systems where only equals queries are available, searching for {@code http.uri=/resource} won’t match if the actual request was “/resource/abcd-ff”. Historical note: This was commonly expressed as “http.uri” in zipkin, eventhough it was most often just a path.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.http.prefix</p>
+<p> | </p>
+<p>http.</p>
+<p> | </p>
+<p>Prefix for header names if they are added as tags.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.http.request-size</p>
+<p> | </p>
+<p>http.request.size</p>
+<p> | </p>
+<p>The size of the non-empty HTTP request body, in bytes. Ex. “16384”</p>
+<p></p><p>Large uploads can exceed limits or contribute directly to latency.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.http.response-size</p>
+<p> | </p>
+<p>http.response.size</p>
+<p> | </p>
+<p>The size of the non-empty HTTP response body, in bytes. Ex. “16384”</p>
+<p></p><p>Large downloads can exceed limits or contribute directly to latency.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.http.status-code</p>
+<p> | </p>
+<p>http.status_code</p>
+<p> | </p>
+<p>The HTTP response code, when not in 2xx range. Ex. “503” Used to filter for error status. 2xx range are not logged as success codes are less interesting for latency troubleshooting. Omitting saves at least 20 bytes per span.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.http.url</p>
+<p> | </p>
+<p>http.url</p>
+<p> | </p>
+<p>The entire URL, including the scheme, host and query parameters if available. Ex. “<a href="https://mybucket.s3.amazonaws.com/objects/abcd-ff?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256…​" target="_blank" rel="noopener">https://mybucket.s3.amazonaws.com/objects/abcd-ff?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256…​</a>“ Combined with {@link #method}, you can understand the fully-qualified request line. This is optional as it may include private data or be of considerable length.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.hystrix.command-group</p>
+<p> | </p>
+<p>commandGroup</p>
+<p> | </p>
+<p>Name of the command group. Hystrix uses the command group key to group together commands such as for reporting, alerting, dashboards, or team/library ownership.</p>
+<p>@see com.netflix.hystrix.HystrixCommandGroupKey</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.hystrix.command-key</p>
+<p> | </p>
+<p>commandKey</p>
+<p> | </p>
+<p>Name of the command key. Describes the name for the given command. A key to represent a {@link com.netflix.hystrix.HystrixCommand} for monitoring, circuit-breakers, metrics publishing, caching and other such uses.</p>
+<p>@see com.netflix.hystrix.HystrixCommandKey</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.hystrix.prefix</p>
+<p> |  | </p>
+<p>Prefix for header names if they are added as tags.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.hystrix.thread-pool-key</p>
+<p> | </p>
+<p>threadPoolKey</p>
+<p> | </p>
+<p>Name of the thread pool key. The thread-pool key represents a {@link com.netflix.hystrix.HystrixThreadPool} for monitoring, metrics publishing, caching, and other such uses. A {@link com.netflix.hystrix.HystrixCommand} is associated with a single {@link com.netflix.hystrix.HystrixThreadPool} as retrieved by the {@link com.netflix.hystrix.HystrixThreadPoolKey} injected into it, or it defaults to one created using the {@link com.netflix.hystrix.HystrixCommandGroupKey} it is created with.</p>
+<p>@see com.netflix.hystrix.HystrixThreadPoolKey</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.message.headers</p>
+<p> |  | </p>
+<p>Additional headers that should be added as tags if they exist. If the header value is not a String it will be converted to a String using its toString() method.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.message.payload.size</p>
+<p> | </p>
+<p>message/payload-size</p>
+<p> | </p>
+<p>An estimate of the size of the payload if available.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.message.payload.type</p>
+<p> | </p>
+<p>message/payload-type</p>
+<p> | </p>
+<p>The type of the payload.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.message.prefix</p>
+<p> | </p>
+<p>message/</p>
+<p> | </p>
+<p>Prefix for header names if they are added as tags.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.mvc.controller-class</p>
+<p> | </p>
+<p>mvc.controller.class</p>
+<p> | </p>
+<p>The lower case, hyphen delimited name of the class that processes the request. Ex. class named “BookController” will result in “book-controller” tag value.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.keys.mvc.controller-method</p>
+<p> | </p>
+<p>mvc.controller.method</p>
+<p> | </p>
+<p>The lower case, hyphen delimited name of the class that processes the request. Ex. method named “listOfBooks” will result in “list-of-books” tag value.</p>
+<p> |<br>| </p>
+<p>spring.sleuth.metric.span.accepted-name</p>
+<p> | </p>
+<p>counter.span.accepted</p>
+<p> |  |<br>| </p>
+<p>spring.sleuth.metric.span.dropped-name</p>
+<p> | </p>
+<p>counter.span.dropped</p>
+<p> |  |<br>| </p>
+<p>spring.sleuth.sampler.percentage</p>
+<p> | </p>
+<p>0.1</p>
+<p> | </p>
+<p>Percentage of requests that should be sampled. E.g. 1.0 - 100% requests should be sampled. The precision is whole-numbers only (i.e. there’s no support for 0.1% of the traces).</p>
+<p> |<br>| </p>
+<p>spring.sleuth.trace-id128</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>When true, generate 128-bit trace IDs instead of 64-bit ones.</p>
+<p> |<br>| </p>
+<p>zuul.add-host-header</p>
+<p> | </p>
+<p>false</p>
+<p> | </p>
+<p>Flag to determine whether the proxy forwards the Host header.</p>
+<p> |<br>| </p>
+<p>zuul.add-proxy-headers</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Flag to determine whether the proxy adds X-Forwarded-* headers.</p>
+<p> |<br>| </p>
+<p>zuul.host.max-per-route-connections</p>
+<p> | </p>
+<p>20</p>
+<p> | </p>
+<p>The maximum number of connections that can be used by a single route.</p>
+<p> |<br>| </p>
+<p>zuul.host.max-total-connections</p>
+<p> | </p>
+<p>200</p>
+<p> | </p>
+<p>The maximum number of total connections the proxy can hold open to backends.</p>
+<p> |<br>| </p>
+<p>zuul.ignore-local-service</p>
+<p> | </p>
+<p>true</p>
+<p> |  |<br>| </p>
+<p>zuul.ignore-security-headers</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Flag to say that SECURITY_HEADERS are added to ignored headers if spring security is on the classpath. By setting ignoreSecurityHeaders to false we can switch off this default behaviour. This should be used together with disabling the default spring security headers see <a href="https://docs.spring.io/spring-security/site/docs/current/reference/html/headers.html#default-security-headers" target="_blank" rel="noopener">https://docs.spring.io/spring-security/site/docs/current/reference/html/headers.html#default-security-headers</a></p>
+<p> |<br>| </p>
+<p>zuul.ignored-headers</p>
+<p> |  | </p>
+<p>Names of HTTP headers to ignore completely (i.e. leave them out of downstream requests and drop them from downstream responses).</p>
+<p> |<br>| </p>
+<p>zuul.ignored-patterns</p>
+<p> |  |  |<br>| </p>
+<p>zuul.ignored-services</p>
+<p> |  | </p>
+<p>Set of service names not to consider for proxying automatically. By default all services in the discovery client will be proxied.</p>
+<p> |<br>| </p>
+<p>zuul.prefix</p>
+<p> |  | </p>
+<p>A common prefix for all routes.</p>
+<p> |<br>| </p>
+<p>zuul.remove-semicolon-content</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Flag to say that path elements past the first semicolon can be dropped.</p>
+<p> |<br>| </p>
+<p>zuul.retryable</p>
+<p> |  | </p>
+<p>Flag for whether retry is supported by default (assuming the routes themselves support it).</p>
+<p> |<br>| </p>
+<p>zuul.ribbon-isolation-strategy</p>
+<p> |  |  |<br>| </p>
+<p>zuul.routes</p>
+<p> |  | </p>
+<p>Map of route names to properties.</p>
+<p> |<br>| </p>
+<p>zuul.s-e-c-u-r-i-t-y-h-e-a-d-e-r-s</p>
+<p> |  | </p>
+<p>Headers that are generally expected to be added by Spring Security, and hence often duplicated if the proxy and the backend are secured with Spring. By default they are added to the ignored headers if Spring Security is present and ignoreSecurityHeaders = true.</p>
+<p> |<br>| </p>
+<p>zuul.semaphore.max-semaphores</p>
+<p> | </p>
+<p>100</p>
+<p> | </p>
+<p>The maximum number of total semaphores for Hystrix.</p>
+<p> |<br>| </p>
+<p>zuul.sensitive-headers</p>
+<p> |  | </p>
+<p>List of sensitive headers that are not passed to downstream requests. Defaults to a “safe” set of headers that commonly contain user credentials. It’s OK to remove those from the list if the downstream service is part of the same system as the proxy, so they are sharing authentication data. If using a physical URL outside your own domain, then generally it would be a bad idea to leak user credentials.</p>
+<p> |<br>| </p>
+<p>zuul.servlet-path</p>
+<p> | </p>
+<p>/zuul</p>
+<p> | </p>
+<p>Path to install Zuul as a servlet (not part of Spring MVC). The servlet is more memory efficient for requests with large bodies, e.g. file uploads.</p>
+<p> |<br>| </p>
+<p>zuul.ssl-hostname-validation-enabled</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Flag to say whether the hostname for ssl connections should be verified or not. Default is true. This should only be used in test setups!</p>
+<p> |<br>| </p>
+<p>zuul.strip-prefix</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Flag saying whether to strip the prefix from the path before forwarding.</p>
+<p> |<br>| </p>
+<p>zuul.trace-request-body</p>
+<p> | </p>
+<p>true</p>
+<p> | </p>
+<p>Flag to say that request bodies can be traced.</p>
+<p> |</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://immerser.github.io/2018/01/20/spring_boot_doc/" data-title="Hexo" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/01/20/kafka功能整理/" title="">
+  <strong>上一篇：</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/01/20/iptables/"  title="">
+ <strong>下一篇：</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#spring-boot-配置"><span class="toc-number">1.</span> <span class="toc-text">spring boot 配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、spring-boot-介绍"><span class="toc-number">1.1.</span> <span class="toc-text">一、spring boot 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#以最少的依赖和配置来启动spring配置的应用程序"><span class="toc-number">1.1.1.</span> <span class="toc-text">以最少的依赖和配置来启动spring配置的应用程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Install"><span class="toc-number">1.2.</span> <span class="toc-text">二、Install</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#gt-maven-配置-下面的配置适合使用默认配置"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">&gt; maven 配置 下面的配置适合使用默认配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、CLI配置"><span class="toc-number">1.3.</span> <span class="toc-text">三、CLI配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、Annotation配置"><span class="toc-number">1.4.</span> <span class="toc-text">四、Annotation配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、启动方式"><span class="toc-number">1.5.</span> <span class="toc-text">五、启动方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、开发工具"><span class="toc-number">1.6.</span> <span class="toc-text">六、开发工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用注解"><span class="toc-number">1.7.</span> <span class="toc-text">常用注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、事件和监听"><span class="toc-number">1.8.</span> <span class="toc-text">六、事件和监听</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七-属性文件配置"><span class="toc-number">1.9.</span> <span class="toc-text">七 属性文件配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、使用配置文件"><span class="toc-number">1.10.</span> <span class="toc-text">七、使用配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、日志输出"><span class="toc-number">1.11.</span> <span class="toc-text">八、日志输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、开发web应用"><span class="toc-number">1.12.</span> <span class="toc-text">九、开发web应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十、安全和动作"><span class="toc-number">1.13.</span> <span class="toc-text">十、安全和动作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十一、数据库配置"><span class="toc-number">1.14.</span> <span class="toc-text">十一、数据库配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十二、NoSQL"><span class="toc-number">1.15.</span> <span class="toc-text">十二、NoSQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十三、缓存"><span class="toc-number">1.16.</span> <span class="toc-text">十三、缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十四、消息"><span class="toc-number">1.17.</span> <span class="toc-text">十四、消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十五、REST服务"><span class="toc-number">1.18.</span> <span class="toc-text">十五、REST服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十六、email"><span class="toc-number">1.19.</span> <span class="toc-text">十六、email</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十七、JTA"><span class="toc-number">1.20.</span> <span class="toc-text">十七、JTA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十八、session"><span class="toc-number">1.21.</span> <span class="toc-text">十八、session</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#存储方式"><span class="toc-number">1.21.0.1.</span> <span class="toc-text">存储方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置"><span class="toc-number">1.21.0.2.</span> <span class="toc-text">配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#十九、测试"><span class="toc-number">1.22.</span> <span class="toc-text">十九、测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#测试依赖"><span class="toc-number">1.22.0.1.</span> <span class="toc-text">测试依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用spring一站式测试机制"><span class="toc-number">1.22.0.2.</span> <span class="toc-text">使用spring一站式测试机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试spring-boot-项目"><span class="toc-number">1.22.0.3.</span> <span class="toc-text">测试spring boot 项目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十、自定义auto-configuration"><span class="toc-number">1.23.</span> <span class="toc-text">二十、自定义auto-configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十一、Spring-Integration"><span class="toc-number">1.24.</span> <span class="toc-text">二十一、Spring Integration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十二、jOOQ"><span class="toc-number">1.25.</span> <span class="toc-text">二十二、jOOQ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二十三、Hazelcast"><span class="toc-number">1.26.</span> <span class="toc-text">二十三、Hazelcast</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Actuator"><span class="toc-number">2.</span> <span class="toc-text">Actuator</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、production-ready特性"><span class="toc-number">2.1.</span> <span class="toc-text">一、production-ready特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、Endpoints"><span class="toc-number">2.2.</span> <span class="toc-text">二、Endpoints</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、Monitoring-HTTP"><span class="toc-number">2.3.</span> <span class="toc-text">三、Monitoring  HTTP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、Monitoring-JMX"><span class="toc-number">2.4.</span> <span class="toc-text">四、Monitoring  JMX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、Monitoring-remote-shell"><span class="toc-number">2.5.</span> <span class="toc-text">五、Monitoring  remote shell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、Metrics"><span class="toc-number">2.6.</span> <span class="toc-text">六、Metrics</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、Auditing"><span class="toc-number">2.7.</span> <span class="toc-text">七、Auditing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、Tracing"><span class="toc-number">2.8.</span> <span class="toc-text">八、Tracing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、Process-Monitoring"><span class="toc-number">2.9.</span> <span class="toc-text">九、Process Monitoring</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#应用部署"><span class="toc-number">3.</span> <span class="toc-text">应用部署</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CLI"><span class="toc-number">4.</span> <span class="toc-text">CLI</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#插件"><span class="toc-number">5.</span> <span class="toc-text">插件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#spring-boot-admin"><span class="toc-number">6.</span> <span class="toc-text">spring boot admin</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#提供的功能"><span class="toc-number">6.1.</span> <span class="toc-text">提供的功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用"><span class="toc-number">6.2.</span> <span class="toc-text">如何使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置说明"><span class="toc-number">6.3.</span> <span class="toc-text">配置说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集群"><span class="toc-number">6.4.</span> <span class="toc-text">集群</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通知"><span class="toc-number">6.5.</span> <span class="toc-text">通知</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UI模块"><span class="toc-number">6.6.</span> <span class="toc-text">UI模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安全"><span class="toc-number">6.7.</span> <span class="toc-text">安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">6.8.</span> <span class="toc-text">其他</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、最佳实践"><span class="toc-number">6.9.</span> <span class="toc-text">六、最佳实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他-1"><span class="toc-number">6.10.</span> <span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#starters"><span class="toc-number">6.10.0.1.</span> <span class="toc-text">starters</span></a></li></ol></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m immerser. <br/>
+			This is my blog,study with me.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

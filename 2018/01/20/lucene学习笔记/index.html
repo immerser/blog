@@ -1,0 +1,480 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Hexo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="John Doe">
+    
+
+    
+    <meta name="description" content="lucene作用lucene 是一个基于 Java 的全文信息检索工具包，它不是一个完整的搜索应用程序，而是为你的应用程序提供索引和搜索功能。Lucene 目前是 Apache Jakarta 家族中的一个开源项目。也是目前最为流行的基于 Java 开源全文检索工具包。 索引和搜索 索引是现代搜索引擎的核心，建立索引的过程就是把源数据处理成非常方便查询的索引文件的过程。 为什么索引这么重要呢，试想">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://immerser.github.io/2018/01/20/lucene学习笔记/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="lucene作用lucene 是一个基于 Java 的全文信息检索工具包，它不是一个完整的搜索应用程序，而是为你的应用程序提供索引和搜索功能。Lucene 目前是 Apache Jakarta 家族中的一个开源项目。也是目前最为流行的基于 Java 开源全文检索工具包。 索引和搜索 索引是现代搜索引擎的核心，建立索引的过程就是把源数据处理成非常方便查询的索引文件的过程。 为什么索引这么重要呢，试想">
+<meta property="og:updated_time" content="2017-02-09T14:50:39.070Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="lucene作用lucene 是一个基于 Java 的全文信息检索工具包，它不是一个完整的搜索应用程序，而是为你的应用程序提供索引和搜索功能。Lucene 目前是 Apache Jakarta 家族中的一个开源项目。也是目前最为流行的基于 Java 开源全文检索工具包。 索引和搜索 索引是现代搜索引擎的核心，建立索引的过程就是把源数据处理成非常方便查询的索引文件的过程。 为什么索引这么重要呢，试想">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:immerser.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/lucene学习笔记/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.083Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lucene作用"><span class="toc-number">1.</span> <span class="toc-text">lucene作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#索引和搜索"><span class="toc-number">2.</span> <span class="toc-text">索引和搜索</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#软件包分析"><span class="toc-number">3.</span> <span class="toc-text">软件包分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#建立索引"><span class="toc-number">4.</span> <span class="toc-text">建立索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Document"><span class="toc-number">4.0.1.</span> <span class="toc-text">Document</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Field"><span class="toc-number">4.0.2.</span> <span class="toc-text">Field</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyzer"><span class="toc-number">4.0.3.</span> <span class="toc-text">Analyzer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IndexWriter"><span class="toc-number">4.0.4.</span> <span class="toc-text">IndexWriter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Directory"><span class="toc-number">4.0.5.</span> <span class="toc-text">Directory</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#搜索文档"><span class="toc-number">5.</span> <span class="toc-text">搜索文档</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Query"><span class="toc-number">5.0.1.</span> <span class="toc-text">Query</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Term"><span class="toc-number">5.0.2.</span> <span class="toc-text">Term</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TermQuery"><span class="toc-number">5.0.3.</span> <span class="toc-text">TermQuery</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IndexSearcher"><span class="toc-number">5.0.4.</span> <span class="toc-text">IndexSearcher</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hits"><span class="toc-number">5.0.5.</span> <span class="toc-text">Hits</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="lucene作用"><a href="#lucene作用" class="headerlink" title="lucene作用"></a>lucene作用</h1><p>lucene 是一个基于 Java 的全文信息检索工具包，它不是一个完整的搜索应用程序，而是为你的应用程序提供索引和搜索功能。Lucene 目前是 Apache Jakarta 家族中的一个开源项目。也是目前最为流行的基于 Java 开源全文检索工具包。</p>
+<h1 id="索引和搜索"><a href="#索引和搜索" class="headerlink" title="索引和搜索"></a>索引和搜索</h1><ol>
+<li>索引是现代搜索引擎的核心，建立索引的过程就是把源数据处理成非常方便查询的索引文件的过程。</li>
+<li>为什么索引这么重要呢，试想你现在要在大量的文档中搜索含有某个关键词的文档，那么如果不建立索引的话你就需要把这些文档顺序的读入内存，然后检查这个文章中是不是含有要查找的关键词，这样的话就会耗费非常多的时间，想想搜索引擎可是在毫秒级的时间内查找出要搜索的结果的。</li>
+<li>这就是由于建立了索引的原因，你可以把索引想象成这样一种数据结构，他能够使你快速的随机访问存储在索引中的关键词，进而找到该关键词所关联的文档。Lucene 采用的是一种称为反向索引（inverted index）的机制。</li>
+<li>反向索引就是说我们维护了一个词  短语表，对于这个表中的每个词  短语，都有一个链表描述了有哪些文档包含了这个词  短语。这样在用户输入查询条件的时候，就能非常快的得到搜索结果。</li>
+<li>由于Lucene提供了简单易用的API，所以即使读者刚开始对全文本进行索引的机制并不太了解，也可以非常容易的使用 Lucene对你的文档实现索引。<br>对文档建立好索引后，就可以在这些索引上面进行搜索了。</li>
+<li>搜索引擎首先会对搜索的关键词进行解析，然后再在建立好的索引上面进行查找，最终返回和用户输入的关键词相关联的文档。</li>
+</ol>
+<h1 id="软件包分析"><a href="#软件包分析" class="headerlink" title="软件包分析"></a>软件包分析</h1><ol>
+<li><code>Package: org.apache.lucene.document</code><blockquote>
+<p>这个包提供了一些为封装要索引的文档所需要的类，比如 Document, Field。这样，每一个文档最终被封装成了一个 Document 对象。</p>
+</blockquote>
+</li>
+<li><code>Package: org.apache.lucene.analysis</code><blockquote>
+<p>这个包主要功能是对文档进行分词，因为文档在建立索引之前必须要进行分词，所以这个包的作用可以看成是为建立索引做准备工作。</p>
+</blockquote>
+</li>
+<li><code>Package: org.apache.lucene.index</code><blockquote>
+<p>这个包提供了一些类来协助创建索引以及对创建好的索引进行更新。这里面有两个基础的类：IndexWriter 和 IndexReader，其中 IndexWriter 是用来创建索引并添加文档到索引中的，IndexReader 是用来删除索引中的文档的。</p>
+</blockquote>
+</li>
+<li><p><code>Package: org.apache.lucene.search</code></p>
+<blockquote>
+<p>这个包提供了对在建立好的索引上进行搜索所需要的类。比如 IndexSearcher 和 Hits, IndexSearcher 定义了在指定的索引上进行搜索的方法，Hits 用来保存搜索得到的结果。</p>
+</blockquote>
+<h1 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h1><h3 id="Document"><a href="#Document" class="headerlink" title="Document"></a>Document</h3><p>Document 是用来描述文档的，这里的文档可以指一个 HTML 页面，一封电子邮件，或者是一个文本文件。一个 Document 对象由多个 Field 对象组成的。可以把一个 Document 对象想象成数据库中的一个记录，而每个 Field 对象就是记录的一个字段。</p>
+</li>
+</ol>
+<h3 id="Field"><a href="#Field" class="headerlink" title="Field"></a>Field</h3><p>Field 对象是用来描述一个文档的某个属性的，比如一封电子邮件的标题和内容可以用两个 Field 对象分别描述。</p>
+<h3 id="Analyzer"><a href="#Analyzer" class="headerlink" title="Analyzer"></a>Analyzer</h3><p>在一个文档被索引之前，首先需要对文档内容进行分词处理，这部分工作就是由 Analyzer 来做的。Analyzer 类是一个抽象类，它有多个实现。针对不同的语言和应用需要选择适合的 Analyzer。Analyzer 把分词后的内容交给 IndexWriter 来建立索引。</p>
+<h3 id="IndexWriter"><a href="#IndexWriter" class="headerlink" title="IndexWriter"></a>IndexWriter</h3><p>IndexWriter 是 Lucene 用来创建索引的一个核心的类，他的作用是把一个个的 Document 对象加到索引中来。</p>
+<h3 id="Directory"><a href="#Directory" class="headerlink" title="Directory"></a>Directory</h3><p>这个类代表了 Lucene 的索引的存储的位置，这是一个抽象类，它目前有两个实现，第一个是 FSDirectory，它表示一个存储在文件系统中的索引的位置。第二个是 RAMDirectory，它表示一个存储在内存当中的索引的位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws Exception&#123; </span><br><span class="line">     //indexDir is the directory that hosts Lucene&apos;s index files </span><br><span class="line">     File   indexDir = new File(&quot;D:\\luceneIndex&quot;); </span><br><span class="line">     //dataDir is the directory that hosts the text files that to be indexed </span><br><span class="line">     File   dataDir  = new File(&quot;D:\\luceneData&quot;); </span><br><span class="line">     Analyzer luceneAnalyzer = new StandardAnalyzer(); </span><br><span class="line">     File[] dataFiles  = dataDir.listFiles(); </span><br><span class="line">     IndexWriter indexWriter = new IndexWriter(indexDir,luceneAnalyzer,true); </span><br><span class="line">     long startTime = new Date().getTime(); </span><br><span class="line">     for(int i = 0; i &lt; dataFiles.length; i++)&#123; </span><br><span class="line">          if(dataFiles[i].isFile() &amp;&amp; dataFiles[i].getName().endsWith(&quot;.txt&quot;))&#123;</span><br><span class="line">               System.out.println(&quot;Indexing file &quot; + dataFiles[i].getCanonicalPath()); </span><br><span class="line">               Document document = new Document(); </span><br><span class="line">               Reader txtReader = new FileReader(dataFiles[i]); </span><br><span class="line">               document.add(Field.Text(&quot;path&quot;,dataFiles[i].getCanonicalPath())); </span><br><span class="line">               document.add(Field.Text(&quot;contents&quot;,txtReader)); </span><br><span class="line">               indexWriter.addDocument(document); </span><br><span class="line">          &#125; </span><br><span class="line">     &#125; </span><br><span class="line">     indexWriter.optimize(); </span><br><span class="line">     indexWriter.close(); </span><br><span class="line">     long endTime = new Date().getTime(); </span><br><span class="line">        </span><br><span class="line">     System.out.println(&quot;It takes &quot; + (endTime - startTime) </span><br><span class="line">         + &quot; milliseconds to create index for the files in directory &quot;</span><br><span class="line">         + dataDir.getPath());        </span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="搜索文档"><a href="#搜索文档" class="headerlink" title="搜索文档"></a>搜索文档</h1><h3 id="Query"><a href="#Query" class="headerlink" title="Query"></a>Query</h3><p>这是一个抽象类，他有多个实现，比如 TermQuery, BooleanQuery, PrefixQuery. 这个类的目的是把用户输入的查询字符串封装成 Lucene 能够识别的 Query。</p>
+<h3 id="Term"><a href="#Term" class="headerlink" title="Term"></a>Term</h3><p>Term 是搜索的基本单位，一个 Term 对象有两个 String 类型的域组成。生成一个 Term 对象可以有如下一条语句来完成：Term term = new Term(“fieldName”,”queryWord”); 其中第一个参数代表了要在文档的哪一个 Field 上进行查找，第二个参数代表了要查询的关键词。</p>
+<h3 id="TermQuery"><a href="#TermQuery" class="headerlink" title="TermQuery"></a>TermQuery</h3><p>TermQuery 是抽象类 Query 的一个子类，它同时也是 Lucene 支持的最为基本的一个查询类。生成一个 TermQuery 对象由如下语句完成： TermQuery termQuery = new TermQuery(new Term(“fieldName”,”queryWord”)); 它的构造函数只接受一个参数，那就是一个 Term 对象。</p>
+<h3 id="IndexSearcher"><a href="#IndexSearcher" class="headerlink" title="IndexSearcher"></a>IndexSearcher</h3><p>IndexSearcher 是用来在建立好的索引上进行搜索的。它只能以只读的方式打开一个索引，所以可以有多个 IndexSearcher 的实例在一个索引上进行操作。</p>
+<h3 id="Hits"><a href="#Hits" class="headerlink" title="Hits"></a>Hits</h3><p>Hits 是用来保存搜索的结果的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws Exception&#123; </span><br><span class="line">	    String queryStr = &quot;lucene&quot;; </span><br><span class="line">	    //This is the directory that hosts the Lucene index </span><br><span class="line">        File indexDir = new File(&quot;D:\\luceneIndex&quot;); </span><br><span class="line">        FSDirectory directory = FSDirectory.getDirectory(indexDir,false); </span><br><span class="line">        IndexSearcher searcher = new IndexSearcher(directory); </span><br><span class="line">        if(!indexDir.exists())&#123; </span><br><span class="line">        	 System.out.println(&quot;The Lucene index is not exist&quot;); </span><br><span class="line">        	 return; </span><br><span class="line">        &#125; </span><br><span class="line">        Term term = new Term(&quot;contents&quot;,queryStr.toLowerCase()); </span><br><span class="line">        TermQuery luceneQuery = new TermQuery(term); </span><br><span class="line">        Hits hits = searcher.search(luceneQuery); </span><br><span class="line">        for(int i = 0; i &lt; hits.length(); i++)&#123; </span><br><span class="line">        	 Document document = hits.doc(i); </span><br><span class="line">        	 System.out.println(&quot;File: &quot; + document.get(&quot;path&quot;)); </span><br><span class="line">        &#125; </span><br><span class="line">	 &#125;</span><br></pre></td></tr></table></figure>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://immerser.github.io/2018/01/20/lucene学习笔记/" data-title="Hexo" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/01/20/spring_event_doc/" title="">
+  <strong>上一篇：</strong><br/>
+  <span>
+  (no title)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/01/20/权威指南/"  title="">
+ <strong>下一篇：</strong><br/> 
+ <span>(no title)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lucene作用"><span class="toc-number">1.</span> <span class="toc-text">lucene作用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#索引和搜索"><span class="toc-number">2.</span> <span class="toc-text">索引和搜索</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#软件包分析"><span class="toc-number">3.</span> <span class="toc-text">软件包分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#建立索引"><span class="toc-number">4.</span> <span class="toc-text">建立索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Document"><span class="toc-number">4.0.1.</span> <span class="toc-text">Document</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Field"><span class="toc-number">4.0.2.</span> <span class="toc-text">Field</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Analyzer"><span class="toc-number">4.0.3.</span> <span class="toc-text">Analyzer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IndexWriter"><span class="toc-number">4.0.4.</span> <span class="toc-text">IndexWriter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Directory"><span class="toc-number">4.0.5.</span> <span class="toc-text">Directory</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#搜索文档"><span class="toc-number">5.</span> <span class="toc-text">搜索文档</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Query"><span class="toc-number">5.0.1.</span> <span class="toc-text">Query</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Term"><span class="toc-number">5.0.2.</span> <span class="toc-text">Term</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TermQuery"><span class="toc-number">5.0.3.</span> <span class="toc-text">TermQuery</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IndexSearcher"><span class="toc-number">5.0.4.</span> <span class="toc-text">IndexSearcher</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hits"><span class="toc-number">5.0.5.</span> <span class="toc-text">Hits</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m immerser. <br/>
+			This is my blog,study with me.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
