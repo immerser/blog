@@ -1,25 +1,29 @@
 
  <!DOCTYPE HTML>
-<html >
+<html lang="Chinese">
 <head>
   <meta charset="UTF-8">
   
-    <title>Hexo</title>
+    <title>你家亮哥的学习笔记</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="John Doe">
+    <meta name="author" content="你家亮哥">
     
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+    <meta name="description" content="Hello world">
+<meta property="og:type" content="website">
+<meta property="og:title" content="你家亮哥的学习笔记">
 <meta property="og:url" content="https://immerser.github.io/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="你家亮哥的学习笔记">
+<meta property="og:description" content="Hello world">
+<meta property="og:locale" content="Chinese">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="你家亮哥的学习笔记">
+<meta name="twitter:description" content="Hello world">
 
     
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="你家亮哥的学习笔记" type="application/atom+xml">
     
     
     <link rel="icon" href="/img/favicon.ico">
@@ -37,8 +41,8 @@
 <div>
 		
 			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
-				<h2 class="blog-motto"></h2>
+				<h1 class="site-name"><a href="/" title="你家亮哥的学习笔记">你家亮哥的学习笔记</a></h1>
+				<h2 class="blog-motto">---notebook of cloud,dev ops,language</h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
@@ -68,273 +72,636 @@
     <div id="container">
       <div id="main">
 
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/spring_cloud/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
+   
     
-     
-           <p itemprop="description" >spring cloud   微服务spring cloud configspring cloud netflixspring cloud streamspring cloud busspring cloud sleuthspring cloud consulspring clo</p>
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/lucene学习笔记/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.083Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
         
-    
-    <time datetime="2018-01-20T15:44:39.094Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/Jackson官方文档/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >Jackson官方文档介绍jackson分为三个模块1.streaming2.databind3.annotations
-学习
-从java创建json的三种方式
-从java实体
-从JsonNode树
-从json流
-
-
-
-
-streamingannotationsdatabind
-</p>
+        <h1 id="lucene作用"><a href="#lucene作用" class="headerlink" title="lucene作用"></a>lucene作用</h1><p>lucene 是一个基于 Java 的全文信息检索工具包，它不是一个完整的搜索应用程序，而是为你的应用程序提供索引和搜索功能。Lucene 目前是 Apache Jakarta 家族中的一个开源项目。也是目前最为流行的基于 Java 开源全文检索工具包。</p>
+<h1 id="索引和搜索"><a href="#索引和搜索" class="headerlink" title="索引和搜索"></a>索引和搜索</h1><ol>
+<li>索引是现代搜索引擎的核心，建立索引的过程就是把源数据处理成非常方便查询的索引文件的过程。</li>
+<li>为什么索引这么重要呢，试想你现在要在大量的文档中搜索含有某个关键词的文档，那么如果不建立索引的话你就需要把这些文档顺序的读入内存，然后检查这个文章中是不是含有要查找的关键词，这样的话就会耗费非常多的时间，想想搜索引擎可是在毫秒级的时间内查找出要搜索的结果的。</li>
+<li>这就是由于建立了索引的原因，你可以把索引想象成这样一种数据结构，他能够使你快速的随机访问存储在索引中的关键词，进而找到该关键词所关联的文档。Lucene 采用的是一种称为反向索引（inverted index）的机制。</li>
+<li>反向索引就是说我们维护了一个词  短语表，对于这个表中的每个词  短语，都有一个链表描述了有哪些文档包含了这个词  短语。这样在用户输入查询条件的时候，就能非常快的得到搜索结果。</li>
+<li>由于Lucene提供了简单易用的API，所以即使读者刚开始对全文本进行索引的机制并不太了解，也可以非常容易的使用 Lucene对你的文档实现索引。<br>对文档建立好索引后，就可以在这些索引上面进行搜索了。</li>
+<li>搜索引擎首先会对搜索的关键词进行解析，然后再在建立好的索引上面进行查找，最终返回和用户输入的关键词相关联的文档。</li>
+</ol>
+<h1 id="软件包分析"><a href="#软件包分析" class="headerlink" title="软件包分析"></a>软件包分析</h1><ol>
+<li><code>Package: org.apache.lucene.document</code><blockquote>
+<p>这个包提供了一些为封装要索引的文档所需要的类，比如 Document, Field。这样，每一个文档最终被封装成了一个 Document 对象。</p>
+</blockquote>
+</li>
+<li><code>Package: org.apache.lucene.analysis</code><blockquote>
+<p>这个包主要功能是对文档进行分词，因为文档在建立索引之前必须要进行分词，所以这个包的作用可以看成是为建立索引做准备工作。</p>
+</blockquote>
+</li>
+<li><code>Package: org.apache.lucene.index</code><blockquote>
+<p>这个包提供了一些类来协助创建索引以及对创建好的索引进行更新。这里面有两个基础的类：IndexWriter 和 IndexReader，其中 IndexWriter 是用来创建索引并添加文档到索引中的，IndexReader 是用来删除索引中的文档的。</p>
+</blockquote>
+</li>
+<li><p><code>Package: org.apache.lucene.search</code></p>
+<blockquote>
+<p>这个包提供了对在建立好的索引上进行搜索所需要的类。比如 IndexSearcher 和 Hits, IndexSearcher 定义了在指定的索引上进行搜索的方法，Hits 用来保存搜索得到的结果。</p>
+</blockquote>
+<h1 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h1><h3 id="Document"><a href="#Document" class="headerlink" title="Document"></a>Document</h3><p>Document 是用来描述文档的，这里的文档可以指一个 HTML 页面，一封电子邮件，或者是一个文本文件。一个 Document 对象由多个 Field 对象组成的。可以把一个 Document 对象想象成数据库中的一个记录，而每个 Field 对象就是记录的一个字段。</p>
+</li>
+</ol>
+<h3 id="Field"><a href="#Field" class="headerlink" title="Field"></a>Field</h3><p>Field 对象是用来描述一个文档的某个属性的，比如一封电子邮件的标题和内容可以用两个 Field 对象分别描述。</p>
+<h3 id="Analyzer"><a href="#Analyzer" class="headerlink" title="Analyzer"></a>Analyzer</h3><p>在一个文档被索引之前，首先需要对文档内容进行分词处理，这部分工作就是由 Analyzer 来做的。Analyzer 类是一个抽象类，它有多个实现。针对不同的语言和应用需要选择适合的 Analyzer。Analyzer 把分词后的内容交给 IndexWriter 来建立索引。</p>
+<h3 id="IndexWriter"><a href="#IndexWriter" class="headerlink" title="IndexWriter"></a>IndexWriter</h3><p>IndexWriter 是 Lucene 用来创建索引的一个核心的类，他的作用是把一个个的 Document 对象加到索引中来。</p>
+<h3 id="Directory"><a href="#Directory" class="headerlink" title="Directory"></a>Directory</h3><p>这个类代表了 Lucene 的索引的存储的位置，这是一个抽象类，它目前有两个实现，第一个是 FSDirectory，它表示一个存储在文件系统中的索引的位置。第二个是 RAMDirectory，它表示一个存储在内存当中的索引的位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws Exception&#123; </span><br><span class="line">     //indexDir is the directory that hosts Lucene&apos;s index files </span><br><span class="line">     File   indexDir = new File(&quot;D:\\luceneIndex&quot;); </span><br><span class="line">     //dataDir is the directory that hosts the text files that to be indexed </span><br><span class="line">     File   dataDir  = new File(&quot;D:\\luceneData&quot;); </span><br><span class="line">     Analyzer luceneAnalyzer = new StandardAnalyzer(); </span><br><span class="line">     File[] dataFiles  = dataDir.listFiles(); </span><br><span class="line">     IndexWriter indexWriter = new IndexWriter(indexDir,luceneAnalyzer,true); </span><br><span class="line">     long startTime = new Date().getTime(); </span><br><span class="line">     for(int i = 0; i &lt; dataFiles.length; i++)&#123; </span><br><span class="line">          if(dataFiles[i].isFile() &amp;&amp; dataFiles[i].getName().endsWith(&quot;.txt&quot;))&#123;</span><br><span class="line">               System.out.println(&quot;Indexing file &quot; + dataFiles[i].getCanonicalPath()); </span><br><span class="line">               Document document = new Document(); </span><br><span class="line">               Reader txtReader = new FileReader(dataFiles[i]); </span><br><span class="line">               document.add(Field.Text(&quot;path&quot;,dataFiles[i].getCanonicalPath())); </span><br><span class="line">               document.add(Field.Text(&quot;contents&quot;,txtReader)); </span><br><span class="line">               indexWriter.addDocument(document); </span><br><span class="line">          &#125; </span><br><span class="line">     &#125; </span><br><span class="line">     indexWriter.optimize(); </span><br><span class="line">     indexWriter.close(); </span><br><span class="line">     long endTime = new Date().getTime(); </span><br><span class="line">        </span><br><span class="line">     System.out.println(&quot;It takes &quot; + (endTime - startTime) </span><br><span class="line">         + &quot; milliseconds to create index for the files in directory &quot;</span><br><span class="line">         + dataDir.getPath());        </span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="搜索文档"><a href="#搜索文档" class="headerlink" title="搜索文档"></a>搜索文档</h1><h3 id="Query"><a href="#Query" class="headerlink" title="Query"></a>Query</h3><p>这是一个抽象类，他有多个实现，比如 TermQuery, BooleanQuery, PrefixQuery. 这个类的目的是把用户输入的查询字符串封装成 Lucene 能够识别的 Query。</p>
+<h3 id="Term"><a href="#Term" class="headerlink" title="Term"></a>Term</h3><p>Term 是搜索的基本单位，一个 Term 对象有两个 String 类型的域组成。生成一个 Term 对象可以有如下一条语句来完成：Term term = new Term(“fieldName”,”queryWord”); 其中第一个参数代表了要在文档的哪一个 Field 上进行查找，第二个参数代表了要查询的关键词。</p>
+<h3 id="TermQuery"><a href="#TermQuery" class="headerlink" title="TermQuery"></a>TermQuery</h3><p>TermQuery 是抽象类 Query 的一个子类，它同时也是 Lucene 支持的最为基本的一个查询类。生成一个 TermQuery 对象由如下语句完成： TermQuery termQuery = new TermQuery(new Term(“fieldName”,”queryWord”)); 它的构造函数只接受一个参数，那就是一个 Term 对象。</p>
+<h3 id="IndexSearcher"><a href="#IndexSearcher" class="headerlink" title="IndexSearcher"></a>IndexSearcher</h3><p>IndexSearcher 是用来在建立好的索引上进行搜索的。它只能以只读的方式打开一个索引，所以可以有多个 IndexSearcher 的实例在一个索引上进行操作。</p>
+<h3 id="Hits"><a href="#Hits" class="headerlink" title="Hits"></a>Hits</h3><p>Hits 是用来保存搜索的结果的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws Exception&#123; </span><br><span class="line">	    String queryStr = &quot;lucene&quot;; </span><br><span class="line">	    //This is the directory that hosts the Lucene index </span><br><span class="line">        File indexDir = new File(&quot;D:\\luceneIndex&quot;); </span><br><span class="line">        FSDirectory directory = FSDirectory.getDirectory(indexDir,false); </span><br><span class="line">        IndexSearcher searcher = new IndexSearcher(directory); </span><br><span class="line">        if(!indexDir.exists())&#123; </span><br><span class="line">        	 System.out.println(&quot;The Lucene index is not exist&quot;); </span><br><span class="line">        	 return; </span><br><span class="line">        &#125; </span><br><span class="line">        Term term = new Term(&quot;contents&quot;,queryStr.toLowerCase()); </span><br><span class="line">        TermQuery luceneQuery = new TermQuery(term); </span><br><span class="line">        Hits hits = searcher.search(luceneQuery); </span><br><span class="line">        for(int i = 0; i &lt; hits.length(); i++)&#123; </span><br><span class="line">        	 Document document = hits.doc(i); </span><br><span class="line">        	 System.out.println(&quot;File: &quot; + document.get(&quot;path&quot;)); </span><br><span class="line">        &#125; </span><br><span class="line">	 &#125;</span><br></pre></td></tr></table></figure>
         
-    
-    <time datetime="2018-01-20T15:44:39.093Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/官方文档阅读(2)/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >官方文档阅读安装
-修改配置
-123vim config/jvm.options  -Xms512m  -Xmx512m
-
-创建运行所需用户名和用户组
-1234groupadd elasticsearchuseradd -g elasticsearch elasticsearchc</p>
         
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
     
-    <time datetime="2018-01-20T15:44:39.092Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/consul/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
     
-     
-           <p itemprop="description" >consul官方文档学习笔记1.consul的作用
-服务发现
-健康检查
-键值存储
-多数据中心
-
-2.基本架构
-Agent
-每一个consul集群节点均有一个守护线程称为Agent  可以以Server或者Client的模式启动 用于运行DNS或HTTP 负责检查 和保持服务
-
-
-</p>
+      <a href="/2018/01/20/kubernates/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.081Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
         
-    
-    <time datetime="2018-01-20T15:44:39.090Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
+        <h1 id="kubernates实践"><a href="#kubernates实践" class="headerlink" title="kubernates实践"></a>kubernates实践</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li>添加yum源<br>vi  /etc/yum.repos.d/virt7-docker-common-release.repo<br>添加<br>[virt7-docker-common-release]<br>name=virt7-docker-common-release<br>baseurl=<a href="http://cbs.centos.org/repos/virt7-docker-common-release/x86_64/os/" target="_blank" rel="noopener">http://cbs.centos.org/repos/virt7-docker-common-release/x86_64/os/</a><br>gpgcheck=0</li>
+</ol>
+<p>1.2    yum -y install –enablerepo=virt7-docker-common-release kubernetes etcd </p>
+<p>1.3    修改/etc/kubernetes/config</p>
+<h1 id="logging-to-stderr-means-we-get-it-in-the-systemd-journal"><a href="#logging-to-stderr-means-we-get-it-in-the-systemd-journal" class="headerlink" title="logging to stderr means we get it in the systemd journal"></a>logging to stderr means we get it in the systemd journal</h1><pre><code>KUBE_LOGTOSTDERR=&quot;--logtostderr=true&quot;
+# journal message level, 0 is debug
+KUBE_LOG_LEVEL=&quot;--v=0&quot;
+# Should this cluster be allowed to run privileged docker containers
+KUBE_ALLOW_PRIV=&quot;--allow-privileged=false&quot;
+# How the controller-manager, scheduler, and proxy find the apiserver
+KUBE_MASTER=&quot;--master=http://192.168.5.221:8080&quot;
+</code></pre><p>1.4    </p>
 
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/httpcore官方文档阅读/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >官方文档阅读概念架构helloworldhttp core
-按照内容来源可以分为三种类型的实体
-streamed    从流里接受
-self-contained  内容在内存,独立于连接,可重复生成读取
-wrapping    内容从其他实体获得
-
-
-确保读取完流后关闭
-支持的实</p>
         
-    
-    <time datetime="2018-01-20T15:44:39.089Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/httpclient官方文档阅读/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >httpclient 官方文档阅读基础
-Httpclient接口
-HttpGet/HttpPost/HttpHead/..
-HttpResponse
-HeaderIterator
-HttpEntity
-
-连接管理状态管理授权管理流式处理缓存高级话题</p>
         
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
     
-    <time datetime="2018-01-20T15:44:39.088Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/官方文档阅读(1)/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
     
-     
-           <p itemprop="description" >ZUUL官方文档阅读概念1.zuul是所有web请求的入口,作为边缘服务,能够进行 动态路由 监控 安全 弹性控制 
-
-应用场景
-权限和安全
-监控
-动态路由
-压力测试
-分级负载
-静态响应处理
-多路弹性控制
-
-
-组件
-zuul-core   核心模块
-zuul-simple-web</p>
+      <a href="/2018/01/20/docker常用安装软件/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.080Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
         
-    
-    <time datetime="2018-01-20T15:44:39.086Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/spring_event_doc/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >概念
-事件关键类ApplicationEvent 和 ApplicationListener ApplicationEventMulticaster
-內建事件
-
-ContextRefreshedEvent
-ContextStartedEvent
-ContextStoppedEve</p>
         
-    
-    <time datetime="2018-01-20T15:44:39.085Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/lucene学习笔记/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >lucene作用lucene 是一个基于 Java 的全文信息检索工具包，它不是一个完整的搜索应用程序，而是为你的应用程序提供索引和搜索功能。Lucene 目前是 Apache Jakarta 家族中的一个开源项目。也是目前最为流行的基于 Java 开源全文检索工具包。
-索引和搜</p>
         
-    
-    <time datetime="2018-01-20T15:44:39.083Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/权威指南/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >权威指南入门
-java api
-Elasticsearch为Java用户提供了两种内置客户端：
-
-节点客户端
-传输客户端
-
-
-
-Java客户端所在的Elasticsearch版本必须与集群中其他节点一致，否则，它们可能互相无法识别。
-Relational DB -&amp;gt; Dat</p>
         
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
     
-    <time datetime="2018-01-20T15:44:39.082Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/git使用记录/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.079Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/SSM官方文档/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.074Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="spring-statemachine官方文档阅读"><a href="#spring-statemachine官方文档阅读" class="headerlink" title="spring statemachine官方文档阅读"></a>spring statemachine官方文档阅读</h1><h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ol>
+<li>使状态机模式更加易用</li>
+<li>分层架构更容易使用复杂的状态配置</li>
+<li>支持regions提供更复杂的状态配置</li>
+<li>支持<code>triggers</code>, <code>transitions</code>, <code>guards</code> 和 <code>actions</code>.</li>
+<li>类型安全的配置适配器</li>
+<li>支持事件监听</li>
+<li>整合spring IOC</li>
+</ol>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ol>
+<li>应用或者部分结构可以以状态呈现</li>
+<li>分离复杂的逻辑成为小的可管理的任务</li>
+<li>存在并发和异步的问题</li>
+</ol>
+<h2 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h2><ol>
+<li><p>枚举状态和事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public enum Events &#123;</span><br><span class="line">    EVENT1, EVENT2</span><br><span class="line">&#125;</span><br><span class="line">public enum States &#123;</span><br><span class="line">    STATE1, STATE2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建Statemachine</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@EnableStateMachine</span><br><span class="line">class StatemachineConfig extends EnumStateMachineConfigurerAdapter&lt;States, Events&gt; &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void configure(StateMachineStateConfigurer&lt;States, Events&gt; states)</span><br><span class="line">            throws Exception &#123;</span><br><span class="line">        states</span><br><span class="line">                .withStates()</span><br><span class="line">                .initial(States.STATE1)</span><br><span class="line">                .states(EnumSet.allOf(States.class));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void configure(StateMachineTransitionConfigurer&lt;States, Events&gt; transitions)</span><br><span class="line">            throws Exception &#123;</span><br><span class="line">        transitions</span><br><span class="line">                .withExternal()</span><br><span class="line">                .source(States.STATE1).target(States.STATE2)</span><br><span class="line">                .event(Events.EVENT1)</span><br><span class="line">                .and()</span><br><span class="line">                .withExternal()</span><br><span class="line">                .source(States.STATE2).target(States.STATE1)</span><br><span class="line">                .event(Events.EVENT2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建model</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@WithStateMachine</span><br><span class="line">@Slf4j</span><br><span class="line">public class Mybean &#123;</span><br><span class="line">    @OnTransition(target = &quot;STATE1&quot;)</span><br><span class="line">    public void toState1() &#123;</span><br><span class="line">        log.info(&quot;to state1&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @OnTransition(target = &quot;STATE2&quot;)</span><br><span class="line">    public void toState2() &#123;</span><br><span class="line">        log.info(&quot;to state2&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Service</span><br><span class="line">public class StatemachineService &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    StateMachine&lt;States, Events&gt; stateMachine;</span><br><span class="line"></span><br><span class="line">    void doSignals() &#123;</span><br><span class="line">        stateMachine.start();</span><br><span class="line">        stateMachine.sendEvent(Events.EVENT1);</span><br><span class="line">        stateMachine.sendEvent(Events.EVENT2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h2 id="特性-1"><a href="#特性-1" class="headerlink" title="特性"></a>特性</h2><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/安装kubernates/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.074Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="安装kubernates"><a href="#安装kubernates" class="headerlink" title="安装kubernates"></a>安装kubernates</h1><h2 id="安装etcd"><a href="#安装etcd" class="headerlink" title="安装etcd"></a>安装etcd</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">export NODE_NAME=etcd-host0</span><br><span class="line">export NODE_IP=192.168.1.64</span><br><span class="line">export NODE_IPS=&quot;192.168.1.64 192.168.1.65 192.168.1.66&quot;</span><br><span class="line">export ETCD_NODES=etcd-host0=https://192.168.1.64:2380,etcd-host1=https://192.168.1.65:2380,etcd-host2=https://192.168.1.66:2380</span><br><span class="line"></span><br><span class="line">export NODE_NAME=etcd-host1</span><br><span class="line">export NODE_IP=192.168.1.65</span><br><span class="line">export NODE_IPS=&quot;192.168.1.64 192.168.1.65 192.168.1.66&quot;</span><br><span class="line">export ETCD_NODES=etcd-host0=https://192.168.1.64:2380,etcd-host1=https://192.168.1.65:2380,etcd-host2=https://192.168.1.66:2380</span><br><span class="line"></span><br><span class="line">export NODE_NAME=etcd-host2</span><br><span class="line">export NODE_IP=192.168.1.66</span><br><span class="line">export NODE_IPS=&quot;192.168.1.64 192.168.1.65 192.168.1.66&quot;</span><br><span class="line">export ETCD_NODES=etcd-host0=https://192.168.1.64:2380,etcd-host1=https://192.168.1.65:2380,etcd-host2=https://192.168.1.66:2380</span><br><span class="line"></span><br><span class="line">etcdctl \</span><br><span class="line">  --ca-file=/etc/kubernetes/ssl/ca.pem \</span><br><span class="line">  --cert-file=/etc/etcd/ssl/etcd.pem \</span><br><span class="line">  --key-file=/etc/etcd/ssl/etcd-key.pem \</span><br><span class="line">  --endpoints=https://192.168.1.64:2379,https://192.168.1.65:2379,https://192.168.1.66:2379 \</span><br><span class="line">  cluster-health</span><br></pre></td></tr></table></figure>
+<p> kubectl describe  pods  -n kube-system | grep dashboard<br> kubectl get pods  -n kube-system | grep dashboard</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/idea技巧/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.074Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>#idea </p>
+<p>F5  复制类<br>F6  移动类<br>CTRL+ALT+M 提取方法<br>CTRL+ALT+T 包裹代码<br>CTRL+F8<br>F11 添加数钱</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/fabric8官方文档/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.059Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/flume官方文档/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.059Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="官方文档阅读"><a href="#官方文档阅读" class="headerlink" title="官方文档阅读"></a>官方文档阅读</h1><h2 id="1-架构"><a href="#1-架构" class="headerlink" title="1.  架构"></a>1.  架构</h2><h3 id="1-架构图"><a href="#1-架构图" class="headerlink" title="1.  架构图"></a>1.  架构图</h3><p><img src="http://flume.apache.org/_images/UserGuide_image00.png" alt="image"></p>
+<h3 id="2-helloworld"><a href="#2-helloworld" class="headerlink" title="2.  helloworld"></a>2.  helloworld</h3><pre><code>1.  配置properties
+2.  启动agent
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://mirror.bit.edu.cn/apache/flume/1.7.0/apache-flume-1.7.0-bin.tar.gz</span><br></pre></td></tr></table></figure>
+
+$ bin/flume-ng agent -n $agent_name -c conf -f conf/flume-conf.properties
+ nohup bin/flume-ng agent -n agent -c conf -f conf/flume-conf.properties &amp;
+
+-Dflume.root.logger=INFO,console -n agent1
+注:$agent_name 和配置配置文件中的 agent.xx.xx中的agent名字要一致
+</code></pre><h3 id="3-名词解释"><a href="#3-名词解释" class="headerlink" title="3.  名词解释"></a>3.  名词解释</h3><h3 id="4-配置详解"><a href="#4-配置详解" class="headerlink" title="4.  配置详解"></a>4.  配置详解</h3><pre><code>1.  通用配置
+2.  配置单独组件
+3.  多流程配置
+4.  多agent配置
+</code></pre><h3 id="4-source"><a href="#4-source" class="headerlink" title="4.  source"></a>4.  source</h3><pre><code>1.  Avro Source
+2.  Thrift Source
+3.  Exec Source
+4.  JMS Source
+5.  Spooling
+6.  Taildir Source
+7.  Twitter 1%
+8.  Kafka Source
+9.  NetCat Source
+10. Sequence
+11. Syslog Sources
+12. HTTP Sources
+13. Stress Source
+14. Legacy Sources
+15. Custom Source
+16. Scribe Source
+</code></pre><h3 id="5-sinks"><a href="#5-sinks" class="headerlink" title="5.  sinks"></a>5.  sinks</h3><pre><code>1.  HDFS Sink
+2.  Hive Sink
+3.  Logger Sink
+4.  Avro Sink
+5.  Thrift Sink
+6.  IRC Sink
+7.  File Roll Sink
+8.  Null Sink
+9.  HBaseSinks
+10. MorphlineSolrSink
+11. ElasticSearchSink
+12. Kite Dataset Sink
+13. Kafka Sink
+14. Custom Sink
+</code></pre><h3 id="5-channels"><a href="#5-channels" class="headerlink" title="5.  channels"></a>5.  channels</h3><pre><code>1.  Memory Channel
+2.  JDBC Channel
+3.  Kafka Channel
+4.  File Channel
+5.  Splillable Memory
+6.  Pseudo
+7.  Cumstom Channel
+</code></pre><h3 id="5-事件"><a href="#5-事件" class="headerlink" title="5.  事件"></a>5.  事件</h3><h3 id="6-统计"><a href="#6-统计" class="headerlink" title="6.  统计"></a>6.  统计</h3><h3 id="7-工具"><a href="#7-工具" class="headerlink" title="7.  工具"></a>7.  工具</h3><h3 id="8-插件"><a href="#8-插件" class="headerlink" title="8.  插件"></a>8.  插件</h3><h3 id="9-Processors"><a href="#9-Processors" class="headerlink" title="9.  Processors"></a>9.  Processors</h3><h3 id="10-Serializers"><a href="#10-Serializers" class="headerlink" title="10. Serializers"></a>10. Serializers</h3><h3 id="11-Interceptors"><a href="#11-Interceptors" class="headerlink" title="11. Interceptors"></a>11. Interceptors</h3><h3 id="12-日志"><a href="#12-日志" class="headerlink" title="12. 日志"></a>12. 日志</h3><h3 id="13-监控"><a href="#13-监控" class="headerlink" title="13. 监控"></a>13. 监控</h3><h3 id="14"><a href="#14" class="headerlink" title="14."></a>14.</h3>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/node.js手册/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.059Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="node-js手册"><a href="#node-js手册" class="headerlink" title="node.js手册"></a>node.js手册</h1><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><ol>
+<li><p>前提</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.  yum -y install gcc+ gcc-c++</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1.  wget https://nodejs.org/dist/v6.11.1/node-v6.11.1-linux-x64.tar.xz</span><br><span class="line"> </span><br><span class="line">2.  tar -xvf node-v6.11.0.tar.gz</span><br><span class="line"> </span><br><span class="line">3.  cd node-v6.11.0</span><br><span class="line"> </span><br><span class="line">4.  ./configure --prefix=/usr/local/node/6.11.0</span><br><span class="line"> </span><br><span class="line">5.  make</span><br><span class="line"> </span><br><span class="line">6.  make install</span><br><span class="line"> </span><br><span class="line">7.  vim /etc/profile </span><br><span class="line">    export NODE_HOME=/usr/local/node/6.11.0</span><br><span class="line">    export PATH=$NODE_HOME/bin:$PATH</span><br><span class="line">    </span><br><span class="line">8.  source /etc/profile</span><br><span class="line"> </span><br><span class="line">9.  node -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置</p>
+</li>
+<li></li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
 
 
 
@@ -342,7 +709,7 @@ Relational DB -&amp;gt; Dat</p>
 
 
 
-  <nav id="page-nav" class="clearfix unexpand">
+  <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next<span></span></a>
   </nav>
 
@@ -357,8 +724,126 @@ Relational DB -&amp;gt; Dat</p>
 
 
   
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/cloud/" title="cloud">cloud<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tools/cloud/" title="cloud">cloud<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/framework/" title="framework">framework<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/framwwork/" title="framwwork">framwwork<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tools/" title="tools">tools<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/运维/" title="运维">运维<sup>6</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
 
   
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/运维/" title="运维">运维<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/doc/" title="doc">doc<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cloud/" title="cloud">cloud<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/dev-ops/" title="dev ops">dev ops<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ansible/" title="ansible">ansible<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/consul/" title="consul">consul<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spring-boot/" title="spring boot">spring boot<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/kubernetes/" title="kubernetes">kubernetes<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ReactiveX/" title="ReactiveX">ReactiveX<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/framework/" title="framework">framework<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker-compose/" title="docker compose">docker compose<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/dockerfile/" title="dockerfile">dockerfile<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spring-cloud/" title="spring cloud">spring cloud<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spirng/" title="spirng">spirng<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cache/" title="cache">cache<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nomad/" title="nomad">nomad<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/zabbix/" title="zabbix">zabbix<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/monitro/" title="monitro">monitro<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/elastic-search/" title="elastic search">elastic search<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
 
   <div class="linkslist">
   <p class="asidetitle">Links</p>
@@ -428,7 +913,7 @@ Relational DB -&amp;gt; Dat</p>
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
 		
-		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		<a href="/about" target="_blank" title="你家亮哥">你家亮哥</a>
 		
 		
 		</p>

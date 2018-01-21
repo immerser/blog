@@ -1,0 +1,670 @@
+
+ <!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>ansible教程   --- 官方文档笔记 | 你家亮哥的学习笔记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="你家亮哥">
+    
+
+    
+    <meta name="description" content="ansible官方文档学习安装 安装EPLE 1yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  安装ansible 12yum -y install ansibleyum -y install libselinux-python -y   [目标机器上安装]  配置ssh免登陆3">
+<meta name="keywords" content="ansible,doc,运维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ansible教程   --- 官方文档笔记">
+<meta property="og:url" content="https://immerser.github.io/2017/11/01/ansible_doc/index.html">
+<meta property="og:site_name" content="你家亮哥的学习笔记">
+<meta property="og:description" content="ansible官方文档学习安装 安装EPLE 1yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  安装ansible 12yum -y install ansibleyum -y install libselinux-python -y   [目标机器上安装]  配置ssh免登陆3">
+<meta property="og:locale" content="Chinese">
+<meta property="og:updated_time" content="2018-01-21T04:45:08.843Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ansible教程   --- 官方文档笔记">
+<meta name="twitter:description" content="ansible官方文档学习安装 安装EPLE 1yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm  安装ansible 12yum -y install ansibleyum -y install libselinux-python -y   [目标机器上安装]  配置ssh免登陆3">
+
+    
+    <link rel="alternative" href="/atom.xml" title="你家亮哥的学习笔记" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="你家亮哥的学习笔记">你家亮哥的学习笔记</a></h1>
+				<h2 class="blog-motto">---notebook of cloud,dev ops,language</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:immerser.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/11/01/ansible_doc/" title="ansible教程   --- 官方文档笔记" itemprop="url">ansible教程   --- 官方文档笔记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-01T12:10:33.000Z" itemprop="datePublished"> Published 2017-11-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ansible官方文档学习"><span class="toc-number">1.</span> <span class="toc-text">ansible官方文档学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hello-world"><span class="toc-number">1.2.</span> <span class="toc-text">hello world</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Inventory文件"><span class="toc-number">1.3.</span> <span class="toc-text">Inventory文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态"><span class="toc-number">1.4.</span> <span class="toc-text">动态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令详解"><span class="toc-number">1.5.</span> <span class="toc-text">命令详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ad-hoc"><span class="toc-number">1.6.</span> <span class="toc-text">ad-hoc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#module"><span class="toc-number">1.7.</span> <span class="toc-text">module</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Packaging-Modules"><span class="toc-number">1.7.1.</span> <span class="toc-text">Packaging Modules</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用模块"><span class="toc-number">1.8.</span> <span class="toc-text">常用模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Playbooks"><span class="toc-number">1.9.</span> <span class="toc-text">Playbooks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ansible-tower"><span class="toc-number">1.10.</span> <span class="toc-text">ansible tower</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见问题"><span class="toc-number">1.11.</span> <span class="toc-text">常见问题</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="ansible官方文档学习"><a href="#ansible官方文档学习" class="headerlink" title="ansible官方文档学习"></a>ansible官方文档学习</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>安装EPLE</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装ansible</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install ansible</span><br><span class="line">yum -y install libselinux-python -y   [目标机器上安装]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置ssh免登陆<br>3.1 生成SSH公钥私钥，生成的文件位于~/.ssh/下有id_rsa和id_rsa.pub</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -P</span><br></pre></td></tr></table></figure>
+<p>3.2 将<code>id_rsa.pub</code>复制到要免密码登陆的机器的<code>authorized_keys</code>文件中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp .ssh/id_rsa.pub name@host:/xxx/xxx/id_rsa.pub </span><br><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br><span class="line">chmod 600 .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h2><ol>
+<li><p>编辑<code>/etc/ansible/hosts</code>文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/ansible/hosts</span><br><span class="line">添加</span><br><span class="line">192.168.181.201</span><br><span class="line">192.168.181.202</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为了防止重复输入密码，执行以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-agent bash</span><br><span class="line">ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ansible all -m ping</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Inventory文件"><a href="#Inventory文件" class="headerlink" title="Inventory文件"></a>Inventory文件</h2><ol>
+<li>Ansible 可同时操作属于一个组的多台主机,组和主机之间的关系通过 inventory 文件配置. 默认的文件路径为 /etc/ansible/hosts</li>
+<li><p>格式  中括号中为组名 可以明确指明端口号 支持通配符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mail.example.com</span><br><span class="line"></span><br><span class="line">[webservers]</span><br><span class="line">foo.example.com</span><br><span class="line">bar.example.com</span><br><span class="line"></span><br><span class="line">[dbservers]</span><br><span class="line">one.example.com</span><br><span class="line">two.example.com</span><br><span class="line">badwolf.example.com:5309</span><br><span class="line">www[01:50].example.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>主机变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[atlanta]</span><br><span class="line">host1 http_port=80 maxRequestsPerChild=808</span><br><span class="line">host2 http_port=303 maxRequestsPerChild=909</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>组的变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[atlanta]</span><br><span class="line">host1</span><br><span class="line">host2</span><br><span class="line"></span><br><span class="line">[atlanta:vars]</span><br><span class="line">ntp_server=ntp.atlanta.example.com</span><br><span class="line">proxy=proxy.atlanta.example.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把一个组作为另一个组的子成员</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[atlanta]</span><br><span class="line">host1</span><br><span class="line">host2</span><br><span class="line"></span><br><span class="line">[raleigh]</span><br><span class="line">host2</span><br><span class="line">host3</span><br><span class="line"></span><br><span class="line">[southeast:children]</span><br><span class="line">atlanta</span><br><span class="line">raleigh</span><br><span class="line"></span><br><span class="line">[southeast:vars]</span><br><span class="line">some_server=foo.southeast.example.com</span><br><span class="line">halon_system_timeout=30</span><br><span class="line">self_destruct_countdown=60</span><br><span class="line">escape_pods=2</span><br><span class="line"></span><br><span class="line">[usa:children]</span><br><span class="line">southeast</span><br><span class="line">northeast</span><br><span class="line">southwest</span><br><span class="line">northwest</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分文件定义 Host 和 Group 变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/etc/ansible/group_vars/raleigh</span><br><span class="line">/etc/ansible/group_vars/webservers</span><br><span class="line">/etc/ansible/host_vars/foosball</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Inventory 参数的说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">ansible_ssh_host</span><br><span class="line">  将要连接的远程主机名.与你想要设定的主机的别名不同的话,可通过此变量设置.</span><br><span class="line"></span><br><span class="line">ansible_ssh_port</span><br><span class="line">  ssh端口号.如果不是默认的端口号,通过此变量设置.</span><br><span class="line"></span><br><span class="line">ansible_ssh_user</span><br><span class="line">  默认的 ssh 用户名</span><br><span class="line"></span><br><span class="line">ansible_ssh_pass</span><br><span class="line">  ssh 密码(这种方式并不安全,我们强烈建议使用 --ask-pass 或 SSH 密钥)</span><br><span class="line"></span><br><span class="line">ansible_sudo_pass</span><br><span class="line">  sudo 密码(这种方式并不安全,我们强烈建议使用 --ask-sudo-pass)</span><br><span class="line"></span><br><span class="line">ansible_sudo_exe (new in version 1.8)</span><br><span class="line">  sudo 命令路径(适用于1.8及以上版本)</span><br><span class="line"></span><br><span class="line">ansible_connection</span><br><span class="line">  与主机的连接类型.比如:local, ssh 或者 paramiko. Ansible 1.2 以前默认使用 paramiko.1.2 以后默认使用 &apos;smart&apos;,&apos;smart&apos; 方式会根据是否支持 ControlPersist, 来判断&apos;ssh&apos; 方式是否可行.</span><br><span class="line"></span><br><span class="line">ansible_ssh_private_key_file</span><br><span class="line">  ssh 使用的私钥文件.适用于有多个密钥,而你不想使用 SSH 代理的情况.</span><br><span class="line"></span><br><span class="line">ansible_shell_type</span><br><span class="line">  目标系统的shell类型.默认情况下,命令的执行使用 &apos;sh&apos; 语法,可设置为 &apos;csh&apos; 或 &apos;fish&apos;.</span><br><span class="line"></span><br><span class="line">ansible_python_interpreter</span><br><span class="line">  目标主机的 python 路径.适用于的情况: 系统中有多个 Python, 或者命令路径不是&quot;/usr/bin/python&quot;,比如  \*BSD, 或者 /usr/bin/python</span><br><span class="line">  不是 2.X 版本的 Python.我们不使用 &quot;/usr/bin/env&quot; 机制,因为这要求远程用户的路径设置正确,且要求 &quot;python&quot; 可执行程序名不可为 python以外的名字(实际有可能名为python26).</span><br><span class="line"></span><br><span class="line">  与 ansible_python_interpreter 的工作方式相同,可设定如 ruby 或 perl 的路径....</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="动态"><a href="#动态" class="headerlink" title="动态"></a>动态</h2><ol>
+<li>使用 Ansible 要加上 <code>-i</code> 选项 （例如:<code>-i/etc/ansible/cobbler.py</code>）<code>.cobbler.py</code>这个脚本使用 Cobbler 的 XMLRPC API 与 Cobbler 通信.</li>
+</ol>
+<h2 id="命令详解"><a href="#命令详解" class="headerlink" title="命令详解"></a>命令详解</h2><ol>
+<li><p>ansible <pattern_goes_here> -m <module_name> -a <arguments></arguments></module_name></pattern_goes_here></p>
+<p>1.1 pattern 通常关联到一系列组(主机的集合) –如上示例中,所有的主机均在 “webservers” 组中.<br>1.2 支持并集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webservers:dbservers</span><br></pre></td></tr></table></figure>
+<p>1.2 支持交集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webservers:!phoenix</span><br></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ol>
+<h2 id="ad-hoc"><a href="#ad-hoc" class="headerlink" title="ad-hoc"></a>ad-hoc</h2><pre><code>如果我们敲入一些命令去比较快的完成一些事情,而不需要将这些执行的命令特别保存下来, 这样的命令就叫做 ad-hoc 命令.
+</code></pre><ol>
+<li>command 模块不支持</li>
+<li></li>
+</ol>
+<h2 id="module"><a href="#module" class="headerlink" title="module"></a>module</h2><h3 id="Packaging-Modules"><a href="#Packaging-Modules" class="headerlink" title="Packaging Modules"></a>Packaging Modules</h3><ol>
+<li>作用<blockquote>
+<p>  注册 升级 移除 和列出包名 组名</p>
+</blockquote>
+</li>
+<li>核心参数<blockquote>
+<p>  name    名称<br>  state   安装 (present or installed, latest), 移除 (absent or removed)</p>
+</blockquote>
+</li>
+<li>示例<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">- name: 安装最新版本的apache</span><br><span class="line">  yum: name=httpd state=latest</span><br><span class="line"></span><br><span class="line">- name: 移除apache</span><br><span class="line">  yum: name=httpd state=absent</span><br><span class="line"></span><br><span class="line">- name: 安装一个特殊版本的apache</span><br><span class="line">  yum: name=httpd-2.2.29-1.4.amzn1 state=present</span><br><span class="line"></span><br><span class="line">- name: 升级所有的软件包</span><br><span class="line">  yum: name=* state=latest</span><br><span class="line"></span><br><span class="line">- name: 从一个远程yum仓库安装nginx</span><br><span class="line">  yum: name=http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm state=present</span><br><span class="line"></span><br><span class="line">- name: 从本地仓库安装nginx</span><br><span class="line">  yum: name=/usr/local/src/nginx-release-centos-6-0.el6.ngx.noarch.rpm state=present</span><br><span class="line"></span><br><span class="line">- name: 安装整个Development tools相关的软件包</span><br><span class="line">  yum: name=&quot;@Development tools&quot; state=present</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="常用模块"><a href="#常用模块" class="headerlink" title="常用模块"></a>常用模块</h2><ol>
+<li>file</li>
+<li>shell</li>
+<li>copy</li>
+<li>yum</li>
+<li>user</li>
+<li>cron</li>
+<li>group</li>
+<li>service</li>
+<li>script</li>
+<li>ping</li>
+<li>command</li>
+<li>raw</li>
+<li>get_url</li>
+<li>synchronize</li>
+</ol>
+<h2 id="Playbooks"><a href="#Playbooks" class="headerlink" title="Playbooks"></a>Playbooks</h2><h2 id="ansible-tower"><a href="#ansible-tower" class="headerlink" title="ansible tower"></a>ansible tower</h2><ol>
+<li>安装<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://releases.ansible.com/ansible-tower/setup-bundle/ansible-tower-setup-bundle-latest.el6.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ol>
+<li>target uses selinux but python bindings (libselinux-python) aren’t installed!</li>
+<li>为了确保连接ansible的顺利执行，需要在ansible的配置文件中添加忽略keys检查的配置，ansible的配置文件默认在<br>/etc/ansible/ansible.cfg。在该文件中添加如下语句即可。</li>
+</ol>
+<p>host_key_checking = False</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/运维/">运维</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/ansible/">ansible</a><a href="/tags/doc/">doc</a><a href="/tags/运维/">运维</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://immerser.github.io/2017/11/01/ansible_doc/" data-title="ansible教程   --- 官方文档笔记 | 你家亮哥的学习笔记" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/11/01/zabbix官方文档阅读/" title="zabbix教程   --- 官方文档笔记">
+  <strong>上一篇：</strong><br/>
+  <span>
+  zabbix教程   --- 官方文档笔记</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/11/01/consul nomad vagrant 安装/"  title="nomad教程   --- 官方文档笔记">
+ <strong>下一篇：</strong><br/> 
+ <span>nomad教程   --- 官方文档笔记
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ansible官方文档学习"><span class="toc-number">1.</span> <span class="toc-text">ansible官方文档学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hello-world"><span class="toc-number">1.2.</span> <span class="toc-text">hello world</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Inventory文件"><span class="toc-number">1.3.</span> <span class="toc-text">Inventory文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态"><span class="toc-number">1.4.</span> <span class="toc-text">动态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令详解"><span class="toc-number">1.5.</span> <span class="toc-text">命令详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ad-hoc"><span class="toc-number">1.6.</span> <span class="toc-text">ad-hoc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#module"><span class="toc-number">1.7.</span> <span class="toc-text">module</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Packaging-Modules"><span class="toc-number">1.7.1.</span> <span class="toc-text">Packaging Modules</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用模块"><span class="toc-number">1.8.</span> <span class="toc-text">常用模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Playbooks"><span class="toc-number">1.9.</span> <span class="toc-text">Playbooks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ansible-tower"><span class="toc-number">1.10.</span> <span class="toc-text">ansible tower</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见问题"><span class="toc-number">1.11.</span> <span class="toc-text">常见问题</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/cloud/" title="cloud">cloud<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tools/cloud/" title="cloud">cloud<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/framework/" title="framework">framework<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/framwwork/" title="framwwork">framwwork<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tools/" title="tools">tools<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/运维/" title="运维">运维<sup>6</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/运维/" title="运维">运维<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/doc/" title="doc">doc<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cloud/" title="cloud">cloud<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/dev-ops/" title="dev ops">dev ops<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ansible/" title="ansible">ansible<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/consul/" title="consul">consul<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spring-boot/" title="spring boot">spring boot<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/kubernetes/" title="kubernetes">kubernetes<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ReactiveX/" title="ReactiveX">ReactiveX<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/framework/" title="framework">framework<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker-compose/" title="docker compose">docker compose<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/dockerfile/" title="dockerfile">dockerfile<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spring-cloud/" title="spring cloud">spring cloud<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spirng/" title="spirng">spirng<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cache/" title="cache">cache<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nomad/" title="nomad">nomad<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/zabbix/" title="zabbix">zabbix<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/monitro/" title="monitro">monitro<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/elastic-search/" title="elastic search">elastic search<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m immerser. <br/>
+			This is my blog,study with me.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="你家亮哥">你家亮哥</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

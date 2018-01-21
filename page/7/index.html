@@ -1,25 +1,29 @@
 
  <!DOCTYPE HTML>
-<html >
+<html lang="Chinese">
 <head>
   <meta charset="UTF-8">
   
-    <title>Hexo</title>
+    <title>你家亮哥的学习笔记</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="John Doe">
+    <meta name="author" content="你家亮哥">
     
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+    <meta name="description" content="Hello world">
+<meta property="og:type" content="website">
+<meta property="og:title" content="你家亮哥的学习笔记">
 <meta property="og:url" content="https://immerser.github.io/page/7/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="你家亮哥的学习笔记">
+<meta property="og:description" content="Hello world">
+<meta property="og:locale" content="Chinese">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="你家亮哥的学习笔记">
+<meta name="twitter:description" content="Hello world">
 
     
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="你家亮哥的学习笔记" type="application/atom+xml">
     
     
     <link rel="icon" href="/img/favicon.ico">
@@ -37,8 +41,8 @@
 <div>
 		
 			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
-				<h2 class="blog-motto"></h2>
+				<h1 class="site-name"><a href="/" title="你家亮哥的学习笔记">你家亮哥的学习笔记</a></h1>
+				<h2 class="blog-motto">---notebook of cloud,dev ops,language</h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
@@ -68,158 +72,353 @@
     <div id="container">
       <div id="main">
 
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/使用OPENSSL进行证书配置/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
+   
     
-     
-           <p itemprop="description" >自签名证书配置</p>
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/11/01/flume_doc/" title="flume教程   --- 官方文档笔记" itemprop="url">flume教程   --- 官方文档笔记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-01T12:10:33.000Z" itemprop="datePublished"> Published 2017-11-01</time>
+    
+  </p>
+</header>
+    <div class="article-content">
         
-    
-    <time datetime="2018-01-20T15:44:39.032Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
+        <h1 id="Flume官方学习笔记"><a href="#Flume官方学习笔记" class="headerlink" title="Flume官方学习笔记"></a>Flume官方学习笔记</h1><h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><ol>
+<li>架构图</li>
+</ol>
+<p><img src="http://flume.apache.org/_images/UserGuide_image00.png" alt="image"><br><img src="http://flume.apache.org/_images/UserGuide_image02.png" alt="image"></p>
+<ol>
+<li>概念</li>
+<li>程序文件结构<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2></li>
+<li>安装flume-agent<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://mirror.bit.edu.cn/apache/flume/1.7.0/apache-flume-1.7.0-bin.tar.gz</span><br><span class="line">tar -xvf apache-flume-1.7.0-bin.tar.gz</span><br><span class="line">cp conf/flume-conf.properties.template conf/flume-conf.properties</span><br><span class="line">bin/flume-ng agent -n $agent_name -c conf -f conf/flume-conf.properties</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="helloworld"><a href="#helloworld" class="headerlink" title="helloworld"></a>helloworld</h2><ol>
+<li>配置文件修改<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># hello world</span><br><span class="line">vi /conf/flume-conf.properties</span><br><span class="line">添加</span><br><span class="line"></span><br><span class="line">hello.sources = hello_source</span><br><span class="line">hello.channels = hello_channel</span><br><span class="line">hello.sinks = hello_sink</span><br><span class="line"></span><br><span class="line">## hello world sources</span><br><span class="line">hello.sources.hello_source.type=netcat</span><br><span class="line">hello.sources.hello_source.bind=localhost</span><br><span class="line">hello.sources.hello_source.port=4444</span><br><span class="line"></span><br><span class="line">## hello world channels</span><br><span class="line">hello.channels.hello_channel.type= memory</span><br><span class="line">hello.channels.hello_channel.capacity = 1000</span><br><span class="line"></span><br><span class="line">## hello world sinks</span><br><span class="line">hello.sinks.hello_sink.type = logger</span><br><span class="line"></span><br><span class="line">## hello world bind</span><br><span class="line">hello.sources.hello_source.channels = hello_channel</span><br><span class="line">hello.sinks.hello_sink.channel = hello_channel</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/flume-ng agent  -n hello -c conf -f conf/flume-conf.properties</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行命令查看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet localhost 4444</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意事项</p>
+<p>4.1.    source可以配置多个channel  因此配置为hello.sources.hello_source.channel<code>s</code> = hello_channel </p>
+<p>4.2.    sink只能对应一个channel因此 配置为 hello.sinks.hello_sink.channel = hello_channel</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2></li>
+<li>插件配置路径    <code>$FLUME_HOME/plugins.d</code><h2 id="source"><a href="#source" class="headerlink" title="source"></a>source</h2><h2 id="channel"><a href="#channel" class="headerlink" title="channel"></a>channel</h2><h2 id="sink"><a href="#sink" class="headerlink" title="sink"></a>sink</h2></li>
+</ol>
 
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/OAuth2官方文档阅读/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >IntroductionRoles
-resource owner
-resource server
-client
-authorization serverProtocol Flow1234567891011121314151617+--------+                </p>
         
-    
-    <time datetime="2018-01-20T15:44:38.974Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/spring_cloud_doc/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >ZUUL作用
-Authentication
-Insights
-Stress Testing
-Canary Testing
-Dynamic Routing
-Service Migration
-Load Shedding
-Security
-Static Response handli</p>
         
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/framework/">framework</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/运维/">运维</a><a href="/tags/flume/">flume</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
     
-    <time datetime="2018-01-20T15:44:38.974Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/ansible_doc/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
     
-     
-           <p itemprop="description" >ansible官方文档学习安装
-安装EPLE
-1yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-
-安装ansible
-12yum -y install ansib</p>
+      <a href="/2017/11/01/Jackson_doc/" title="jackson教程   --- 官方文档笔记" itemprop="url">jackson教程   --- 官方文档笔记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-01T12:10:33.000Z" itemprop="datePublished"> Published 2017-11-01</time>
+    
+  </p>
+</header>
+    <div class="article-content">
         
-    
-    <time datetime="2018-01-20T15:42:57.297Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
+        <h1 id="Jackson官方文档"><a href="#Jackson官方文档" class="headerlink" title="Jackson官方文档"></a>Jackson官方文档</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>jackson分为三个模块<br>1.streaming<br>2.databind<br>3.annotations</p>
+<h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><ol>
+<li>从java创建json的三种方式<ol>
+<li>从java实体</li>
+<li>从JsonNode树</li>
+<li>从json流</li>
+</ol>
+</li>
+<li></li>
+</ol>
+<h2 id="streaming"><a href="#streaming" class="headerlink" title="streaming"></a>streaming</h2><h2 id="annotations"><a href="#annotations" class="headerlink" title="annotations"></a>annotations</h2><h2 id="databind"><a href="#databind" class="headerlink" title="databind"></a>databind</h2><ol>
+<li>java转json <blockquote>
+<p>  默认使用BeanSerializer进行POJO的序列化</p>
+</blockquote>
+</li>
+<li>json转java<h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2></li>
+<li>序列化特性</li>
+</ol>
+<p>SerializationFeature特性 | annotation | 默认值 | 描述<br>|—|—|—|—|<br>|WRAP_ROOT_VALUE|@JsonRootName|false|以类名作为根元素|<br>|INDENT_OUTPUT|-|false|缩放排列输出|<br>|WRITE_DATES_AS_TIMESTAMPS|-|true|timestamps输出日期|<br>|WRITE_ENUMS_USING_TO_STRING|-|false|默认以name()而不是toString()来输出|<br>|WRITE_ENUMS_USING_INDEX|-|false|使用ordinal()输出|<br>|WRITE_SINGLE_ELEM_ARRAYS_UNWRAPPED|-|false|序列化单元素数组时不以数组来输出|<br>|ORDER_MAP_ENTRIES_BY_KEYS|-|false|序列化Map时对key进行排序操作|<br>|WRITE_CHAR_ARRAYS_AS_JSON_ARRAYS|-|false|序列化char[]时以json数组输出|<br>|WRITE_BIGDECIMAL_AS_PLAIN|-|false|序列化BigDecimal时之间是否以toPlainString()科学计数方式来输出</p>
+<ol>
+<li>常用注解<ol>
+<li>@JsonAutoDetect</li>
+<li>@JsonIgnore</li>
+<li>@JsonProperty</li>
+<li>@JsonIgnoreProperties</li>
+<li>@JsonUnwrapped</li>
+<li>@JsonIdentityInfo</li>
+<li>@JsonNaming</li>
+<li>@JsonTypeInfo</li>
+<li>@JsonSubTypes</li>
+<li>@JsonTypeName</li>
+<li>@JsonTypeResolver</li>
+<li>@JsonTypeIdResoler</li>
+<li>@JsonSerialize</li>
+<li>@JsonDeserialize</li>
+<li>@JsonPropertyOrder</li>
+<li>@JsonView</li>
+<li>@JsonFilter</li>
+<li>@JsonIgnoreType</li>
+<li>@JsonAnySetter</li>
+<li>@JsonCreator</li>
+<li>@JacksonInject</li>
+<li>@JsonPOJOBuilder<br>过期注解备注<br>```<br>@JsonGetter<br>作用于方法，1.0版本开始的注解，已经过期，不推荐使用，改用@JsonProperty<br>@JsonUseSerializer<br>作用于类和方法，1.5版本开始被移除了，改用@JsonSerialize<br>@JsonSetter<br>作用于方法，1.0版本开始的注解，已过期，不推荐使用，改用@JsonProperty<br>@JsonClass<br>作用于方法和类，1.9版本开始被移除了，改为@JsonDeserialize.as<br>@JsonContentClass<br>作用于方法，1.9版本开始被移除了，改为@JsonDeserialize.contentAs<br>@JsonKeyClass<br>作用于方法和类，1.9版本开始被移除了，改为@JsonDeserialize.keyAs<br>@JsonUseDeserializer<br>作用于方法和类，1.5版本开始被移除了，改为@JsonDeserialize</li>
+</ol>
+</li>
+</ol>
+<p>`</p>
 
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/test/" title="test" itemprop="url">
-  
-    <h1 itemprop="name">test</h1>
-    
-     
-           <p itemprop="description" ></p>
         
-    
-    <time datetime="2018-01-20T09:02:16.000Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/article-title/" title="article title" itemprop="url">
-  
-    <h1 itemprop="name">article title</h1>
-    
-     
-           <p itemprop="description" >hello world</p>
         
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/framwwork/">framwwork</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/doc/">doc</a><a href="/tags/jackson/">jackson</a><a href="/tags/json/">json</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
     
-    <time datetime="2018-01-20T08:31:37.000Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/hello-world/" title="Hello World" itemprop="url">
-  
-    <h1 itemprop="name">Hello World</h1>
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
     
-     
-           <p itemprop="description" >Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the </p>
+      <a href="/2017/11/01/istio_doc/" title="istio教程   --- 官方文档笔记" itemprop="url">istio教程   --- 官方文档笔记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-01T12:10:33.000Z" itemprop="datePublished"> Published 2017-11-01</time>
+    
+  </p>
+</header>
+    <div class="article-content">
         
+        <h2 id="istio概述"><a href="#istio概述" class="headerlink" title="istio概述"></a>istio概述</h2><h3 id="service-mesh"><a href="#service-mesh" class="headerlink" title="service mesh"></a>service mesh</h3><blockquote>
+<p>  是一个专用的基础设施层，功能在于提供安全、快速、可靠的服务间通讯（service-to-service）。一个云原生应用（cloud native application）的构建离不开Service mesh。</p>
+<h3 id="istio"><a href="#istio" class="headerlink" title="istio"></a>istio</h3><p>  用来连接、管理和保护微服务的开放平台<br>  对service mesh提供了完整的实现</p>
+<ul>
+<li>Traffic Management</li>
+<li>Observability</li>
+<li>Policy Enforcement</li>
+<li>Service Identity and Security</li>
+<li>Platform Support</li>
+<li>Integration and Customization<h2 id="为什么使用istio"><a href="#为什么使用istio" class="headerlink" title="为什么使用istio"></a>为什么使用istio</h2></li>
+</ul>
+</blockquote>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="envoy"><a href="#envoy" class="headerlink" title="envoy"></a>envoy</h3><blockquote>
+<p>  七层代理 通讯总线</p>
+<h3 id="sidecar"><a href="#sidecar" class="headerlink" title="sidecar"></a>sidecar</h3><h3 id="Mixer"><a href="#Mixer" class="headerlink" title="Mixer"></a>Mixer</h3><h3 id="Pilot"><a href="#Pilot" class="headerlink" title="Pilot"></a>Pilot</h3><h3 id="Istio-Auth"><a href="#Istio-Auth" class="headerlink" title="Istio-Auth"></a>Istio-Auth</h3><h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p>  istio service mesh逻辑上分为 data plane和control plane两部分</p>
+</blockquote>
+<h3 id="data-plane"><a href="#data-plane" class="headerlink" title="data plane"></a>data plane</h3><blockquote>
+<p>  控制微服务间的网络通讯,由一系列称为 sidecars 的代理 Envoy 组成</p>
+</blockquote>
+<h3 id="control-plane"><a href="#control-plane" class="headerlink" title="control plane"></a>control plane</h3><blockquote>
+<p>  管理和配置代理<br>  由 Pilot, Mixer, CA, API server 四个服务组成</p>
+</blockquote>
+<p><img src="https://istio.io/docs/concepts/what-is-istio/img/overview/arch.svg" alt="image"></p>
+<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><ul>
+<li>路由和负载均衡</li>
+<li>跨语言和平台 </li>
+<li>Fleet-Wide Policy Enforcement</li>
+<li>深度探测和报告</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h2 id="Tasks"><a href="#Tasks" class="headerlink" title="Tasks"></a>Tasks</h2><h2 id=""><a href="#" class="headerlink" title=" "></a> </h2>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/cloud/">cloud</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/运维/">运维</a><a href="/tags/istio/">istio</a><a href="/tags/kubernetes/">kubernetes</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
     
-    <time datetime="2018-01-20T08:11:42.968Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/11/01/reactivex_doc/" title="ReactiveX教程   --- 官方文档笔记" itemprop="url">ReactiveX教程   --- 官方文档笔记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-01T12:10:33.000Z" itemprop="datePublished"> Published 2017-11-01</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="ReactiveX-Reactive-Extensions"><a href="#ReactiveX-Reactive-Extensions" class="headerlink" title="ReactiveX (Reactive Extensions)"></a>ReactiveX (Reactive Extensions)</h1><h1 id="使用观察者模式进行异步和事件构建的类库"><a href="#使用观察者模式进行异步和事件构建的类库" class="headerlink" title="使用观察者模式进行异步和事件构建的类库"></a>使用观察者模式进行异步和事件构建的类库</h1><h2 id="HelloWorld"><a href="#HelloWorld" class="headerlink" title="HelloWorld"></a>HelloWorld</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static void hello(String... names) &#123;</span><br><span class="line">    Observable.from(names).subscribe(new Action1&lt;String&gt;() &#123;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void call(String s) &#123;</span><br><span class="line">            System.out.println(&quot;Hello &quot; + s + &quot;!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ol>
+<li>仅仅当代码复杂到我想将它分解成简单的逻辑的时候，我才使用响应式代码。</li>
+</ol>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><ol>
+<li>实现<code>Observable</code>接口,通过<code>create</code>方法</li>
+<li>使用操作符</li>
+<li>从已有的数据,这会导致同步调用<code>onNext</code>方法,完成后调用<code>onCompleted</code>方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Observable&lt;Integer&gt; o = Observable.from(list);</span><br><span class="line">Observable&lt;String&gt; o = Observable.just(&quot;one object&quot;);</span><br><span class="line">//from和just区别 一个可以解析列表一个不会</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li>和java8的streams的区别</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Rx is an API for creating and processing observable sequences. </span><br><span class="line">The Streams API is for processing iterable sequences.</span><br><span class="line">Rx sequences are push-based; you are notified when an element is available. </span><br><span class="line">A Stream is pull-based; </span><br><span class="line">it &quot;asks&quot; for items to process. </span><br><span class="line">They may appear similar because they both support similar operators/transforms, </span><br><span class="line">but the mechanics are essentially opposites of each other.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Control flow is opposite: Rx calls you, but you call Stream</span><br></pre></td></tr></table></figure>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/framework/">framework</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/doc/">doc</a><a href="/tags/运维/">运维</a><a href="/tags/ReactiveX/">ReactiveX</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
 
 
 
@@ -227,7 +426,7 @@ Static Response handli</p>
 
 
 
-  <nav id="page-nav" class="clearfix unexpand">
+  <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/6/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
   </nav>
 
@@ -242,8 +441,126 @@ Static Response handli</p>
 
 
   
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/cloud/" title="cloud">cloud<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tools/cloud/" title="cloud">cloud<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/framework/" title="framework">framework<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/framwwork/" title="framwwork">framwwork<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tools/" title="tools">tools<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/运维/" title="运维">运维<sup>6</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
 
   
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/运维/" title="运维">运维<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/doc/" title="doc">doc<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cloud/" title="cloud">cloud<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/dev-ops/" title="dev ops">dev ops<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ansible/" title="ansible">ansible<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/consul/" title="consul">consul<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spring-boot/" title="spring boot">spring boot<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/kubernetes/" title="kubernetes">kubernetes<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ReactiveX/" title="ReactiveX">ReactiveX<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/framework/" title="framework">framework<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker-compose/" title="docker compose">docker compose<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/dockerfile/" title="dockerfile">dockerfile<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spring-cloud/" title="spring cloud">spring cloud<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spirng/" title="spirng">spirng<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cache/" title="cache">cache<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nomad/" title="nomad">nomad<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/zabbix/" title="zabbix">zabbix<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/monitro/" title="monitro">monitro<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/elastic-search/" title="elastic search">elastic search<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
 
   <div class="linkslist">
   <p class="asidetitle">Links</p>
@@ -313,7 +630,7 @@ Static Response handli</p>
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
 		
-		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		<a href="/about" target="_blank" title="你家亮哥">你家亮哥</a>
 		
 		
 		</p>

@@ -1,0 +1,847 @@
+
+ <!DOCTYPE HTML>
+<html lang="Chinese">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>consul教程   --- 官方文档笔记 | 你家亮哥的学习笔记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="你家亮哥">
+    
+
+    
+    <meta name="description" content="consul官方文档学习笔记1.consul的作用 服务发现 健康检查 键值存储 多数据中心  2.基本架构 Agent 每一个consul集群节点均有一个守护线程称为Agent  可以以Server或者Client的模式启动 用于运行DNS或HTTP 负责检查 和保持服务     作用：维护成员节点信息，注册服务，健康检查，响应查询等等  Client客户端程序无状态 Server Datace">
+<meta name="keywords" content="cloud,consul,dev ops">
+<meta property="og:type" content="article">
+<meta property="og:title" content="consul教程   --- 官方文档笔记">
+<meta property="og:url" content="https://immerser.github.io/2017/11/01/consul/index.html">
+<meta property="og:site_name" content="你家亮哥的学习笔记">
+<meta property="og:description" content="consul官方文档学习笔记1.consul的作用 服务发现 健康检查 键值存储 多数据中心  2.基本架构 Agent 每一个consul集群节点均有一个守护线程称为Agent  可以以Server或者Client的模式启动 用于运行DNS或HTTP 负责检查 和保持服务     作用：维护成员节点信息，注册服务，健康检查，响应查询等等  Client客户端程序无状态 Server Datace">
+<meta property="og:locale" content="Chinese">
+<meta property="og:image" content="https://www.consul.io/assets/images/consul-arch-5d4e3623.png">
+<meta property="og:updated_time" content="2018-01-21T05:00:25.586Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="consul教程   --- 官方文档笔记">
+<meta name="twitter:description" content="consul官方文档学习笔记1.consul的作用 服务发现 健康检查 键值存储 多数据中心  2.基本架构 Agent 每一个consul集群节点均有一个守护线程称为Agent  可以以Server或者Client的模式启动 用于运行DNS或HTTP 负责检查 和保持服务     作用：维护成员节点信息，注册服务，健康检查，响应查询等等  Client客户端程序无状态 Server Datace">
+<meta name="twitter:image" content="https://www.consul.io/assets/images/consul-arch-5d4e3623.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="你家亮哥的学习笔记" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="你家亮哥的学习笔记">你家亮哥的学习笔记</a></h1>
+				<h2 class="blog-motto">---notebook of cloud,dev ops,language</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:immerser.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/11/01/consul/" title="consul教程   --- 官方文档笔记" itemprop="url">consul教程   --- 官方文档笔记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-01T12:10:33.000Z" itemprop="datePublished"> Published 2017-11-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#consul官方文档学习笔记"><span class="toc-number">1.</span> <span class="toc-text">consul官方文档学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-consul的作用"><span class="toc-number">1.1.</span> <span class="toc-text">1.consul的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-基本架构"><span class="toc-number">1.2.</span> <span class="toc-text">2.基本架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Hello-World"><span class="toc-number">1.3.</span> <span class="toc-text">3.Hello World</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-dns-interface"><span class="toc-number">1.4.</span> <span class="toc-text">4. dns interface</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-HTTP-API"><span class="toc-number">1.5.</span> <span class="toc-text">5. HTTP API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-配置"><span class="toc-number">1.6.</span> <span class="toc-text">6. 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-服务定义"><span class="toc-number">1.7.</span> <span class="toc-text">7. 服务定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-检查定义"><span class="toc-number">1.8.</span> <span class="toc-text">8. 检查定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-加密服务"><span class="toc-number">1.9.</span> <span class="toc-text">9. 加密服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-RPC协议"><span class="toc-number">1.10.</span> <span class="toc-text">10. RPC协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-遥测"><span class="toc-number">1.11.</span> <span class="toc-text">11. 遥测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-检测"><span class="toc-number">1.12.</span> <span class="toc-text">12. 检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-常用命令"><span class="toc-number">1.13.</span> <span class="toc-text">13. 常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-常用配置选项"><span class="toc-number">1.14.</span> <span class="toc-text">14. 常用配置选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-备注"><span class="toc-number">1.15.</span> <span class="toc-text">15. 备注</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="consul官方文档学习笔记"><a href="#consul官方文档学习笔记" class="headerlink" title="consul官方文档学习笔记"></a>consul官方文档学习笔记</h1><h2 id="1-consul的作用"><a href="#1-consul的作用" class="headerlink" title="1.consul的作用"></a>1.consul的作用</h2><ol>
+<li>服务发现</li>
+<li>健康检查</li>
+<li>键值存储</li>
+<li>多数据中心</li>
+</ol>
+<h2 id="2-基本架构"><a href="#2-基本架构" class="headerlink" title="2.基本架构"></a>2.基本架构</h2><ol>
+<li>Agent<blockquote>
+<p>每一个consul集群节点均有一个守护线程称为Agent  可以以Server或者Client的模式启动 用于运行DNS或HTTP 负责检查 和保持服务</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>作用：维护成员节点信息，注册服务，健康检查，响应查询等等</p>
+<ol>
+<li>Client<br>客户端程序无状态</li>
+<li>Server</li>
+<li>Datacenter<br>私有化、低延迟、高带宽的网络环境</li>
+<li>Consensus</li>
+<li>Gossip<br>涉及随即节点访问 主要使用UDP</li>
+<li>LAN Gosiip<br>局域网的Gossip</li>
+<li>WAN Gossip<br>广域网的Gossip</li>
+<li>RPC</li>
+</ol>
+</blockquote>
+<p><img src="https://www.consul.io/assets/images/consul-arch-5d4e3623.png" alt="image"></p>
+<h2 id="3-Hello-World"><a href="#3-Hello-World" class="headerlink" title="3.Hello World"></a>3.Hello World</h2><ol>
+<li>下载Consul程序并解压</li>
+<li><p>创建目录    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /etc/consul.d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>写入文件    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &apos;&#123;&quot;service&quot;: &#123;&quot;name&quot;: &quot;web&quot;, &quot;tags&quot;: [&quot;rails&quot;], &quot;port&quot;: 80&#125;&#125;&apos; \</span><br><span class="line">    &gt;/etc/consul.d/web.json</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以开发模式启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">consul agent -dev -config-dir /etc/consul.d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看集群成员    consul members</p>
+</li>
+<li><p>查询服务</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dig @127.0.0.1 -p 8600 web.service.consul</span><br><span class="line">或者</span><br><span class="line">curl http://localhost:8500/v1/catalog/service/web</span><br></pre></td></tr></table></figure>
+<h2 id="4-dns-interface"><a href="#4-dns-interface" class="headerlink" title="4. dns interface"></a>4. dns interface</h2><ol>
+<li>作用：服务发现 默认监听使用127.0.0.1:8600</li>
+<li>名词解释：<blockquote>
+<p>client_addr<br>ports.dns<br>recursors<br>domain<br>dns_config</p>
+<h2 id="5-HTTP-API"><a href="#5-HTTP-API" class="headerlink" title="5. HTTP API"></a>5. HTTP API</h2></blockquote>
+</li>
+</ol>
+<h2 id="6-配置"><a href="#6-配置" class="headerlink" title="6. 配置"></a>6. 配置</h2><p>配置可以通过命令行和配置文件的方式指定，所有配置选项均为可选，默认使用描述\<br>如果使用配置文件，指定目录后按照字母顺序加载配置文件<br>配置文件如果配置项相同，后面的配置会覆盖前面的配置<br>使用signup可以</p>
+<h2 id="7-服务定义"><a href="#7-服务定义" class="headerlink" title="7. 服务定义"></a>7. 服务定义</h2><h2 id="8-检查定义"><a href="#8-检查定义" class="headerlink" title="8. 检查定义"></a>8. 检查定义</h2><h2 id="9-加密服务"><a href="#9-加密服务" class="headerlink" title="9. 加密服务"></a>9. 加密服务</h2><h2 id="10-RPC协议"><a href="#10-RPC协议" class="headerlink" title="10. RPC协议"></a>10. RPC协议</h2><h2 id="11-遥测"><a href="#11-遥测" class="headerlink" title="11. 遥测"></a>11. 遥测</h2><h2 id="12-检测"><a href="#12-检测" class="headerlink" title="12. 检测"></a>12. 检测</h2><h2 id="13-常用命令"><a href="#13-常用命令" class="headerlink" title="13. 常用命令"></a>13. 常用命令</h2><ol>
+<li>agent<blockquote>
+<p>  运行一个consul agent</p>
+</blockquote>
+</li>
+<li>join<blockquote>
+<p>  将agent加入到consul cluster</p>
+</blockquote>
+</li>
+<li>members<blockquote>
+<p>  列出consul cluster集群中的成员</p>
+</blockquote>
+</li>
+<li>configtest</li>
+<li>event</li>
+<li>exec</li>
+<li>force-leave</li>
+<li>info</li>
+<li>keygen</li>
+<li>keyring</li>
+<li>leave</li>
+<li>lock</li>
+<li>maint</li>
+<li>monitor</li>
+<li>reload</li>
+<li>rtt</li>
+<li>version</li>
+<li>watch</li>
+</ol>
+<h2 id="14-常用配置选项"><a href="#14-常用配置选项" class="headerlink" title="14. 常用配置选项"></a>14. 常用配置选项</h2><ol>
+<li>-data-dir<blockquote>
+<p>  agent存储状态的数据目录(对于server)很重要,因为必须持久化集群状态</p>
+</blockquote>
+</li>
+<li>-config-dir<blockquote>
+<p>  指定service的配置文件和检查定义所在的位置</p>
+</blockquote>
+</li>
+<li>-config-file<blockquote>
+<p>  指定一个要装载的配置文件,可以配置多次,相同的值后面会覆盖前面</p>
+</blockquote>
+</li>
+<li>dev<blockquote>
+<p>  创建一个开发环境的server节点,该参数配置下不会用任何持久化操作</p>
+</blockquote>
+</li>
+<li>-bootstrap-expect<blockquote>
+<p>  通知consul server我们现在准备加入server节点个数,该参数是为了延迟日志复制的启动直到我们指定数量的节点成功加入后启动</p>
+</blockquote>
+</li>
+<li>-node<blockquote>
+<p>  指定节点在集群中的名称,该名称在集群中必须唯一</p>
+</blockquote>
+</li>
+<li>-bind<blockquote>
+<p>  指明节点的ip地址</p>
+</blockquote>
+</li>
+<li>-server<blockquote>
+<p>  指定节点为server每个数据中心推荐为3或5 </p>
+</blockquote>
+</li>
+<li>-client<blockquote>
+<p>  client模式若不指定为-server则为client不用特别指定</p>
+</blockquote>
+</li>
+<li>-join<blockquote>
+<p>  将节点加入到集群</p>
+</blockquote>
+</li>
+<li>-domain</li>
+<li>-dc<blockquote>
+<p>  指定机器加入到哪一个dc中</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="15-备注"><a href="#15-备注" class="headerlink" title="15. 备注"></a>15. 备注</h2><p>所有配置说明:</p>
+<p><a href="https://www.consul.io/docs/agent/options.html" target="_blank" rel="noopener">https://www.consul.io/docs/agent/options.html</a></p>
+<p>使用 -h 来查看子命令的帮助</p>
+<p>端口配置<br>配 置 项| 配 置 说 明|<br>–|–|<br>8300|server rpc<br>8301|serf lan<br>8302|serf wan<br>8400|cli rpc<br>8500|http<br>8600|dns</p>
+<p>命令说明<br>配 置 项| 配 置 说 明|<br>–|–|<br>agent |         运行agent<br>event |         触发事件<br>exec   |        在consul节点上执行命令<br>force-leave  |  强制一个节点离开集群<br>info   |        提供debug信息<br>join   |        添加集群节点<br>keygen   |      生成加密key<br>leave     |     优雅离开集群并关闭<br>members   |     列举集群节点<br>monitor   |     显示日志监控集群<br>reload    |     出发节点重新加载配置文件<br>version   |     显示consul版本<br>watch     |     监控consul的改变</p>
+<table>
+<thead>
+<tr>
+<th>配 置 项</th>
+<th>配 置 说 明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>  -advertise=addr</td>
+<td>通知展现地址用来改变我们给集群中的其他节点展现的地址，一般情况下-bind地址就是展现地址</td>
+</tr>
+<tr>
+<td>  -advertise-wan=addr</td>
+<td>Sets address to advertise on wan instead of advertise addr</td>
+</tr>
+<tr>
+<td>  -atlas=org/name</td>
+<td>Sets the Atlas infrastructure name, enables SCADA.</td>
+</tr>
+<tr>
+<td>  -atlas-join</td>
+<td>Enables auto-joining the Atlas cluster</td>
+</tr>
+<tr>
+<td>  -atlas-token=token</td>
+<td>Provides the Atlas API token</td>
+</tr>
+<tr>
+<td>  -atlas-endpoint=1.2.3.4</td>
+<td>The address of the endpoint for Atlas integration.</td>
+</tr>
+<tr>
+<td>  -bootstrap</td>
+<td>用来控制一个server是否在bootstrap模式，在一个datacenter中只能有一个server处于bootstrap模式，当一个server处于bootstrap模式时，可以自己选举为raft leader。</td>
+</tr>
+<tr>
+<td>  -bind=0.0.0.0</td>
+<td>该地址用来在集群内部的通讯，集群内的所有节点到地址都必须是可达的，默认是0.0.0.0</td>
+</tr>
+<tr>
+<td>  -http-port=8500</td>
+<td>Sets the HTTP API port to listen on</td>
+</tr>
+<tr>
+<td>  -bootstrap-expect=0</td>
+<td>在一个datacenter中期望提供的server节点数目，当该值提供的时候，consul一直等到达到指定sever数目的时候才会引导整个集群，该标记不能和bootstrap公用</td>
+</tr>
+<tr>
+<td>  -client=127.0.0.1</td>
+<td>consul绑定在哪个client地址上，这个地址提供HTTP、DNS、RPC等服务，默认是127.0.0.1</td>
+</tr>
+<tr>
+<td>  -config-file=foo</td>
+<td>明确的指定要加载哪个配置文件</td>
+</tr>
+<tr>
+<td>  -config-dir=foo</td>
+<td>配置文件目录，里面所有以.json结尾的文件都会被加载</td>
+</tr>
+<tr>
+<td>  -data-dir=path</td>
+<td>提供一个目录用来存放agent的状态，所有的agent允许都需要该目录，该目录必须是稳定的，系统重启后都继续存在</td>
+</tr>
+<tr>
+<td>  -recursor=1.2.3.4</td>
+<td>Address of an upstream DNS server.Can be specified multiple times.</td>
+</tr>
+<tr>
+<td>  -dc=east-aws</td>
+<td>该标记控制agent允许的datacenter的名称，默认是dc1</td>
+</tr>
+<tr>
+<td>  -encrypt=key</td>
+<td>Provides the gossip encryption key</td>
+</tr>
+<tr>
+<td>  -join=1.2.3.4</td>
+<td>加入一个已经启动的agent的ip地址，可以多次指定多个agent的地址。如果consul不能加入任何指定的地址中，则agent会启动失败，默认agent启动时不会加入任何节点。</td>
+</tr>
+<tr>
+<td>  -join-wan=1.2.3.4</td>
+<td>Address of an agent to join -wan at start time.  Can be specified multiple times.</td>
+</tr>
+<tr>
+<td>  -retry-join=1.2.3.4</td>
+<td>和join类似，但是允许你在第一次失败后进行尝试。</td>
+</tr>
+<tr>
+<td>  -retry-interval=30s</td>
+<td>Time to wait between join attempts.</td>
+</tr>
+<tr>
+<td>  -retry-max=0</td>
+<td>尝试重复join的次数，默认是0，也就是无限次尝试</td>
+</tr>
+<tr>
+<td>  -retry-join-wan=1.2.3.4</td>
+<td>Address of an agent to join -wan at start time with retries enabled.</td>
+</tr>
+<tr>
+<td>  -retry-interval-wan=30s</td>
+<td>两次join之间的时间间隔，默认是30s</td>
+</tr>
+<tr>
+<td>  -retry-max-wan=0</td>
+<td>Maximum number of join -wan attempts. Defaults to 0, which will retry indefinitely.</td>
+</tr>
+<tr>
+<td>  -log-level=info</td>
+<td>consul agent启动后显示的日志信息级别。默认是info，可选：trace、debug、info、warn、err。</td>
+</tr>
+<tr>
+<td>  -node=hostname</td>
+<td>节点在集群中的名称，在一个集群中必须是唯一的，默认是该节点的主机名</td>
+</tr>
+<tr>
+<td>  -rejoin</td>
+<td>使consul忽略先前的离开，在再次启动后仍旧尝试加入集群中。</td>
+</tr>
+<tr>
+<td>  -server</td>
+<td>定义agent运行在server模式，每个集群至少有一个server，建议每个集群的server不要超过5个</td>
+</tr>
+<tr>
+<td>  -syslog</td>
+<td>开启系统日志功能，只在linux/osx上生效</td>
+</tr>
+<tr>
+<td>  -ui</td>
+<td>启动內建的web管理页面</td>
+</tr>
+<tr>
+<td>  -ui-dir=path</td>
+<td>提供存放web ui资源的路径，该目录必须是可读的</td>
+</tr>
+<tr>
+<td>  -pid-file=path</td>
+<td>提供一个路径来存放pid文件，可以使用该文件进行SIGINT/SIGHUP(关闭/更新)agent</td>
+</tr>
+</tbody>
+</table>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/tools/">tools</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/cloud/">cloud</a><a href="/tags/consul/">consul</a><a href="/tags/dev-ops/">dev ops</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://immerser.github.io/2017/11/01/consul/" data-title="consul教程   --- 官方文档笔记 | 你家亮哥的学习笔记" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/11/01/Jedis官方文档阅读/" title="jedis教程   --- 官方文档笔记">
+  <strong>上一篇：</strong><br/>
+  <span>
+  jedis教程   --- 官方文档笔记</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/11/01/docker-compose/"  title="docker compose教程   --- 官方文档笔记">
+ <strong>下一篇：</strong><br/> 
+ <span>docker compose教程   --- 官方文档笔记
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#consul官方文档学习笔记"><span class="toc-number">1.</span> <span class="toc-text">consul官方文档学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-consul的作用"><span class="toc-number">1.1.</span> <span class="toc-text">1.consul的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-基本架构"><span class="toc-number">1.2.</span> <span class="toc-text">2.基本架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Hello-World"><span class="toc-number">1.3.</span> <span class="toc-text">3.Hello World</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-dns-interface"><span class="toc-number">1.4.</span> <span class="toc-text">4. dns interface</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-HTTP-API"><span class="toc-number">1.5.</span> <span class="toc-text">5. HTTP API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-配置"><span class="toc-number">1.6.</span> <span class="toc-text">6. 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-服务定义"><span class="toc-number">1.7.</span> <span class="toc-text">7. 服务定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-检查定义"><span class="toc-number">1.8.</span> <span class="toc-text">8. 检查定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-加密服务"><span class="toc-number">1.9.</span> <span class="toc-text">9. 加密服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-RPC协议"><span class="toc-number">1.10.</span> <span class="toc-text">10. RPC协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-遥测"><span class="toc-number">1.11.</span> <span class="toc-text">11. 遥测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-检测"><span class="toc-number">1.12.</span> <span class="toc-text">12. 检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-常用命令"><span class="toc-number">1.13.</span> <span class="toc-text">13. 常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-常用配置选项"><span class="toc-number">1.14.</span> <span class="toc-text">14. 常用配置选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-备注"><span class="toc-number">1.15.</span> <span class="toc-text">15. 备注</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/cloud/" title="cloud">cloud<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tools/cloud/" title="cloud">cloud<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/framework/" title="framework">framework<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/framwwork/" title="framwwork">framwwork<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tools/" title="tools">tools<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/运维/" title="运维">运维<sup>6</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/运维/" title="运维">运维<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/doc/" title="doc">doc<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cloud/" title="cloud">cloud<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/dev-ops/" title="dev ops">dev ops<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ansible/" title="ansible">ansible<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/consul/" title="consul">consul<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spring-boot/" title="spring boot">spring boot<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/kubernetes/" title="kubernetes">kubernetes<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ReactiveX/" title="ReactiveX">ReactiveX<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/framework/" title="framework">framework<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker-compose/" title="docker compose">docker compose<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/dockerfile/" title="dockerfile">dockerfile<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spring-cloud/" title="spring cloud">spring cloud<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spirng/" title="spirng">spirng<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cache/" title="cache">cache<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nomad/" title="nomad">nomad<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/zabbix/" title="zabbix">zabbix<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/monitro/" title="monitro">monitro<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/elastic-search/" title="elastic search">elastic search<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m immerser. <br/>
+			This is my blog,study with me.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="你家亮哥">你家亮哥</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

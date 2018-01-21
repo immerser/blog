@@ -1,25 +1,29 @@
 
  <!DOCTYPE HTML>
-<html >
+<html lang="Chinese">
 <head>
   <meta charset="UTF-8">
   
-    <title>Hexo</title>
+    <title>你家亮哥的学习笔记</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="John Doe">
+    <meta name="author" content="你家亮哥">
     
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+    <meta name="description" content="Hello world">
+<meta property="og:type" content="website">
+<meta property="og:title" content="你家亮哥的学习笔记">
 <meta property="og:url" content="https://immerser.github.io/page/3/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="你家亮哥的学习笔记">
+<meta property="og:description" content="Hello world">
+<meta property="og:locale" content="Chinese">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="你家亮哥的学习笔记">
+<meta name="twitter:description" content="Hello world">
 
     
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="你家亮哥的学习笔记" type="application/atom+xml">
     
     
     <link rel="icon" href="/img/favicon.ico">
@@ -37,8 +41,8 @@
 <div>
 		
 			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Hexo">Hexo</a></h1>
-				<h2 class="blog-motto"></h2>
+				<h1 class="site-name"><a href="/" title="你家亮哥的学习笔记">你家亮哥的学习笔记</a></h1>
+				<h2 class="blog-motto">---notebook of cloud,dev ops,language</h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
@@ -68,216 +72,719 @@
     <div id="container">
       <div id="main">
 
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/kubernates/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
+   
     
-     
-           <p itemprop="description" >kubernates实践安装
-添加yum源vi  /etc/yum.repos.d/virt7-docker-common-release.repo添加[virt7-docker-common-release]name=virt7-docker-common-releasebas</p>
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/saltstack官方文档/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.059Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
         
-    
-    <time datetime="2018-01-20T15:44:39.081Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/docker常用安装软件/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" ></p>
+        <h1 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h1><h2 id="安装-centos-7"><a href="#安装-centos-7" class="headerlink" title="安装(centos 7)"></a>安装(centos 7)</h2><ol>
+<li><p>导入安装仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm --import https://repo.saltstack.com/yum/redhat/7/x86_64/latest/SALTSTACK-GPG-KEY.pub</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将下面内容保存到<code>/etc/yum.repos.d/saltstack.repo</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[saltstack-repo]</span><br><span class="line">name=SaltStack repo for RHEL/CentOS $releasever</span><br><span class="line">baseurl=https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest/SALTSTACK-GPG-KEY.pub</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum clean expire-cach</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装命令工具</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install salt-master</span><br><span class="line">yum install salt-minion</span><br><span class="line">yum install salt-ssh</span><br><span class="line">yum install salt-syndic</span><br><span class="line">yum install salt-cloud</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable salt-master.service</span><br><span class="line">systemctl start salt-master.service</span><br><span class="line">systemctl enable salt-minion.service</span><br><span class="line">systemctl start salt-minion.service</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="配置salt"><a href="#配置salt" class="headerlink" title="配置salt"></a>配置salt</h2><ol>
+<li><p>默认服务端监听端口(4505 4506) 配置修改,重启生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> /etc/salt/master </span><br><span class="line">- #interface: 0.0.0.0</span><br><span class="line">+ interface: 10.0.0.1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改客户端连接服务端地址,重启生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/etc/salt/minion</span><br><span class="line">- #master: salt</span><br><span class="line">+ master: 10.0.0.1</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="运行salt"><a href="#运行salt" class="headerlink" title="运行salt"></a>运行salt</h2><ol>
+<li><p>运行服务端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salt-master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行客户端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salt-minion</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="连通性测试"><a href="#连通性测试" class="headerlink" title="连通性测试"></a>连通性测试</h2>
         
-    
-    <time datetime="2018-01-20T15:44:39.080Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/git使用记录/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" ></p>
         
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
     
-    <time datetime="2018-01-20T15:44:39.079Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/安装kubernates/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
     
-     
-           <p itemprop="description" >安装kubernates安装etcd123456789101112131415161718192021export NODE_NAME=etcd-host0export NODE_IP=192.168.1.64export NODE_IPS=&amp;quot;192.168.1.64 </p>
+      <a href="/2018/01/20/HEXO+Github,搭建属于自己的博客/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.059Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
         
-    
-    <time datetime="2018-01-20T15:44:39.074Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/idea技巧/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >#idea 
-F5  复制类F6  移动类CTRL+ALT+M 提取方法CTRL+ALT+T 包裹代码CTRL+F8F11 添加数钱</p>
         
-    
-    <time datetime="2018-01-20T15:44:39.074Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/SSM官方文档/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >spring statemachine官方文档阅读特性
-使状态机模式更加易用
-分层架构更容易使用复杂的状态配置
-支持regions提供更复杂的状态配置
-支持triggers, transitions, guards 和 actions.
-类型安全的配置适配器
-支持事件监听
-整合s</p>
         
-    
-    <time datetime="2018-01-20T15:44:39.074Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/HEXO+Github,搭建属于自己的博客/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" ></p>
         
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
     
-    <time datetime="2018-01-20T15:44:39.059Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/fabric8官方文档/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
     
-     
-           <p itemprop="description" >安装</p>
+      <a href="/2018/01/20/kafka官方文档/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.059Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
         
-    
-    <time datetime="2018-01-20T15:44:39.059Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
+        <h1 id="kafka官方文档阅读"><a href="#kafka官方文档阅读" class="headerlink" title="kafka官方文档阅读"></a>kafka官方文档阅读</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ol>
+<li>kafka的消息不管是否被消费都会维护指定的时间</li>
+<li>partition作用</li>
+</ol>
+<p><code>每个分区都有一个leader其他均为follower 
+leader负责读写 follower负责复制,leader失败后会再次选举</code></p>
+<pre><code>&gt;突破单机存储限制
 
+&gt;并行处理
 
+&gt;备份
+</code></pre><ol>
+<li>producers</li>
+</ol>
+<p><code>负责往topic中的partition写入数据,支持轮询写入partition内</code></p>
+<ol>
+<li>consumers<br><code>消费者以组的形式进行消费数据,每一个topic内的数据会被一个特定的消费者组内的一个消费者消费,一个topic可以被多个消费者组消费</code><blockquote>
+<p>同一个消费者组可以进行负载均衡<br>多个消费者组可以进行数据广播处理<br>仅支持topic内的消费顺序<br>可以只设置一个分区进行整个topic的顺序</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ol>
+<li>消息系统</li>
+<li>存储系统</li>
+<li>流处理系统</li>
+</ol>
+<h2 id="api设计"><a href="#api设计" class="headerlink" title="api设计"></a>api设计</h2><ol>
+<li>producer    发送数据</li>
+<li>consumer    消费数据</li>
+<li>streams     输入topic到输出topic</li>
+<li>connect     允许从源系统连续输出</li>
+</ol>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
+<li>broker configs<ol>
+<li>必须配置的属性<br><code>broker.id</code> <code>log.dirs</code> <code>zookeeper.connetct</code></li>
+</ol>
+</li>
+<li>producer configs<ol>
+<li>负载均衡</li>
+<li>异步发送</li>
+</ol>
+</li>
+<li><p>consumer configs</p>
+<ol>
+<li>推拉模型</li>
+<li>消费位置</li>
+</ol>
+</li>
+<li><p>connetc configs</p>
+</li>
+<li></li>
+<li>stream configs</li>
+</ol>
+<h2 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h2><ol>
+<li>消息投递系统<ol>
+<li>最多一次</li>
+<li>最少一次</li>
+<li>仅一次</li>
+</ol>
+</li>
+</ol>
 
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/saltstack官方文档/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >官方文档安装(centos 7)
-导入安装仓库
-1rpm --import https://repo.saltstack.com/yum/redhat/7/x86_64/latest/SALTSTACK-GPG-KEY.pub
-
-将下面内容保存到/etc/yum.repos.d/</p>
         
-    
-    <time datetime="2018-01-20T15:44:39.059Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/2018/01/20/flume官方文档/" title="" itemprop="url">
-  
-    <h1 itemprop="name"></h1>
-    
-     
-           <p itemprop="description" >官方文档阅读1.  架构1.  架构图
-2.  helloworld1.  配置properties
-2.  启动agent
-1wget http://mirror.bit.edu.cn/apache/flume/1.7.0/apache-flume-1.7.0-bin.tar.</p>
         
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
     
-    <time datetime="2018-01-20T15:44:39.059Z" itemprop="datePublished">2018-01-20</time>
-  </a>
-</section>
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/Prometheus官方文档阅读/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.059Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/jenkins官方文档阅读/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.059Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="jenkins官方文档阅读"><a href="#jenkins官方文档阅读" class="headerlink" title="jenkins官方文档阅读"></a>jenkins官方文档阅读</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>安装java环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install java-1.8.0-openjdk.x86_64</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装jenkins</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo</span><br><span class="line">rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key</span><br><span class="line">yum -y install jenkins</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动jenkins</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service jenkins start/stop/restart</span><br><span class="line">chkconfig jenkins on</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装注意事项</p>
+<blockquote>
+<p>  默认使用jenkins这个用户安装，如果替换用户需要修改以下文件夹的权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/var/log/jenkins   /var/lib/jenkins</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>  日志文件路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/var/log/jenkins/jenkins.log</span><br></pre></td></tr></table></figure></p>
+<p>  配置文件路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/sysconfig/jenkins</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<ol>
+<li>配置主从节点<ol>
+<li>安装<code>SSH Slaves plugin</code>插件用于配置节点ssh</li>
+<li>使用命令<code>ssh-keygen -t rsa</code>生成公钥私钥用于配置jenkins的ssh连接 </li>
+<li>编辑ssh连接配置<code>vim /etc/ssh/ssh_config</code>指定配置文件~/.ssh/id_rsa</li>
+<li>点击 高级 然后配置java的路径  注意:路径要指定到java可移植性文件的全路径<code>xx/jdk1.8.0/bin/java</code></li>
+<li>进行部署即可使用</li>
+</ol>
+</li>
+<li><p>配置maven项目</p>
+<ol>
+<li>安装git插件</li>
+<li><p>在jenkins所在机器安装git和maven</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install git</span><br><span class="line">yum -y install maven</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装maven插件<code>Maven Integration plugin</code></p>
+</li>
+</ol>
+</li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/fluentd官方文档阅读/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.043Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><img src="https://docs.fluentd.org/images/fluentd-architecture.png" alt="image"></p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><blockquote>
+<p>  开源数据收集器,时数据的处理更容易.</p>
+</blockquote>
+<h2 id="关键特性"><a href="#关键特性" class="headerlink" title="关键特性"></a>关键特性</h2><blockquote>
+<p>  使用json统一日志<br>  可插拔的架构设计<br>  最少的资源使用<br>  高可靠性</p>
+</blockquote>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><h1 id="安装-td-fluent"><a href="#安装-td-fluent" class="headerlink" title="安装(td-fluent)"></a>安装(td-fluent)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">确保系统参数正确</span><br><span class="line">ulimit -n</span><br><span class="line">vi /etc/security/limits.conf</span><br><span class="line">添加</span><br><span class="line">root soft nofile 65536</span><br><span class="line">root hard nofile 65536</span><br><span class="line">* soft nofile 65536</span><br><span class="line">* hard nofile 65536</span><br><span class="line"></span><br><span class="line">vi /etc/sysctl.conf</span><br><span class="line">添加</span><br><span class="line"></span><br><span class="line">net.ipv4.tcp_tw_recycle = 1</span><br><span class="line">net.ipv4.tcp_tw_reuse = 1</span><br><span class="line">net.ipv4.ip_local_port_range = 10240    65535</span><br><span class="line"></span><br><span class="line">curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent2.sh | sh</span><br><span class="line">配置文件</span><br><span class="line">vi /etc/td-agent/td-agent.conf</span><br><span class="line"></span><br><span class="line">systemctl start td-agent</span><br><span class="line"></span><br><span class="line">启动ui</span><br><span class="line">td-agent-ui start</span><br></pre></td></tr></table></figure>
+<h1 id="helloworld"><a href="#helloworld" class="headerlink" title="helloworld"></a>helloworld</h1>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/整理/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.043Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="微服务定义"><a href="#微服务定义" class="headerlink" title="微服务定义"></a>微服务定义</h1><h1 id="微服务优点"><a href="#微服务优点" class="headerlink" title="微服务优点"></a>微服务优点</h1><h1 id="微服务缺点"><a href="#微服务缺点" class="headerlink" title="微服务缺点"></a>微服务缺点</h1><h1 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h1><h1 id=""><a href="#" class="headerlink" title=" "></a> </h1><p>The Art of Scalability</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/Prometheus文档阅读/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.043Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">vi prometheus.yml</span><br><span class="line"></span><br><span class="line">global:</span><br><span class="line">  scrape_interval:     15s</span><br><span class="line">  evaluation_interval: 15s</span><br><span class="line"></span><br><span class="line">rule_files:</span><br><span class="line">  # - &quot;first.rules&quot;</span><br><span class="line">  # - &quot;second.rules&quot;</span><br><span class="line"></span><br><span class="line">scrape_configs:</span><br><span class="line">  - job_name: &apos;prometheus&apos;</span><br><span class="line">    static_configs:</span><br><span class="line">      - targets: [&apos;localhost:9090&apos;]</span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">./prometheus --config.file=prometheus.yml</span><br></pre></td></tr></table></figure>
+<h1 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h1><ol>
+<li>通过 <code>mectic name</code>和<code>key value</code> 时序存储多维度的数据模型</li>
+<li>灵活的查询语言</li>
+<li>不依赖分布式存储</li>
+<li>通过 http 进行 <code>pull</code></li>
+<li>可以通过gateway进行<code>push</code></li>
+<li>可以通过服务发现和静态配置</li>
+<li>支持ui</li>
+</ol>
+<h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><ol>
+<li>Prometheus server</li>
+<li>client libraries</li>
+<li>push gateway </li>
+<li>exporters</li>
+<li>alertmanager  </li>
+<li>various support tools</li>
+</ol>
+<h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><p><img src="https://prometheus.io/assets/architecture.svg" alt="image"></p>
+<h1 id="data-model"><a href="#data-model" class="headerlink" title="data model"></a>data model</h1><ol>
+<li>形式<metric name="">{<label name="">=<label value="">, …}</label></label></metric></li>
+<li>示例 api_http_requests_total{method=”POST”, handler=”/messages”}</li>
+</ol>
+<h1 id="metrics-type"><a href="#metrics-type" class="headerlink" title="metrics type"></a>metrics type</h1><ol>
+<li>Counter</li>
+<li>Gauge</li>
+<li>Histogram</li>
+<li>Summary</li>
+</ol>
+<p><a href="http://licyhust.com/%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/2017/07/10/prometheus-metrics/" target="_blank" rel="noopener">http://licyhust.com/%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/2017/07/10/prometheus-metrics/</a></p>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p><a href="https://raymondhlee.wordpress.com/2016/10/03/monitoring-spring-boot-applications-with-prometheus-part-2/" target="_blank" rel="noopener">https://raymondhlee.wordpress.com/2016/10/03/monitoring-spring-boot-applications-with-prometheus-part-2/</a></p>
+<h1 id="和influxdb区别"><a href="#和influxdb区别" class="headerlink" title="和influxdb区别"></a>和influxdb区别</h1><p>Where InfluxDB is better:</p>
+<p>If you’re doing event logging.<br>Commercial option offers clustering for InfluxDB, which is also better for long term data storage.<br>Eventually consistent view of data between replicas.<br>Where Prometheus is better:</p>
+<p>If you’re primarily doing metrics.<br>More powerful query language, alerting, and notification functionality.<br>Higher availability and uptime for graphing and alerting.</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/kafka功能整理/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.043Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://mirror.bit.edu.cn/apache/zookeeper/current/zookeeper-3.4.10.tar.gz</span><br><span class="line">wget http://mirror.bit.edu.cn/apache/kafka/0.10.1.1/kafka_2.10-0.10.1.1.tgz</span><br><span class="line">wget http://mirror.bit.edu.cn/apache/kafka/0.11.0.0/kafka_2.11-0.11.0.0.tgz</span><br></pre></td></tr></table></figure>
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><ol>
+<li>设置外网访问呢<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">如果你的消费者是内网侧，则这个advertised.host.name 直接设置 kafka的内网ip即可。</span><br><span class="line">如果你的消费者是外网侧，这个advertised.host.name</span><br><span class="line">则要设置为外网ip,但是有些机器有网络限制，此kafak的机器访问不了这个外网ip,那么，这个advertised.host.name</span><br><span class="line">设置为外网ip则会抛错.所以，一般的做法，如果是外网侧，advertised.host.name 设置为主机名，通过/etc/hosts的配置，来达到不同机器不同ip.</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h1><h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><p>docker run -d  –env  KAFKA_ADVERTISED_HOST_NAME=tencent –env KAFKA_HOST_NAME=172.27.0.8 –env KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 –env KAFKA_ADVERTISED_PORT=9092 –env  KAFKA_CREATE_TOPICS=test:1:1 –env  KAFKA_ZOOKEEPER_CONNECT=”172.27.0.8:2181” -p 9092:9092  wurstmeister/kafka</p>
+<p>docker run -d wurstmeister/kafka -e  KAFKA_ADVERTISED_HOST_NAME=”tencent”,KAFKA_HOST_NAME=”172.27.0.8”,KAFKA_LISTENERS=”PLAINTEXT://0.0.0.0:9092”,KAFKA_ADVERTISED_PORT=”9092”,KAFKA_CREATE_TOPICS=”test:1:1”,KAFKA_ZOOKEEPER_CONNECT=”172.27.0.8:2181” -p 9092:9092  </p>
+<p>docker run -d  -p 9092:9092 wurstmeister/kafka   –env  KAFKA_ADVERTISED_HOST_NAME=tencen,KAFKA_HOST_NAME=172.27.0.8,KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092,KAFKA_ADVERTISED_PORT=9092,KAFKA_CREATE_TOPICS=test:1:1,KAFKA_ZOOKEEPER_CONNECT=172.27.0.8:2181 </p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/20/Influxdb官方文档阅读/" title="" itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="你家亮哥" target="_blank" itemprop="author">你家亮哥</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-20T15:44:39.043Z" itemprop="datePublished"> Published 2018-01-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="安装-amp-启动"><a href="#安装-amp-启动" class="headerlink" title="安装&amp;启动"></a>安装&amp;启动</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.influxdata.com/influxdb/releases/influxdb-1.3.5.x86_64.rpm</span><br><span class="line">sudo yum localinstall influxdb-1.3.5.x86_64.rpm</span><br><span class="line">systemctl enable influxdb</span><br><span class="line">systemctl start influxdb</span><br></pre></td></tr></table></figure>
+<h1 id="helloworld"><a href="#helloworld" class="headerlink" title="helloworld"></a>helloworld</h1><h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST &apos;http://localhost:8086/query&apos; --data-urlencode &quot;q=CREATE DATABASE mydb&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">insert payment,device=mobile,product=Notepad,method=credit billed=33,licenses=3i 1434067467100293230</span><br><span class="line"></span><br><span class="line">curl -XPOST &apos;http://localhost:8086/write?db=mydb&apos; \</span><br><span class="line">-d &apos;cpu,host=server01,region=uswest load=42 1434055562000000000&apos;</span><br><span class="line"></span><br><span class="line">curl -XPOST &apos;http://localhost:8086/write?db=mydb&apos; \</span><br><span class="line">-d &apos;cpu,host=server02,region=uswest load=78 1434055562000000000&apos;</span><br><span class="line"></span><br><span class="line">curl -XPOST &apos;http://localhost:8086/write?db=mydb&apos; \</span><br><span class="line">-d &apos;cpu,host=server03,region=useast load=15.4 1434055562000000000&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select * from cpu</span><br><span class="line"></span><br><span class="line">curl -G http://localhost:8086/query?pretty=true --data-urlencode &quot;db=mydb&quot; \</span><br><span class="line">--data-urlencode &quot;q=SELECT * FROM cpu WHERE host=&apos;server01&apos; AND time &lt; now() - 1d&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="分析数据"><a href="#分析数据" class="headerlink" title="分析数据"></a>分析数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -G http://localhost:8086/query?pretty=true --data-urlencode &quot;db=mydb&quot; \</span><br><span class="line">--data-urlencode &quot;q=SELECT mean(load) FROM cpu WHERE region=&apos;uswest&apos;&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="关键特性"><a href="#关键特性" class="headerlink" title="关键特性"></a>关键特性</h1><ol>
+<li>时序数据存储,高吞吐,数据压缩.</li>
+<li>go语言编写,无其他依赖</li>
+<li>通过http(s)提供高性能api</li>
+<li>插件支持 Graphite, collectd, and OpenTSDB 等.</li>
+<li>类sql查询风格</li>
+<li>使用tags提供高效索引查询操作</li>
+<li>自动删除失效数据</li>
+<li>自动聚合数据使查询更有效</li>
+<li>内建UI</li>
+</ol>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h2><ol>
+<li><p>database    </p>
+</li>
+<li><p>field key</p>
+</li>
+<li><p>field set</p>
+</li>
+<li><p>field value    </p>
+</li>
+<li><p>measurement    point</p>
+</li>
+<li><p>retention policy</p>
+</li>
+<li><p>series    </p>
+</li>
+<li><p>tag key</p>
+</li>
+<li><p>tag set    </p>
+</li>
+</ol>
+<p>10  tag value</p>
+<ol>
+<li>timestamp</li>
+</ol>
+<h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
 
 
 
@@ -285,7 +792,7 @@ F5  复制类F6  移动类CTRL+ALT+M 提取方法CTRL+ALT+T 包裹代码CTRL+F8F
 
 
 
-  <nav id="page-nav" class="clearfix unexpand">
+  <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
   </nav>
 
@@ -300,8 +807,126 @@ F5  复制类F6  移动类CTRL+ALT+M 提取方法CTRL+ALT+T 包裹代码CTRL+F8F
 
 
   
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/cloud/" title="cloud">cloud<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tools/cloud/" title="cloud">cloud<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/framework/" title="framework">framework<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/framwwork/" title="framwwork">framwwork<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tools/" title="tools">tools<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/运维/" title="运维">运维<sup>6</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
 
   
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/运维/" title="运维">运维<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/doc/" title="doc">doc<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cloud/" title="cloud">cloud<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/dev-ops/" title="dev ops">dev ops<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ansible/" title="ansible">ansible<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/consul/" title="consul">consul<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spring-boot/" title="spring boot">spring boot<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/kubernetes/" title="kubernetes">kubernetes<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ReactiveX/" title="ReactiveX">ReactiveX<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/framework/" title="framework">framework<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker-compose/" title="docker compose">docker compose<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/dockerfile/" title="dockerfile">dockerfile<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spring-cloud/" title="spring cloud">spring cloud<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spirng/" title="spirng">spirng<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/cache/" title="cache">cache<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nomad/" title="nomad">nomad<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/zabbix/" title="zabbix">zabbix<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/monitro/" title="monitro">monitro<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/elastic-search/" title="elastic search">elastic search<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
 
   <div class="linkslist">
   <p class="asidetitle">Links</p>
@@ -371,7 +996,7 @@ F5  复制类F6  移动类CTRL+ALT+M 提取方法CTRL+ALT+T 包裹代码CTRL+F8F
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
 		
-		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		<a href="/about" target="_blank" title="你家亮哥">你家亮哥</a>
 		
 		
 		</p>
